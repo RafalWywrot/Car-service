@@ -1,7 +1,6 @@
-﻿
-using NHibernate.AspNet.Identity;
+﻿using NHibernate.AspNet.Identity;
 
-namespace CarService.WebApplication.Helpers.Identity
+namespace CarService.Identity
 {
     public class ApplicationUser : IdentityUser
     {
