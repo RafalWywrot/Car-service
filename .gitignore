@@ -349,4 +349,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-**/CarService.WebApplication/Web.config
+**/CarService.WebApplication/ConnectionString.config
