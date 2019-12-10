@@ -1,5 +1,5 @@
-﻿[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(CarService.WebApplication.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(CarService.WebApplication.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(CarService.WebApplication.App_Start.aaNinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(CarService.WebApplication.App_Start.aaNinjectWebCommon), "Stop")]
 
 namespace CarService.WebApplication.App_Start
 {
@@ -12,28 +12,20 @@ namespace CarService.WebApplication.App_Start
     using System;
     using System.Web;
 
-    using Ninject.Extensions.Conventions;
-    using NHibernate;
-    using Microsoft.Owin.Security;
-    using Microsoft.AspNet.Identity;
-    using NHibernate.AspNet.Identity;
-    using Ninject.Web.Mvc.FilterBindingSyntax;
-    using System.Web.Mvc;
-    
-    public static class NinjectWebCommon
+    public static class aaNinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start()
+        public static void Start() 
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-
+        
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -41,7 +33,7 @@ namespace CarService.WebApplication.App_Start
         {
             bootstrapper.ShutDown();
         }
-
+        
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -53,8 +45,6 @@ namespace CarService.WebApplication.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-                kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
-                kernel.Bind<ISession>().ToMethod(x => x.Kernel.Get<IUnitOfWork>().Session);
                 RegisterServices(kernel);
                 return kernel;
             }
@@ -64,12 +54,14 @@ namespace CarService.WebApplication.App_Start
                 throw;
             }
         }
+
+        /// <summary>
+        /// Load your modules or register your services here!
+        /// </summary>
+        /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(x => x.FromAssembliesMatching("*")
-                .SelectAllClasses()
-                .Excluding<UnitOfWork>()
-                .BindDefaultInterface());
-        }
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
+        }        
     }
 }
