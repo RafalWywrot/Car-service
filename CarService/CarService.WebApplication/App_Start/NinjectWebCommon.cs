@@ -53,8 +53,7 @@ namespace CarService.WebApplication.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-                kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
-                kernel.Bind<ISession>().ToMethod(x => x.Kernel.Get<IUnitOfWork>().Session);
+                
                 RegisterServices(kernel);
                 return kernel;
             }
@@ -66,10 +65,8 @@ namespace CarService.WebApplication.App_Start
         }
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(x => x.FromAssembliesMatching("*")
-                .SelectAllClasses()
-                .Excluding<UnitOfWork>()
-                .BindDefaultInterface());
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
+            kernel.Bind(x => x.FromAssembliesMatching("*").SelectAllClasses().Excluding<UnitOfWork>().BindDefaultInterface());
         }
     }
 }

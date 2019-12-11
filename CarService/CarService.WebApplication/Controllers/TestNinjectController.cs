@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace CarService.WebApplication.Controllers
 {
-    public class TestNinjectController : Controller
+    public class TestNinjectController : BaseController
     {
         private readonly IUnitOfWork unitOfWork;
 
