@@ -14,7 +14,7 @@ namespace CarService.Repository
     {
         private static readonly ISessionFactory _sessionFactory;
         private ITransaction _transaction;
-        public ISession Session { get; private set; }
+        public ISession Session { get; set; }
 
         static UnitOfWork()
         {
@@ -30,6 +30,11 @@ namespace CarService.Repository
                 })
                 .ExposeConfiguration(cfg => cfg.AddDeserializedMapping(mapping, null))
                 .BuildSessionFactory();
+        }
+
+        public UnitOfWork()
+        {
+            Session = _sessionFactory.OpenSession();
         }
 
         public void BeginTransaction()
