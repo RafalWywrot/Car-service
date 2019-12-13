@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
+﻿using CarService.Identity;
+using CarService.WebApplication.Helpers;
+using CarService.WebApplication.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using CarService.WebApplication.Models;
-using NHibernate.AspNet.Identity;
+using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace CarService.WebApplication
 {
@@ -72,12 +70,27 @@ namespace CarService.WebApplication
             });
             EmailService = new EmailService();
             SmsService = new SmsService();
+
             var dataProtectionProvider = options.DataProtectionProvider;
-            if (dataProtectionProvider != null)
+
+            var provider = new Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider("ASP.NET IDENTITY");
+
+            UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(provider.Create("EmailConfirmation"))
             {
-                UserTokenProvider =
-                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
-            }
+                TokenLifespan = TimeSpan.FromHours(24),
+            };
+        }
+
+        public override Task SendEmailAsync(string userId, string subject, string body)
+        {
+            return Mail.SendEmailAsync(userId, subject, body);
+        }
+
+        public override Task<IdentityResult> ConfirmEmailAsync(string userId, string token)
+        {
+            var user = FindByIdAsync(userId);
+            user.Result.Active = true;
+            return base.ConfirmEmailAsync(userId, token);
         }
     }
 
