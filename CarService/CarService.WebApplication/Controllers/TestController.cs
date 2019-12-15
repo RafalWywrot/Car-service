@@ -1,4 +1,6 @@
-﻿using CarService.Repository.Repositories;
+﻿using AutoMapper;
+using CarService.Repository.Repositories;
+using CarService.WebApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,7 @@ namespace CarService.WebApplication.Controllers
         public ActionResult Index()
         {
             var testData = testRepository.Get();
+            var testAutoMapper = AutoMapper.Mapper.Map<TestAutoMapperViewModel>(testData);
             return View();
         }
     }
