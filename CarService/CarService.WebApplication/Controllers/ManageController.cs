@@ -11,19 +11,15 @@ using CarService.WebApplication.Models;
 namespace CarService.WebApplication.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public ManageController()
-        {
-        }
-
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
-            UserManager = userManager;
-            SignInManager = signInManager;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public ApplicationSignInManager SignInManager

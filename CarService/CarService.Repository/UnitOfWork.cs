@@ -29,6 +29,8 @@ namespace CarService.Repository
                         m.HbmMappings.AddFromAssembly(Assembly.GetExecutingAssembly());
                 })
                 .ExposeConfiguration(cfg => cfg.AddDeserializedMapping(mapping, null))
+                .ExposeConfiguration(cfg => new SchemaExport(cfg).Create(true, true))
+                //.ExposeConfiguration(cfg => cfg.AddDeserializedMapping(mapping, null))
                 .BuildSessionFactory();
         }
 
