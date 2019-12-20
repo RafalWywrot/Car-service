@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CarService.Identity;
+using CarService.Logic.ModelsDTO;
 using CarService.Repository.Entities;
 using CarService.WebApplication.Models;
 using CarService.WebApplication.Models.User;
@@ -14,6 +15,11 @@ namespace CarService.WebApplication.Helpers
     {
         public AutoMapperProfile()
         {
+            CreateMap<CarBrand, CarBrandDTO>();
+            CreateMap<CarModel, CarModelDTO>();
+            CreateMap<FirstMappedClass, TestAutoMapperViewModel>();
+
+            #region Users userManager
             CreateMap<ApplicationUser, UserBasicViewModel>()
                 .ForMember
                 (
@@ -36,9 +42,6 @@ namespace CarService.WebApplication.Helpers
                     dest => dest.Roles,
                     opt => opt.MapFrom(src => string.Join(", ", src.Roles.Select(x => x.Name)))
                 );
-            CreateMap<FirstMappedClass, TestAutoMapperViewModel>();
-
-            #region Users userManager
             #endregion
         }
     }

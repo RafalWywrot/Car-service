@@ -1,0 +1,8 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.ActionLink("Pokaz marki auta", "Brands", "Car", new { @area = "" }, null)
+@Html.ActionLink("Pokaz modele auta", "Models", "Car", new { @brandId = 1, @area = "" }, null)
+
