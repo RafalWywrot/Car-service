@@ -23,9 +23,17 @@ namespace CarService.WebApplication
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/dataTables", "https://cdn.datatables.net/1.10.18/js/jquery.dataTables.js")
+                .IncludeDirectory("~/Scripts/DataTable", "*.js")
+                .IncludeDirectory("~/Scripts/DataTable", "*.json"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/Content/dataTables", "https://cdn.datatables.net/1.10.18/css/jquery.dataTables.css")
+                .IncludeDirectory("~/Content/DataTable", "*.css")
+                .IncludeDirectory("~/Content/DataTable", "*.png", true));
         }
     }
 }

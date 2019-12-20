@@ -16,9 +16,9 @@ namespace CarService.Repository.Repositories
         {
             this.unitOfWork = unitOfWork;
         }
-        public FirstMappedClass Get()
+        public IEnumerable<FirstMappedClass> Get()
         {
-            return unitOfWork.Session.QueryOver<FirstMappedClass>().SingleOrDefault();
+            return unitOfWork.Session.QueryOver<FirstMappedClass>().List();
         }
     }
 }
