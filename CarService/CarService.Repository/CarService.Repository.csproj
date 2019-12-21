@@ -84,6 +84,7 @@
     <Compile Include="Entities\FuelType.cs" />
     <Compile Include="Entities\Transmission.cs" />
     <Compile Include="Mappings\CarBrandMap.cs" />
+    <Compile Include="Mappings\CarMap.cs" />
     <Compile Include="Mappings\CarModelMap.cs" />
     <Compile Include="Mappings\FuelTypeMap.cs" />
     <Compile Include="Mappings\TransmissionMap.cs" />

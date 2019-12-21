@@ -1,4 +1,5 @@
 ﻿using CarService.Logic.Services.Abstract;
+using Microsoft.AspNet.Identity;
 using System.Web.Mvc;
 
 namespace CarService.WebApplication.Controllers
@@ -14,7 +15,9 @@ namespace CarService.WebApplication.Controllers
         // GET: Car
         public ActionResult Index()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            var cars = _carService.GetUserCars(userId);
+            return View(cars);
         }
 
         public ActionResult Brands()

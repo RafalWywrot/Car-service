@@ -25,5 +25,11 @@ namespace CarService.Logic.Services.Concrete
             var carModels = _carRepository.GetAll(carBrandId);
             return Mapper.Map<IEnumerable<CarModelDTO>>(carModels);
         }
+
+        public IEnumerable<CarSummaryDTO> GetUserCars(string userId)
+        {
+            var cars = _carRepository.GetUserCars(userId);
+            return Mapper.Map<IEnumerable<CarSummaryDTO>>(cars);
+        }
     }
 }

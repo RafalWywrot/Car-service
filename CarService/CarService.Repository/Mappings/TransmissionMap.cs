@@ -7,7 +7,7 @@ namespace CarService.Repository.Mappings
     {
         public TransmissionMap()
         {
-            Table("Transmission");
+            Table("TRANSMISSION");
 
             Id(x => x.Id);
             Map(x => x.Name, "Name");

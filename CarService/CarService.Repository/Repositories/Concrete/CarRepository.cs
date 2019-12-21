@@ -23,5 +23,10 @@ namespace CarService.Repository.Repositories.Concrete
         {
             return unitOfWork.Session.QueryOver<CarModel>().Where(x => x.Brand.Id == carBrandId).List();
         }
+
+        public IEnumerable<Car> GetUserCars(string userId)
+        {
+            return unitOfWork.Session.QueryOver<Car>().Where(x => x.AssignedUser.Id == userId).List();
+        }
     }
 }

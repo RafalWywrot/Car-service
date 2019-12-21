@@ -7,5 +7,6 @@ namespace CarService.Repository.Repositories.Abstract
     {
         IEnumerable<CarBrand> GetAll();
         IEnumerable<CarModel> GetAll(int carBrandId);
+        IEnumerable<Car> GetUserCars(string userId);
     }
 }
