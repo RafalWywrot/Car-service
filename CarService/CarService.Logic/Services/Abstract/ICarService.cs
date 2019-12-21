@@ -8,7 +8,10 @@ namespace CarService.Logic.Services.Abstract
         IEnumerable<CarBrandDTO> GetAll();
         IEnumerable<CarModelDTO> GetModels(int carBrandId);
         IEnumerable<CarSummaryDTO> GetUserCars(string userId);
+        CarDTO GetCar(int carId);
+        void UpdateCar(CarDTO car);
         IEnumerable<IdNamePair> GetTransmissionOptions();
         IEnumerable<IdNamePair> GetFuelTypes();
+        void AddCar(CarDTO car, string userId);
     }
 }

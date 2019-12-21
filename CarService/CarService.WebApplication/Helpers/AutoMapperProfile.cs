@@ -2,6 +2,7 @@
 using CarService.Identity;
 using CarService.Repository.Entities;
 using CarService.WebApplication.Models;
+using CarService.WebApplication.Models.Car;
 using CarService.WebApplication.Models.User;
 using System.Linq;
 using DTO = CarService.Logic.ModelsDTO;
@@ -32,6 +33,55 @@ namespace CarService.WebApplication.Helpers
                     dest => dest.Transmission,
                     opt => opt.MapFrom(src => src.Transmission.Name)
                 );
+
+            CreateMap<Entity.Car, DTO.CarDTO>()
+                .ForMember(
+                    dest => dest.TransmissionId,
+                    opt => opt.MapFrom(src => src.Transmission.Id)
+                ).ForMember(
+                    dest => dest.FuelTypeId,
+                    opt => opt.MapFrom(src => src.Fuel.Id)
+                );
+
+            CreateMap<CarFormViewModel, DTO.CarDTO>()
+               .ForMember
+               (
+                   dest => dest.Id,
+                   opt => opt.MapFrom(src => src.Id)
+               ).ForMember
+               (
+                   dest => dest.Model,
+                   opt => opt.MapFrom(src => new DTO.CarModelDTO
+                   {
+                       Id = src.CarModelId,
+                       Brand = new DTO.CarBrandDTO
+                       {
+                           Id = src.CarBrandId
+                       }
+                   })
+               ).ForMember
+               (
+                   dest => dest.TransmissionId,
+                   opt => opt.MapFrom(src => src.TransmissionId)
+               ).ForMember
+               (
+                   dest => dest.FuelTypeId,
+                   opt => opt.MapFrom(src => src.FuelTypeId)
+               )
+               .ReverseMap()
+                .ForMember(
+                    dest => dest.CarBrandId,
+                    opt => opt.MapFrom(src => src.Model.Brand.Id)
+               ).ForMember(
+                    dest => dest.CarModelId,
+                    opt => opt.MapFrom(src => src.Model.Id)
+               ).ForMember(
+                    dest => dest.FuelTypeId,
+                    opt => opt.MapFrom(src => src.FuelTypeId)
+               ).ForMember(
+                    dest => dest.TransmissionId,
+                    opt => opt.MapFrom(src => src.TransmissionId)
+               );
 
             #region Users userManager
             CreateMap<ApplicationUser, UserBasicViewModel>()

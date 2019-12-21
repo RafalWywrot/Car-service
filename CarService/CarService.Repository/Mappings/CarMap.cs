@@ -15,6 +15,7 @@ namespace CarService.Repository.Mappings
             Map(x => x.EnginePower, "EnginePower");
             Map(x => x.Odometer, "Odometer");
             Map(x => x.Year, "ProductionYear");
+            Map(x => x.Active, "Active");
 
             References(x => x.Model, "CarModelId").Cascade.None();
             References(x => x.AssignedUser, "ApplicationUserId").Cascade.None();

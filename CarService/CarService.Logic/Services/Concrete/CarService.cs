@@ -15,10 +15,31 @@ namespace CarService.Logic.Services.Concrete
             _carRepository = carRepository;
         }
 
+        public void AddCar(CarDTO car, string userId)
+        {
+            var newCar = new Repository.Entities.Car
+            {
+                Active = true,
+                EngineCapacity = car.EngineCapacity,
+                EnginePower = car.EnginePower,
+                Fuel = new Repository.Entities.FuelType { Id = car.FuelTypeId },
+                Transmission = new Repository.Entities.Transmission { Id = car.TransmissionId },
+                Model = new Repository.Entities.CarModel { Id = car.Model.Id },
+                Odometer = car.Odometer,
+                Year = car.Year
+            };
+            _carRepository.AddCar(newCar, userId);
+        }
+
         public IEnumerable<CarBrandDTO> GetAll()
         {
             var carBrands = _carRepository.GetAll();
             return Mapper.Map<IEnumerable<CarBrandDTO>>(carBrands);
+        }
+
+        public CarDTO GetCar(int carId)
+        {
+            return Mapper.Map<CarDTO>(_carRepository.GetCar(carId));
         }
 
         public IEnumerable<IdNamePair> GetFuelTypes()
@@ -49,6 +70,27 @@ namespace CarService.Logic.Services.Concrete
         {
             var cars = _carRepository.GetUserCars(userId);
             return Mapper.Map<IEnumerable<CarSummaryDTO>>(cars);
+        }
+
+        public void UpdateCar(CarDTO car)
+        {
+            var currentCar = _carRepository.GetCar(car.Id);
+            if (currentCar.Model.Id != car.Model.Id)
+                currentCar.Model = new Repository.Entities.CarModel {Id = car.Model.Id };
+
+            currentCar.EngineCapacity = car.EngineCapacity;
+            currentCar.EnginePower = car.EnginePower;
+
+            if (currentCar.Fuel.Id != car.FuelTypeId)
+                currentCar.Fuel = new Repository.Entities.FuelType { Id = car.FuelTypeId };
+
+            if (currentCar.Transmission.Id != car.TransmissionId)
+                currentCar.Transmission = new Repository.Entities.Transmission { Id = car.TransmissionId};
+
+            currentCar.Odometer = car.Odometer;
+            currentCar.Year = car.Year;
+
+            _carRepository.UpdateCar(currentCar);
         }
     }
 }

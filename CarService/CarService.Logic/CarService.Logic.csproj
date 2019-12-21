@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ModelsDTO\CarBrandDTO.cs" />
+    <Compile Include="ModelsDTO\CarDTO.cs" />
     <Compile Include="ModelsDTO\CarModelDTO.cs" />
     <Compile Include="ModelsDTO\CarSummaryDTO.cs" />
     <Compile Include="ModelsDTO\IdNamePair.cs" />

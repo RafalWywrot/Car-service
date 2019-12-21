@@ -40,7 +40,7 @@ namespace CarService.Repository
 
         public void BeginTransaction()
         {
-            throw new NotImplementedException();
+            _transaction = Session.BeginTransaction();
         }
 
         public void Commit()

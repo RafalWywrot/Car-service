@@ -1,4 +1,6 @@
-﻿using CarService.Logic.Services.Abstract;
+﻿using AutoMapper;
+using CarService.Logic.ModelsDTO;
+using CarService.Logic.Services.Abstract;
 using CarService.WebApplication.Helpers.Extensions;
 using CarService.WebApplication.Models.Car;
 using Microsoft.AspNet.Identity;
@@ -39,7 +41,26 @@ namespace CarService.WebApplication.Controllers
                 InitializeCarDropdowns(model);
                 return View(model);
             }
+            _carService.AddCar(Mapper.Map<CarDTO>(model), User.Identity.GetUserId());
+            return RedirectToAction("Index");
+        }
 
+        public ActionResult Edit(int carId)
+        {
+            var model = Mapper.Map<CarFormViewModel>(_carService.GetCar(carId));
+            InitializeCarDropdowns(model);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CarFormViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                InitializeCarDropdowns(model);
+                return View(model);
+            }
+            _carService.UpdateCar(Mapper.Map<CarDTO>(model));
             return RedirectToAction("Index");
         }
 
