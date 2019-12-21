@@ -77,10 +77,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IUnitOfWork.cs" />
+    <Compile Include="Entities\Car.cs" />
+    <Compile Include="Entities\CarBrand.cs" />
+    <Compile Include="Entities\CarModel.cs" />
     <Compile Include="Entities\FirstMappedClass.cs" />
-    <Compile Include="Mappings.cs" />
-    <Compile Include="Migrations\Migration1_test.cs" />
+    <Compile Include="Entities\FuelType.cs" />
+    <Compile Include="Entities\Transmission.cs" />
+    <Compile Include="Mappings\CarBrandMap.cs" />
+    <Compile Include="Mappings\CarMap.cs" />
+    <Compile Include="Mappings\CarModelMap.cs" />
+    <Compile Include="Mappings\FuelTypeMap.cs" />
+    <Compile Include="Mappings\TransmissionMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Abstract\ICarRepository.cs" />
+    <Compile Include="Repositories\Concrete\CarRepository.cs" />
     <Compile Include="Repositories\ITestRepository.cs" />
     <Compile Include="Repositories\TestRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
@@ -97,9 +107,6 @@
       <Project>{6DAC16B8-7B35-4CDC-BBC3-A8C253721C07}</Project>
       <Name>CarService.Identity</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\TestMigration.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

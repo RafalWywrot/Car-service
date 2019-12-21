@@ -226,16 +226,19 @@
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AutoMapperProfile.cs" />
+    <Compile Include="Helpers\Extensions\CollectionExtensions.cs" />
     <Compile Include="Helpers\Extensions\ModelState.cs" />
     <Compile Include="Helpers\Mail.cs" />
     <Compile Include="Helpers\SystemRoles.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Car\CarFormViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TestAutoMapperViewModel.cs" />
     <Compile Include="Models\User\UserBasicViewModel.cs" />
@@ -317,6 +320,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Car\Index.cshtml" />
+    <Content Include="Views\Car\Add.cshtml" />
+    <Content Include="Views\Car\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
