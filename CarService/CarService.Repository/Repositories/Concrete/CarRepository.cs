@@ -24,6 +24,16 @@ namespace CarService.Repository.Repositories.Concrete
             return unitOfWork.Session.QueryOver<CarModel>().Where(x => x.Brand.Id == carBrandId).List();
         }
 
+        public IEnumerable<FuelType> GetFuelTypes()
+        {
+            return unitOfWork.Session.QueryOver<FuelType>().List();
+        }
+
+        public IEnumerable<Transmission> GetTransmissions()
+        {
+            return unitOfWork.Session.QueryOver<Transmission>().List();
+        }
+
         public IEnumerable<Car> GetUserCars(string userId)
         {
             return unitOfWork.Session.QueryOver<Car>().Where(x => x.AssignedUser.Id == userId).List();

@@ -233,10 +233,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AutoMapperProfile.cs" />
+    <Compile Include="Helpers\Extensions\CollectionExtensions.cs" />
     <Compile Include="Helpers\Extensions\ModelState.cs" />
     <Compile Include="Helpers\Mail.cs" />
     <Compile Include="Helpers\SystemRoles.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Car\CarFormViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TestAutoMapperViewModel.cs" />
     <Compile Include="Models\User\UserBasicViewModel.cs" />
@@ -318,9 +320,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Car\Brands.cshtml" />
-    <Content Include="Views\Car\Models.cshtml" />
     <Content Include="Views\Car\Index.cshtml" />
+    <Content Include="Views\Car\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

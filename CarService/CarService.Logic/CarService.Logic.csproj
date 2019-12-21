@@ -67,6 +67,7 @@
     <Compile Include="ModelsDTO\CarBrandDTO.cs" />
     <Compile Include="ModelsDTO\CarModelDTO.cs" />
     <Compile Include="ModelsDTO\CarSummaryDTO.cs" />
+    <Compile Include="ModelsDTO\IdNamePair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstract\ICarService.cs" />
     <Compile Include="Services\Concrete\CarService.cs" />
