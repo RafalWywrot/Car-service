@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -80,8 +80,10 @@
     <Compile Include="Entities\CarBrand.cs" />
     <Compile Include="Entities\CarModel.cs" />
     <Compile Include="Entities\FirstMappedClass.cs" />
+    <Compile Include="Entities\Transmission.cs" />
     <Compile Include="Mappings\CarBrandMap.cs" />
     <Compile Include="Mappings\CarModelMap.cs" />
+    <Compile Include="Mappings\TransmissionMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Abstract\ICarRepository.cs" />
     <Compile Include="Repositories\Concrete\CarRepository.cs" />
