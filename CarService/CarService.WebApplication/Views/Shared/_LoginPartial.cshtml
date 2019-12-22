@@ -5,6 +5,10 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("panel admina", "Index", "Users", new { @area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("auta", "Index", "Car", new { @area = "" }, null)</li>
+        <li>@Html.ActionLink("usługi", "Index", "Book", new { @area = "" }, null)</li>
+        <li>@Html.ActionLink("adm usługi", "Index", "Book", new { @area = "Admin" }, null)</li>
         <li>
             @Html.ActionLink("Ustawienia", "Index", "Manage", new { @area = "" }, htmlAttributes: new { title = "Manage" })
         </li>
