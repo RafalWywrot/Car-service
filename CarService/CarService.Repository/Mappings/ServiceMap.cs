@@ -11,6 +11,11 @@ namespace CarService.Repository.Mappings
 
             Id(x => x.Id);
             Map(x => x.Name, "Name");
+
+            HasMany(x => x.BookingServices)
+              .KeyColumn("ServiceId")
+              .Inverse()
+              .Cascade.AllDeleteOrphan();
         }
     }
 }

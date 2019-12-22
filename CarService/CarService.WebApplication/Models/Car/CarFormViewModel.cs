@@ -16,6 +16,7 @@ namespace CarService.WebApplication.Models.Car
 
         [Required]
         [Display(Name = "Model")]
+        [Range(1, int.MaxValue, ErrorMessage = "Pole wymagane")]
         public int CarModelId { get; set; }
         public IEnumerable<SelectListItem> CarModels { get; set; }
 

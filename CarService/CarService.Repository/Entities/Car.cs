@@ -1,4 +1,5 @@
 ﻿using CarService.Identity;
+using System.Collections.Generic;
 
 namespace CarService.Repository.Entities
 {
@@ -14,5 +15,7 @@ namespace CarService.Repository.Entities
         public virtual FuelType Fuel { get; set; }
         public virtual int EnginePower { get; set; }
         public virtual bool Active { get; set; }
+
+        public virtual IEnumerable<BookingService> BookingServices { get; set; }
     }
 }
