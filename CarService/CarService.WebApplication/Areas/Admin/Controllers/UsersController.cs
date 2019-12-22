@@ -13,7 +13,7 @@ using CarService.WebApplication.Helpers.Extensions;
 
 namespace CarService.WebApplication.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = SystemRoles.Admin)]
+    [Authorize(Roles = SystemRoles.Admin)]
     public class UsersController : BaseController
     {
         private ApplicationUserManager _userManager;
