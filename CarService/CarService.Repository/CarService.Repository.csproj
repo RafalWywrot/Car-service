@@ -80,7 +80,6 @@
     <Compile Include="Entities\Car.cs" />
     <Compile Include="Entities\CarBrand.cs" />
     <Compile Include="Entities\CarModel.cs" />
-    <Compile Include="Entities\FirstMappedClass.cs" />
     <Compile Include="Entities\FuelType.cs" />
     <Compile Include="Entities\Service.cs" />
     <Compile Include="Entities\Transmission.cs" />
@@ -95,8 +94,6 @@
     <Compile Include="Repositories\Abstract\ICarRepository.cs" />
     <Compile Include="Repositories\Concrete\CarMainteanceRepository.cs" />
     <Compile Include="Repositories\Concrete\CarRepository.cs" />
-    <Compile Include="Repositories\ITestRepository.cs" />
-    <Compile Include="Repositories\TestRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
