@@ -9,5 +9,9 @@ namespace CarService.Repository.Repositories.Abstract
         Service GetService(int id);
         void AddService(string name);
         void UpdateServie(int id, string name);
+        void AddServiceBooking(BookingService bookingService);
+        IEnumerable<BookingService> GetBookings(string userId);
+        BookingService GetBooking(int id);
+        void UpdateServiceBooking(BookingService bookingService);
     }
 }

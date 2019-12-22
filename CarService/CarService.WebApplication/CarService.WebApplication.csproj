@@ -244,6 +244,7 @@
     <Compile Include="Models\Car\CarFormViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ServiceBooking\ServiceBookingFormViewModel.cs" />
+    <Compile Include="Models\ServiceBooking\ServiceBookingSummaryViewModel.cs" />
     <Compile Include="Models\TestAutoMapperViewModel.cs" />
     <Compile Include="Models\User\UserBasicViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -332,6 +333,7 @@
     <Content Include="Views\Car\Edit.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\Book\AddServiceBooking.cshtml" />
+    <Content Include="Views\Book\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

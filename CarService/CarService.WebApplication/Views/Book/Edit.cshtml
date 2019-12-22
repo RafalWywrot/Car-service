@@ -1,18 +1,19 @@
 ﻿@model CarService.WebApplication.Models.ServiceBooking.ServiceBookingFormViewModel
 
 @{
-    ViewBag.Title = "AddServiceBooking";
+    ViewBag.Title = "Edit";
 }
 
-<h2>AddServiceBooking</h2>
+<h2>Edit</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(x => x.Id)
         <div class="form-group">
             @Html.LabelFor(model => model.CarId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

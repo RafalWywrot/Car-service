@@ -5,6 +5,7 @@ using CarService.WebApplication.Helpers.Extensions;
 using CarService.WebApplication.Models.Car;
 using CarService.WebApplication.Models.ServiceBooking;
 using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -23,7 +24,9 @@ namespace CarService.WebApplication.Controllers
 
         public ActionResult Index()
         {
-            var model = _carMainteanceService.GetServices();
+            var userId = User.Identity.GetUserId();
+            var bookingsOfAllCars = _carMainteanceService.GetBookings(userId);
+            var model = Mapper.Map<IEnumerable<ServiceBookingSummaryViewModel>>(bookingsOfAllCars);
             return View(model);
         }
 
@@ -43,7 +46,28 @@ namespace CarService.WebApplication.Controllers
                 return View(model);
             }
 
-            //_carMainteanceService.AddServiceBooking();
+            _carMainteanceService.AddServiceBooking(Mapper.Map<BookingServiceDTO>(model));
+            return RedirectToAction("Index");
+        }
+
+        public ViewResult Edit(int bookingServiceId)
+        {
+            var bookingService = _carMainteanceService.GetBooking(bookingServiceId);
+            var model = Mapper.Map<ServiceBookingFormViewModel>(bookingService);
+            InitializeDropdown(model);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(ServiceBookingFormViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                InitializeDropdown(model);
+                return View(model);
+            }
+
+            _carMainteanceService.UpdateServiceBooking(Mapper.Map<BookingServiceDTO>(model));
             return RedirectToAction("Index");
         }
 
