@@ -9,5 +9,9 @@ namespace CarService.Logic.Services.Abstract
         IdNamePair GetService(int id);
         void AddService(string name);
         void UpdateService(int id, string name);
+        void AddServiceBooking(BookingServiceDTO bookingService);
+        IEnumerable<BookingServiceDTO> GetBookings(string userId);
+        BookingServiceDTO GetBooking(int id);
+        void UpdateServiceBooking(BookingServiceDTO bookingService);
     }
 }

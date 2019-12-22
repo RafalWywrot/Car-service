@@ -21,6 +21,11 @@ namespace CarService.Repository.Mappings
             References(x => x.AssignedUser, "ApplicationUserId").Cascade.None();
             References(x => x.Fuel, "FuelTypeId").Cascade.None();
             References(x => x.Transmission, "TransmissionId").Cascade.None();
+
+            HasMany(x => x.BookingServices)
+              .KeyColumn("CarId")
+              .Inverse()
+              .Cascade.AllDeleteOrphan();
         }
     }
 }

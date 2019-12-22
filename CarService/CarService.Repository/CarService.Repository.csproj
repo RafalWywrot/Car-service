@@ -77,13 +77,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IUnitOfWork.cs" />
+    <Compile Include="CustomTypes\ServiceBookingStatus.cs" />
+    <Compile Include="Entities\BookingService.cs" />
     <Compile Include="Entities\Car.cs" />
     <Compile Include="Entities\CarBrand.cs" />
     <Compile Include="Entities\CarModel.cs" />
-    <Compile Include="Entities\FirstMappedClass.cs" />
     <Compile Include="Entities\FuelType.cs" />
     <Compile Include="Entities\Service.cs" />
     <Compile Include="Entities\Transmission.cs" />
+    <Compile Include="Mappings\BookingServiceMap.cs" />
     <Compile Include="Mappings\CarBrandMap.cs" />
     <Compile Include="Mappings\CarMap.cs" />
     <Compile Include="Mappings\CarModelMap.cs" />
@@ -95,8 +97,6 @@
     <Compile Include="Repositories\Abstract\ICarRepository.cs" />
     <Compile Include="Repositories\Concrete\CarMainteanceRepository.cs" />
     <Compile Include="Repositories\Concrete\CarRepository.cs" />
-    <Compile Include="Repositories\ITestRepository.cs" />
-    <Compile Include="Repositories\TestRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
 using CarService.Repository.Entities;
 using CarService.Repository.Repositories.Abstract;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CarService.Repository.Repositories.Concrete
 {
@@ -44,6 +45,36 @@ namespace CarService.Repository.Repositories.Concrete
             using (var transaction = unitOfWork.Session.BeginTransaction())
             {
                 unitOfWork.Session.Update(entity);
+                transaction.Commit();
+            }
+        }
+
+        public void AddServiceBooking(BookingService bookingService)
+        {
+            using (var transaction = unitOfWork.Session.BeginTransaction())
+            {
+                unitOfWork.Session.Save(bookingService);
+                transaction.Commit();
+            }
+        }
+
+        public IEnumerable<BookingService> GetBookings(string userId)
+        {
+            var cars = unitOfWork.Session.QueryOver<Car>().Where(x => x.AssignedUser.Id == userId).List();
+            var bookedServices = unitOfWork.Session.QueryOver<BookingService>().AndRestrictionOn(x => x.Car.Id).IsIn(cars.Select(c => c.Id).ToList()).List();
+            return bookedServices;
+        }
+
+        public BookingService GetBooking(int id)
+        {
+            return unitOfWork.Session.Get<BookingService>(id);
+        }
+
+        public void UpdateServiceBooking(BookingService bookingService)
+        {
+            using (var transaction = unitOfWork.Session.BeginTransaction())
+            {
+                unitOfWork.Session.Update(bookingService);
                 transaction.Commit();
             }
         }

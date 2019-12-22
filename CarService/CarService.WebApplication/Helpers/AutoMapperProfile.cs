@@ -3,6 +3,7 @@ using CarService.Identity;
 using CarService.Repository.Entities;
 using CarService.WebApplication.Models;
 using CarService.WebApplication.Models.Car;
+using CarService.WebApplication.Models.ServiceBooking;
 using CarService.WebApplication.Models.User;
 using System.Linq;
 using DTO = CarService.Logic.ModelsDTO;
@@ -15,6 +16,12 @@ namespace CarService.WebApplication.Helpers
         {
             CreateMap<Entity.CarBrand, DTO.CarBrandDTO>();
             CreateMap<Entity.CarModel, DTO.CarModelDTO>();
+            CreateMap<Entity.Service, DTO.IdNamePair>()
+                 .ForMember
+                (
+                    dest => dest.Name,
+                    opt => opt.MapFrom(src => src.Name)
+                );
             CreateMap<Entity.Car, DTO.CarSummaryDTO>()
                 .ForMember
                 (
@@ -82,6 +89,53 @@ namespace CarService.WebApplication.Helpers
                     dest => dest.TransmissionId,
                     opt => opt.MapFrom(src => src.TransmissionId)
                );
+
+            CreateMap<Entity.BookingService, DTO.BookingServiceDTO>()
+                .ForMember(
+                    dest => dest.Status,
+                    opt => opt.Ignore()
+                )
+                .ReverseMap();
+
+            CreateMap<DTO.BookingServiceDTO, ServiceBookingSummaryViewModel>()
+                .ForMember(
+                    dest => dest.CarName,
+                    opt => opt.MapFrom(src => $"{src.Car.Model.Brand.Name} / {src.Car.Model.Name}")
+               ).ForMember(
+                    dest => dest.Comment,
+                    opt => opt.MapFrom(src => src.UserComment)
+               ).ForMember(
+                    dest => dest.ServiceName,
+                    opt => opt.MapFrom(src => src.Service.Name)
+               ).ForMember(
+                    dest => dest.DateCreated,
+                    opt => opt.Ignore()
+               );
+               
+
+            CreateMap<DTO.BookingServiceDTO, ServiceBookingFormViewModel>()
+                .ForMember(
+                    dest => dest.CarId,
+                    opt => opt.MapFrom(src => src.Car.Id )
+               ).ForMember(
+                    dest => dest.ServiceId,
+                    opt => opt.MapFrom(src => src.Service.Id)
+               ).ForMember(
+                    dest => dest.Comment,
+                    opt => opt.MapFrom(src => src.UserComment)
+               )
+               .ReverseMap()
+               .ForMember(
+                    dest => dest.Car,
+                    opt => opt.MapFrom(src => new DTO.CarDTO { Id = src.CarId })
+               ).ForMember(
+                    dest => dest.UserComment,
+                    opt => opt.MapFrom(src => src.Comment)
+               ).ForMember(
+                    dest => dest.Service,
+                    opt => opt.MapFrom(src => new DTO.IdNamePair { Id = src.ServiceId })
+               );
+
 
             #region Users userManager
             CreateMap<ApplicationUser, UserBasicViewModel>()
