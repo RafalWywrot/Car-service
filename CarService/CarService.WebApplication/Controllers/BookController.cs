@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CarService.Logic.ModelsDTO;
 using CarService.Logic.Services.Abstract;
+using CarService.WebApplication.Helpers;
 using CarService.WebApplication.Helpers.Extensions;
 using CarService.WebApplication.Models.Car;
 using CarService.WebApplication.Models.ServiceBooking;
@@ -11,6 +12,7 @@ using System.Web.Mvc;
 
 namespace CarService.WebApplication.Controllers
 {
+    [Authorize(Roles = SystemRoles.User)]
     public class BookController : Controller
     {
         private readonly ICarMainteanceService _carMainteanceService;

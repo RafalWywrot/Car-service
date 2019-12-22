@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CarService.Logic.ModelsDTO;
 using CarService.Logic.Services.Abstract;
+using CarService.WebApplication.Helpers;
 using CarService.WebApplication.Helpers.Extensions;
 using CarService.WebApplication.Models.Car;
 using Microsoft.AspNet.Identity;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace CarService.WebApplication.Controllers
 {
+    [Authorize(Roles = SystemRoles.User)]
     public class CarController : Controller
     {
         private readonly ICarService _carService;
