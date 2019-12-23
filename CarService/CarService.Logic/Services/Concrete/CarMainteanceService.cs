@@ -35,6 +35,11 @@ namespace CarService.Logic.Services.Concrete
             _carMainteanceRepository.AddServiceBooking(newServiceBooking);
         }
 
+        public IEnumerable<BookingServiceDTO> GetAllBookings()
+        {
+            return Mapper.Map<IEnumerable<BookingServiceDTO>>(_carMainteanceRepository.GetAllBookings());
+        }
+
         public BookingServiceDTO GetBooking(int id)
         {
             return Mapper.Map<BookingServiceDTO>(_carMainteanceRepository.GetBooking(id));

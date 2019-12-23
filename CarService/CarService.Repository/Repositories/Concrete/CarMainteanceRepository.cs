@@ -78,5 +78,10 @@ namespace CarService.Repository.Repositories.Concrete
                 transaction.Commit();
             }
         }
+
+        public IEnumerable<BookingService> GetAllBookings()
+        {
+            return unitOfWork.Session.QueryOver<BookingService>().List();
+        }
     }
 }

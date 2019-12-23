@@ -11,6 +11,7 @@ namespace CarService.Repository.Repositories.Abstract
         void UpdateServie(int id, string name);
         void AddServiceBooking(BookingService bookingService);
         IEnumerable<BookingService> GetBookings(string userId);
+        IEnumerable<BookingService> GetAllBookings();
         BookingService GetBooking(int id);
         void UpdateServiceBooking(BookingService bookingService);
     }

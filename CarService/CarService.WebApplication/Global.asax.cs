@@ -1,4 +1,5 @@
-﻿using CarService.WebApplication.Helpers;
+﻿using CarService.WebApplication.Areas.Admin;
+using CarService.WebApplication.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace CarService.WebApplication
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutoMapper.Mapper.Initialize(cfg => {
                 cfg.AddProfile<AutoMapperProfile>();
+                cfg.AddProfile<AdminModelsAutoMapperProfile>();
             });
         }
     }
