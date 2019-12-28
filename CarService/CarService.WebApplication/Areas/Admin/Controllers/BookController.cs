@@ -23,5 +23,10 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             var model = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allBookings);
             return View(model);
         }
+
+        public JsonResult SetAsVerified(int bookingServiceId)
+        {
+            return Json(new { });
+        }
     }
 }

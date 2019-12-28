@@ -93,8 +93,10 @@
     <Compile Include="Mappings\ServiceMap.cs" />
     <Compile Include="Mappings\TransmissionMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Abstract\IBookingRepository.cs" />
     <Compile Include="Repositories\Abstract\ICarMainteanceRepository.cs" />
     <Compile Include="Repositories\Abstract\ICarRepository.cs" />
+    <Compile Include="Repositories\Concrete\BookingRepository.cs" />
     <Compile Include="Repositories\Concrete\CarMainteanceRepository.cs" />
     <Compile Include="Repositories\Concrete\CarRepository.cs" />
     <Compile Include="UnitOfWork.cs" />

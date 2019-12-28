@@ -71,8 +71,10 @@
     <Compile Include="ModelsDTO\IdNamePair.cs" />
     <Compile Include="ModelsDTO\BookingServiceDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Abstract\IBookingService.cs" />
     <Compile Include="Services\Abstract\ICarMainteanceService.cs" />
     <Compile Include="Services\Abstract\ICarService.cs" />
+    <Compile Include="Services\Concrete\BookingService.cs" />
     <Compile Include="Services\Concrete\CarMainteanceService.cs" />
     <Compile Include="Services\Concrete\CarService.cs" />
   </ItemGroup>
