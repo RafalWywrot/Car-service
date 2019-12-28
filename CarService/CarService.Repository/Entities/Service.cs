@@ -7,6 +7,6 @@ namespace CarService.Repository.Entities
         public virtual int Id { get; set; }
         public virtual string Name { get; set; }
 
-        public virtual IEnumerable<BookingService> BookingServices { get; set; }
+        public virtual IEnumerable<BookingServiceEntity> BookingServices { get; set; }
     }
 }

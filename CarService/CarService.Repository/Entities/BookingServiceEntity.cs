@@ -3,7 +3,7 @@ using System;
 
 namespace CarService.Repository.Entities
 {
-    public class BookingService
+    public class BookingServiceEntity
     {
         public virtual int Id { get; set; }
 

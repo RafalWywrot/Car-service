@@ -90,12 +90,34 @@ namespace CarService.WebApplication.Helpers
                     opt => opt.MapFrom(src => src.TransmissionId)
                );
 
-            CreateMap<Entity.BookingService, DTO.BookingServiceDTO>()
+            CreateMap<Entity.BookingServiceEntity, DTO.BookingServiceDTO>()
                 .ForMember(
                     dest => dest.Status,
-                    opt => opt.Ignore()
+                    opt => opt.ResolveUsing(src => Mapper.Map<string>(src.Status))
                 )
                 .ReverseMap();
+
+            CreateMap<Repository.CustomTypes.ServiceBookingStatus, string>().ConvertUsing(value =>
+            {
+                switch (value)
+                {
+                    case Repository.CustomTypes.ServiceBookingStatus.Created:
+                        return "Utworzone";
+                    case Repository.CustomTypes.ServiceBookingStatus.Accepted:
+                        return "Zaakceptowane";
+                    case Repository.CustomTypes.ServiceBookingStatus.Declined:
+                        return "Odmowa";
+                    case Repository.CustomTypes.ServiceBookingStatus.Finished:
+                        return "Zakończone";
+                    case Repository.CustomTypes.ServiceBookingStatus.InProgress:
+                        return "W trakcie";
+                    case Repository.CustomTypes.ServiceBookingStatus.Verify:
+                        return "W trakcie weryfikacji";
+                    default:
+                        return string.Empty;
+                }
+            });
+
 
             CreateMap<DTO.BookingServiceDTO, ServiceBookingSummaryViewModel>()
                 .ForMember(

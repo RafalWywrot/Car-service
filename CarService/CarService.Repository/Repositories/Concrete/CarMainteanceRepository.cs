@@ -49,7 +49,7 @@ namespace CarService.Repository.Repositories.Concrete
             }
         }
 
-        public void AddServiceBooking(BookingService bookingService)
+        public void AddServiceBooking(BookingServiceEntity bookingService)
         {
             using (var transaction = unitOfWork.Session.BeginTransaction())
             {
@@ -58,19 +58,19 @@ namespace CarService.Repository.Repositories.Concrete
             }
         }
 
-        public IEnumerable<BookingService> GetBookings(string userId)
+        public IEnumerable<BookingServiceEntity> GetBookings(string userId)
         {
             var cars = unitOfWork.Session.QueryOver<Car>().Where(x => x.AssignedUser.Id == userId).List();
-            var bookedServices = unitOfWork.Session.QueryOver<BookingService>().AndRestrictionOn(x => x.Car.Id).IsIn(cars.Select(c => c.Id).ToList()).List();
+            var bookedServices = unitOfWork.Session.QueryOver<BookingServiceEntity>().AndRestrictionOn(x => x.Car.Id).IsIn(cars.Select(c => c.Id).ToList()).List();
             return bookedServices;
         }
 
-        public BookingService GetBooking(int id)
+        public BookingServiceEntity GetBooking(int id)
         {
-            return unitOfWork.Session.Get<BookingService>(id);
+            return unitOfWork.Session.Get<BookingServiceEntity>(id);
         }
 
-        public void UpdateServiceBooking(BookingService bookingService)
+        public void UpdateServiceBooking(BookingServiceEntity bookingService)
         {
             using (var transaction = unitOfWork.Session.BeginTransaction())
             {
@@ -79,9 +79,9 @@ namespace CarService.Repository.Repositories.Concrete
             }
         }
 
-        public IEnumerable<BookingService> GetAllBookings()
+        public IEnumerable<BookingServiceEntity> GetAllBookings()
         {
-            return unitOfWork.Session.QueryOver<BookingService>().List();
+            return unitOfWork.Session.QueryOver<BookingServiceEntity>().List();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace CarService.Logic.Services.Concrete
 
         public void AddServiceBooking(BookingServiceDTO bookingService)
         {
-            var newServiceBooking = new BookingService {
+            var newServiceBooking = new Repository.Entities.BookingServiceEntity {
                 Car = new Car { Id = bookingService.Car.Id },
                 Service = new Service { Id = bookingService.Service.Id },
                 DateStarted = DateTime.Now,

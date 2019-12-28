@@ -11,10 +11,12 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
     public class BookController : Controller
     {
         private readonly ICarMainteanceService _carMainteanceService;
+        private readonly IBookingService _bookingService;
 
-        public BookController(ICarMainteanceService carMainteanceService)
+        public BookController(ICarMainteanceService carMainteanceService, IBookingService bookingService)
         {
             _carMainteanceService = carMainteanceService;
+            _bookingService = bookingService;
         }
 
         public ActionResult Index()
@@ -24,9 +26,19 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             return View(model);
         }
 
+        [HttpPost]
         public JsonResult SetAsVerified(int bookingServiceId)
         {
-            return Json(new { });
+            try
+            {
+                _bookingService.SetStatusAsVerified(bookingServiceId);   
+                return Json(new { });
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

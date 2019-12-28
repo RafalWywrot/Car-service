@@ -51,9 +51,35 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
+            <button class='statusVerify' data-id="@item.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>Rozpocznij weryfikację</button>
             przyciski do dodania, w tym dane kontaktowe
         </td>
     </tr>
 }
 
 </table>
+
+@section Scripts
+{
+    <script>
+        (function ($) {
+            $(".statusVerify").click(function () {
+                var url = $(this).attr('data-url');
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        'bookingServiceId': id
+                    },
+                    success: function (result) {
+                        alert('ok');
+                    },
+                    error: function (xhr) {
+                        alert('Error');
+                    }
+                });
+            });
+        })(jQuery);
+    </script>    
+}

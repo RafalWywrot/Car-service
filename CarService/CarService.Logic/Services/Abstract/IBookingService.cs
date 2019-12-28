@@ -8,5 +8,7 @@ namespace CarService.Logic.Services.Abstract
 {
     public interface IBookingService
     {
+        /// <param name="id">Booking service id</param>
+        void SetStatusAsVerified(int id);
     }
 }

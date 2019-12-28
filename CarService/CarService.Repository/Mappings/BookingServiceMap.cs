@@ -4,7 +4,7 @@ using FluentNHibernate.Mapping;
 
 namespace CarService.Repository.Mappings
 {
-    public class BookingServiceMap : ClassMap<BookingService>
+    public class BookingServiceMap : ClassMap<BookingServiceEntity>
     {
         public BookingServiceMap()
         {

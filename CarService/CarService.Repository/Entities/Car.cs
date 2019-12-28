@@ -16,6 +16,6 @@ namespace CarService.Repository.Entities
         public virtual int EnginePower { get; set; }
         public virtual bool Active { get; set; }
 
-        public virtual IEnumerable<BookingService> BookingServices { get; set; }
+        public virtual IEnumerable<BookingServiceEntity> BookingServices { get; set; }
     }
 }

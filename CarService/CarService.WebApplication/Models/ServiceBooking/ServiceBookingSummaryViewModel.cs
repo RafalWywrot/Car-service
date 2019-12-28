@@ -21,5 +21,8 @@ namespace CarService.WebApplication.Models.ServiceBooking
 
         [Display(Name = "Uwagi")]
         public string Comment { get; set; }
+
+        [Display(Name = "Status")]
+        public string Status { get; set; }
     }
 }
