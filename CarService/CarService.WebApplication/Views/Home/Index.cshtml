@@ -2,6 +2,15 @@
     ViewBag.Title = "Strona główna";
 }
 
+@if (!Request.IsAuthenticated)
+{
+    {
+        Response.Redirect(Url.Action("Login", "Account"));
+        return;
+    }
+}
+
 <div class="jumbotron">
     <h1>aplikacja inzynierska dotyczaca serwisu samochodowego</h1>
+    <p>strona po zalogowaniu</p>
 </div>
