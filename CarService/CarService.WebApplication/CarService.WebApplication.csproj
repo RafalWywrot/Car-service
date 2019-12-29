@@ -225,6 +225,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\AdminModelsAutoMapperProfile.cs" />
     <Compile Include="Areas\Admin\Controllers\BookController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CarController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServiceController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Models\BookAdminViewModel.cs" />
@@ -298,6 +299,7 @@
     <Content Include="Areas\Admin\Views\Service\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Book\Show.cshtml" />
     <Content Include="Areas\Admin\Views\Book\EditDate.cshtml" />
+    <Content Include="Areas\Admin\Views\Car\History.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTable\datatables.js" />
     <Content Include="Scripts\DataTable\datatables.min.js" />

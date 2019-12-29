@@ -83,5 +83,11 @@ namespace CarService.Repository.Repositories.Concrete
         {
             return unitOfWork.Session.QueryOver<BookingServiceEntity>().List();
         }
+
+        public IEnumerable<BookingServiceEntity> GetBookingsByCar(int carId)
+        {
+            var bookedServices = unitOfWork.Session.QueryOver<BookingServiceEntity>().Where(x => x.Car.Id == carId).List();
+            return bookedServices;
+        }
     }
 }

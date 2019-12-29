@@ -14,7 +14,8 @@
             <div class="form-group">
                 <label class="control-label col-md-4">Model</label>
                 <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.CarDetails.Model, new { @class = "form-control", @readonly = "readonly" })
+                    @Html.TextBoxFor(model => model.CarDetails.Model, new { @class = "form-control  col-md-6", @readonly = "readonly" })
+                    @Html.ActionLink("Historia auta", "History", "Car", new { @area = "Admin", carId = Model.CarDetails.Id }, new { @class = "btn btn-success col-md-4" })
                 </div>
             </div>
             <div class="form-group">

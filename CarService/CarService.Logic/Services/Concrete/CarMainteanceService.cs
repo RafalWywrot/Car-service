@@ -51,6 +51,11 @@ namespace CarService.Logic.Services.Concrete
             return Mapper.Map<IEnumerable<BookingServiceDTO>>(_carMainteanceRepository.GetBookings(userId));
         }
 
+        public IEnumerable<BookingServiceDTO> GetBookingsByCar(int carId)
+        {
+            return Mapper.Map<IEnumerable<BookingServiceDTO>>(_carMainteanceRepository.GetBookingsByCar(carId));
+        }
+
         public IdNamePair GetService(int id)
         {
             var entity = _carMainteanceRepository.GetService(id);
