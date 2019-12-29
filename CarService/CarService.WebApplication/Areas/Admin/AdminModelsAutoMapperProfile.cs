@@ -28,7 +28,7 @@ namespace CarService.WebApplication.Areas.Admin
                     opt => opt.MapFrom(src => src.Service.Name)
                ).ForMember(
                     dest => dest.DateCreated,
-                    opt => opt.Ignore()
+                    opt => opt.MapFrom(src => src.DateStarted)
                ).ForMember(
                     dest => dest.Status,
                     opt => opt.MapFrom(src => src.Status)

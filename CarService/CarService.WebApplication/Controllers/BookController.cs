@@ -65,6 +65,7 @@ namespace CarService.WebApplication.Controllers
             return View(model);
         }
 
+        [ServiceBookingDateTimeFilter]
         [HttpPost]
         public ActionResult Edit(ServiceBookingFormViewModel model)
         {
