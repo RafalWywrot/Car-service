@@ -53,16 +53,25 @@
         <td>
             @if (item.Status == Resource.BookingStatusCreated)
             {
-                <button class='statusVerify' data-id="@item.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>Rozpocznij weryfikację</button>
+                <button class='changeToVerify' data-id="@item.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>Rozpocznij weryfikację</button>
             }
             else if (item.Status == Resource.BookingStatusVerify)
             {
-                <button class='statusAccept' data-id="@item.Id" data-url='@Url.Action("SetAsAccepted", "Book", new { @area = "Admin"})'>Zaakceptuj</button>
-                <button class='statusDecline' data-id="@item.Id" data-url='@Url.Action("SetAsDecline", "Book", new { @area = "Admin"})'>Zrezygnuj</button>
+                <button class='changeToAccept' data-id="@item.Id" data-url='@Url.Action("SetAsAccepted", "Book", new { @area = "Admin"})'>Zaakceptuj</button>
+                <button class='changeToDecline' data-id="@item.Id" data-url='@Url.Action("SetAsDecline", "Book", new { @area = "Admin"})'>Zrezygnuj</button>
+            }
+            else if (item.Status == Resource.BookingStatusAccepted)
+            {
+                <button class='changeToInProgress' data-id="@item.Id" data-url='@Url.Action("SetAsInProgress", "Book", new { @area = "Admin"})'>Do zrobienia</button>
+            }
+            else if (item.Status == Resource.BookingStatusInProgress)
+            {
+                <button class='changeToFinished' data-id="@item.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>Do odebrania</button>
             }
             przyciski do dodania, w tym dane kontaktowe
-        </td>
-    </tr>
+    </td>
+
+</tr>
 }
 
 </table>
@@ -71,7 +80,7 @@
 {
     <script>
         (function ($) {
-            $(".statusVerify").click(function () {
+            $(".changeToVerify").click(function () {
                 var url = $(this).attr('data-url');
                 var id = $(this).attr('data-id');
                 $.ajax({
@@ -89,7 +98,7 @@
                 });
             });
 
-            $(".statusAccept").click(function () {
+            $(".changeToAccept").click(function () {
                 var url = $(this).attr('data-url');
                 var id = $(this).attr('data-id');
                 $.ajax({
@@ -107,7 +116,44 @@
                 });
             });
 
-            $(".statusDecline").click(function () {
+            $(".changeToDecline").click(function () {
+                var url = $(this).attr('data-url');
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        'bookingServiceId': id
+                    },
+                    success: function (result) {
+                        alert('ok');
+                    },
+                    error: function (xhr) {
+                        alert('Error');
+                    }
+                });
+            });
+
+            $(".changeToInProgress").click(function () {
+                var url = $(this).attr('data-url');
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        'bookingServiceId': id
+                    },
+                    success: function (result) {
+                        alert('ok');
+                    },
+                    error: function (xhr) {
+                        alert('Error');
+                    }
+                });
+            });
+
+            
+            $(".changeToFinished").click(function () {
                 var url = $(this).attr('data-url');
                 var id = $(this).attr('data-id');
                 $.ajax({

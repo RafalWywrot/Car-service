@@ -104,13 +104,13 @@ namespace CarService.WebApplication.Helpers
                     case Repository.CustomTypes.ServiceBookingStatus.Created:
                         return Resource.BookingStatusCreated;
                     case Repository.CustomTypes.ServiceBookingStatus.Accepted:
-                        return "Zaakceptowane";
+                        return Resource.BookingStatusAccepted;
                     case Repository.CustomTypes.ServiceBookingStatus.Declined:
-                        return "Odmowa";
+                        return Resource.BookingStatusDeclined;
                     case Repository.CustomTypes.ServiceBookingStatus.Finished:
-                        return "Zakończone";
+                        return Resource.BookingStatusFinished;
                     case Repository.CustomTypes.ServiceBookingStatus.InProgress:
-                        return "W trakcie";
+                        return Resource.BookingStatusInProgress;
                     case Repository.CustomTypes.ServiceBookingStatus.Verify:
                         return Resource.BookingStatusVerify;
                     default:
