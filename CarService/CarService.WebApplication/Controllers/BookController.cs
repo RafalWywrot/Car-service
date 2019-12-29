@@ -34,7 +34,10 @@ namespace CarService.WebApplication.Controllers
 
         public ViewResult AddServiceBooking()
         {
-            var model = new ServiceBookingFormViewModel();
+            var model = new ServiceBookingFormViewModel
+            {
+                AsSoonAsPossible = true
+            };
             InitializeDropdown(model);
             return View(model);
         }
