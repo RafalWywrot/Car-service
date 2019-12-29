@@ -16,10 +16,7 @@
             @Html.DisplayNameFor(model => model.ServiceName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AsSoonAsPossible)
+            @Html.DisplayNameFor(model => model.DateThatClientSelect)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Comment)
@@ -27,6 +24,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Status)
         </th>
+        <th></th>
+        <th></th>
+        <th></th>
         <th></th>
     </tr>
 
@@ -39,16 +39,22 @@
             @Html.DisplayFor(modelItem => item.ServiceName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AsSoonAsPossible)
+            @Html.DisplayFor(modelItem => item.DateThatClientSelect)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Comment)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Szczegóły", "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
+        </td>
+        <td>
+            historia
+        </td>
+        <td>
+            akcje @*do wykonania, czyli zmiana statusow*@
         </td>
         <td>
             @if (item.Status == Resource.BookingStatusCreated)
@@ -69,9 +75,8 @@
                 <button class='changeToFinished' data-id="@item.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>Do odebrania</button>
             }
             przyciski do dodania, w tym dane kontaktowe
-    </td>
-
-</tr>
+        </td>
+    </tr>
 }
 
 </table>

@@ -1,0 +1,47 @@
+﻿@model CarService.WebApplication.Areas.Admin.Models.ServiceBookingFormAdminViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CarName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.CarName, new { @class = "form-control", @readonly = "readonly"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ServiceName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.ServiceName, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.DateCreated, new { @class = "form-control col-md-6", @readonly = "readonly" }) @Html.ActionLink("Zmień datę", "EditDate", new { @area = "Admin", bookingServiceId = Model.Id }, new { @class = "btn btn-success col-md-2", @style="margin-left: 10px;" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+    </div>
+</div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

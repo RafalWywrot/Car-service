@@ -145,8 +145,7 @@ namespace CarService.WebApplication.Helpers
                ).ForMember(
                     dest => dest.Comment,
                     opt => opt.MapFrom(src => src.UserComment)
-               )
-               .ForMember(
+               ).ForMember(
                     dest => dest.DateCreated,
                     opt => opt.MapFrom(src => src.DateStarted)
                )

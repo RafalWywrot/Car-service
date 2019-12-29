@@ -1,4 +1,5 @@
 ﻿using CarService.Logic.ModelsDTO;
+using System;
 using System.Collections.Generic;
 
 namespace CarService.Logic.Services.Abstract
@@ -14,5 +15,6 @@ namespace CarService.Logic.Services.Abstract
         IEnumerable<BookingServiceDTO> GetAllBookings();
         BookingServiceDTO GetBooking(int id);
         void UpdateServiceBooking(BookingServiceDTO bookingService);
+        void UpdateDateServiceBooking(int id, DateTime date);
     }
 }

@@ -26,6 +26,30 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             return View(model);
         }
 
+        public ViewResult Show(int bookingServiceId)
+        {
+            var bookingService = _carMainteanceService.GetBooking(bookingServiceId);
+            var model = Mapper.Map<ServiceBookingFormAdminViewModel>(bookingService);
+            return View(model);
+        }
+
+        public ActionResult EditDate(int bookingServiceId)
+        {
+            var bookingService = _carMainteanceService.GetBooking(bookingServiceId);
+            var model = Mapper.Map<ServiceBookingDateAdminViewModel>(bookingService);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditDate(ServiceBookingDateAdminViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            _carMainteanceService.UpdateDateServiceBooking(model.Id, model.DateCreated.Value);
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public JsonResult SetAsVerified(int bookingServiceId)
         {
