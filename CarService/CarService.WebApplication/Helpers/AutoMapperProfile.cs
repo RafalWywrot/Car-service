@@ -146,6 +146,10 @@ namespace CarService.WebApplication.Helpers
                     dest => dest.Comment,
                     opt => opt.MapFrom(src => src.UserComment)
                )
+               .ForMember(
+                    dest => dest.DateCreated,
+                    opt => opt.MapFrom(src => src.DateStarted)
+               )
                .ReverseMap()
                .ForMember(
                     dest => dest.Car,
@@ -156,8 +160,11 @@ namespace CarService.WebApplication.Helpers
                ).ForMember(
                     dest => dest.Service,
                     opt => opt.MapFrom(src => new DTO.IdNamePair { Id = src.ServiceId })
+               )
+               .ForMember(
+                    dest => dest.DateStarted,
+                    opt => opt.MapFrom(src => src.DateCreated)
                );
-
 
             #region Users userManager
             CreateMap<ApplicationUser, UserBasicViewModel>()

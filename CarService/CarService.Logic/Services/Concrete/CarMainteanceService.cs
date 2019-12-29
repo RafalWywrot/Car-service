@@ -28,9 +28,10 @@ namespace CarService.Logic.Services.Concrete
             var newServiceBooking = new Repository.Entities.BookingServiceEntity {
                 Car = new Car { Id = bookingService.Car.Id },
                 Service = new Service { Id = bookingService.Service.Id },
-                DateStarted = DateTime.Now,
+                DateStarted = bookingService.AsSoonAsPossible ? (DateTime?)null : bookingService.DateStarted,
                 Status = Repository.CustomTypes.ServiceBookingStatus.Created,
-                UserComment = bookingService.UserComment
+                UserComment = bookingService.UserComment,
+                AsSoonAsPossible = bookingService.AsSoonAsPossible
             };
             _carMainteanceRepository.AddServiceBooking(newServiceBooking);
         }
@@ -84,6 +85,13 @@ namespace CarService.Logic.Services.Concrete
                 currentBooking.Service = new Service { Id = bookingService.Service.Id };
 
             currentBooking.UserComment = bookingService.UserComment;
+
+            if (bookingService.AsSoonAsPossible)
+                currentBooking.DateStarted = null;
+            else
+                currentBooking.DateStarted = bookingService.DateStarted;
+
+            currentBooking.AsSoonAsPossible = bookingService.AsSoonAsPossible;
 
             _carMainteanceRepository.UpdateServiceBooking(currentBooking);
         }

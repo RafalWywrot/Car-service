@@ -13,9 +13,10 @@ namespace CarService.Repository.Mappings
             Id(x => x.Id);
 
             Map(x => x.Status, "Status").CustomType<ServiceBookingStatus>(); ;
-            Map(x => x.DateStarted, "DateStarted");
+            Map(x => x.DateStarted, "DateStarted").Nullable();
             Map(x => x.DateEnded, "DateEnded");
             Map(x => x.UserComment, "ClientComment");
+            Map(x => x.AsSoonAsPossible, "AsSoonAsPossible");
 
             References(x => x.Service, "ServiceId");
             References(x => x.Car, "CarId");

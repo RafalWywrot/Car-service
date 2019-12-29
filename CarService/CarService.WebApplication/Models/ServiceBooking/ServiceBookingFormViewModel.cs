@@ -21,12 +21,13 @@ namespace CarService.WebApplication.Models.ServiceBooking
 
         public IEnumerable<SelectListItem> Services { get; set; }
 
-        //[Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date)]
         [Display(Name = "Data")]
         public DateTime? DateCreated { get; set; }
 
         [Required]
-        [Display(Name = "Jak najszybciej")]
+        [Display(Name = "Termin")]
         public bool AsSoonAsPossible { get; set; }
 
         [Display(Name = "Uwagi")]
