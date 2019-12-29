@@ -19,7 +19,8 @@ namespace CarService.WebApplication.App_Start
     using NHibernate.AspNet.Identity;
     using Ninject.Web.Mvc.FilterBindingSyntax;
     using System.Web.Mvc;
-    
+    using CarService.WebApplication.Helpers.ActionFilters;
+
     public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -58,6 +59,7 @@ namespace CarService.WebApplication.App_Start
                 kernel.Bind<ApplicationSignInManager>().ToSelf();
                 kernel.Bind<IAuthenticationManager>().ToMethod(x => HttpContext.Current.GetOwinContext().Authentication);
                 RegisterServices(kernel);
+                BindFilters(kernel);
                 return kernel;
             }
             catch
@@ -71,6 +73,13 @@ namespace CarService.WebApplication.App_Start
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             
             kernel.Bind(x => x.FromAssembliesMatching("*").SelectAllClasses().Excluding<UnitOfWork>().BindDefaultInterface());
+        }
+
+        private static void BindFilters(IKernel kernel)
+        {
+            kernel.BindFilter<BookingServiceStatusAfterVerifyActionFilter>(FilterScope.Action, 0)
+                .WhenActionMethodHas<BookingServiceStatusAfterVerifyFilter>()
+                .InRequestScope();
         }
     }
 }

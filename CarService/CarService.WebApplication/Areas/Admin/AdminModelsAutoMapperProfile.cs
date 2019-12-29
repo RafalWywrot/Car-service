@@ -14,7 +14,7 @@ namespace CarService.WebApplication.Areas.Admin
             CreateMap<DTO.BookingServiceDTO, ServiceBookingSummaryAdminViewModel>()
                 .ForMember(
                     dest => dest.CarName,
-                    opt => opt.MapFrom(src => $"{src.Car.Model.Brand.Name} / {src.Car.Model.Name}")
+                    opt => opt.MapFrom(src => $"{src.Car.Model.Brand.Name} / {src.Car.Model.Name} / {src.Car.Year}r.")
                ).ForMember(
                     dest => dest.Comment,
                     opt => opt.MapFrom(src => src.UserComment)

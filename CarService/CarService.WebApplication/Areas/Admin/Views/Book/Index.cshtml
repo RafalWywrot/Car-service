@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<CarService.WebApplication.Areas.Admin.Models.ServiceBookingSummaryAdminViewModel>
-
+@section Styles{
+    @Styles.Render("~/Content/dataTables")
+}
 @{
     ViewBag.Title = "Index";
 }
@@ -7,82 +9,96 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CarName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ServiceName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateThatClientSelect)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CarName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ServiceName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateThatClientSelect)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.ActionLink("Szczegóły", "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
-        </td>
-        <td>
-            historia
-        </td>
-        <td>
-            akcje @*do wykonania, czyli zmiana statusow*@
-        </td>
-        <td>
-            @if (item.Status == Resource.BookingStatusCreated)
-            {
-                <button class='changeToVerify' data-id="@item.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>Rozpocznij weryfikację</button>
-            }
-            else if (item.Status == Resource.BookingStatusVerify)
-            {
-                <button class='changeToAccept' data-id="@item.Id" data-url='@Url.Action("SetAsAccepted", "Book", new { @area = "Admin"})'>Zaakceptuj</button>
-                <button class='changeToDecline' data-id="@item.Id" data-url='@Url.Action("SetAsDecline", "Book", new { @area = "Admin"})'>Zrezygnuj</button>
-            }
-            else if (item.Status == Resource.BookingStatusAccepted)
-            {
-                <button class='changeToInProgress' data-id="@item.Id" data-url='@Url.Action("SetAsInProgress", "Book", new { @area = "Admin"})'>Do zrobienia</button>
-            }
-            else if (item.Status == Resource.BookingStatusInProgress)
-            {
-                <button class='changeToFinished' data-id="@item.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>Do odebrania</button>
-            }
-            przyciski do dodania, w tym dane kontaktowe
-        </td>
-    </tr>
-}
+<table id="adminBookIndexTable" class="table table-condensed display" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CarName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateThatClientSelect)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateThatClientSelect)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.ActionLink("Szczegóły", "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
+                </td>
+                <td>
+                    historia
+                </td>
+                <td>
+                    akcje @*do wykonania, czyli zmiana statusow*@
+                </td>
+                <td>
+                    @if (item.Status == Resource.BookingStatusCreated)
+                    {
+                        <button class='changeToVerify' data-id="@item.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>Rozpocznij weryfikację</button>
+                    }
+                    else if (item.Status == Resource.BookingStatusVerify)
+                    {
+                        <button class='changeToAccept' data-id="@item.Id" data-url='@Url.Action("SetAsAccepted", "Book", new { @area = "Admin"})'>Zaakceptuj</button>
+                        <button class='changeToDecline' data-id="@item.Id" data-url='@Url.Action("SetAsDecline", "Book", new { @area = "Admin"})'>Zrezygnuj</button>
+                    }
+                    else if (item.Status == Resource.BookingStatusAccepted)
+                    {
+                        <button class='changeToInProgress' data-id="@item.Id" data-url='@Url.Action("SetAsInProgress", "Book", new { @area = "Admin"})'>Do zrobienia</button>
+                    }
+                    else if (item.Status == Resource.BookingStatusInProgress)
+                    {
+                        <button class='changeToFinished' data-id="@item.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>Do odebrania</button>
+                    }
+                    dane kontaktowe
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
 
 @section Scripts
 {
+    @Scripts.Render("~/bundles/dataTables")
+    <script>
+        (function ($) {
+            $("#adminBookIndexTable").DataTable({
+                "language": {
+                    "url": "/Scripts/DataTable/polishTranslation.json"
+                }
+            });
+        })(jQuery);
+    </script>
     <script>
         (function ($) {
             $(".changeToVerify").click(function () {
@@ -113,7 +129,10 @@
                         'bookingServiceId': id
                     },
                     success: function (result) {
-                        alert('ok');
+                        if (result.success) {
+                            alert('ok');
+                        }
+                        alert(result.message);
                     },
                     error: function (xhr) {
                         alert('Error');
@@ -157,7 +176,7 @@
                 });
             });
 
-            
+
             $(".changeToFinished").click(function () {
                 var url = $(this).attr('data-url');
                 var id = $(this).attr('data-id');
@@ -176,5 +195,5 @@
                 });
             });
         })(jQuery);
-    </script>    
+    </script>
 }

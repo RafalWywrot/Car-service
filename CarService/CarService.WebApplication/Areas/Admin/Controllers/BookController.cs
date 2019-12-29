@@ -2,6 +2,7 @@
 using CarService.Logic.Services.Abstract;
 using CarService.WebApplication.Areas.Admin.Models;
 using CarService.WebApplication.Helpers;
+using CarService.WebApplication.Helpers.ActionFilters;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -66,6 +67,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [BookingServiceStatusAfterVerifyFilter]
         public JsonResult SetAsAccepted(int bookingServiceId)
         {
             try
