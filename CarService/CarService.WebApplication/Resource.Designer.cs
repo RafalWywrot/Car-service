@@ -61,11 +61,47 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zaakceptowane.
+        /// </summary>
+        public static string BookingStatusAccepted {
+            get {
+                return ResourceManager.GetString("BookingStatusAccepted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Utworzone.
         /// </summary>
         public static string BookingStatusCreated {
             get {
                 return ResourceManager.GetString("BookingStatusCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odmowa.
+        /// </summary>
+        public static string BookingStatusDeclined {
+            get {
+                return ResourceManager.GetString("BookingStatusDeclined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakończone.
+        /// </summary>
+        public static string BookingStatusFinished {
+            get {
+                return ResourceManager.GetString("BookingStatusFinished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to W trakcie.
+        /// </summary>
+        public static string BookingStatusInProgress {
+            get {
+                return ResourceManager.GetString("BookingStatusInProgress", resourceCulture);
             }
         }
         

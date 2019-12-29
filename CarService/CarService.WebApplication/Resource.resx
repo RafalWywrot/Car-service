@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BookingStatusAccepted" xml:space="preserve">
+    <value>Zaakceptowane</value>
+  </data>
   <data name="BookingStatusCreated" xml:space="preserve">
     <value>Utworzone</value>
+  </data>
+  <data name="BookingStatusDeclined" xml:space="preserve">
+    <value>Odmowa</value>
+  </data>
+  <data name="BookingStatusFinished" xml:space="preserve">
+    <value>Zakończone</value>
+  </data>
+  <data name="BookingStatusInProgress" xml:space="preserve">
+    <value>W trakcie</value>
   </data>
   <data name="BookingStatusVerify" xml:space="preserve">
     <value>W trakcie weryfikacji</value>
