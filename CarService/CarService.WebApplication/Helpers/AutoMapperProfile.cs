@@ -102,7 +102,7 @@ namespace CarService.WebApplication.Helpers
                 switch (value)
                 {
                     case Repository.CustomTypes.ServiceBookingStatus.Created:
-                        return "Utworzone";
+                        return Resource.BookingStatusCreated;
                     case Repository.CustomTypes.ServiceBookingStatus.Accepted:
                         return "Zaakceptowane";
                     case Repository.CustomTypes.ServiceBookingStatus.Declined:
@@ -112,7 +112,7 @@ namespace CarService.WebApplication.Helpers
                     case Repository.CustomTypes.ServiceBookingStatus.InProgress:
                         return "W trakcie";
                     case Repository.CustomTypes.ServiceBookingStatus.Verify:
-                        return "W trakcie weryfikacji";
+                        return Resource.BookingStatusVerify;
                     default:
                         return string.Empty;
                 }

@@ -51,7 +51,16 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
-            <button class='statusVerify' data-id="@item.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>Rozpocznij weryfikację</button>
+            @if (item.Status == Resource.BookingStatusCreated)
+            {
+                <button class='statusVerify' data-id="@item.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>Rozpocznij weryfikację</button>
+            }
+            else if (item.Status == Resource.BookingStatusVerify)
+            {
+                <button class='' data-id="@item.Id" data-url='@Url.Action("", "Book", new { @area = "Admin"})'>Zaakceptuj</button>
+                <button class='' data-id="@item.Id" data-url='@Url.Action("", "Book", new { @area = "Admin"})'>Zrezygnuj</button>
+            }
+            
             przyciski do dodania, w tym dane kontaktowe
         </td>
     </tr>
