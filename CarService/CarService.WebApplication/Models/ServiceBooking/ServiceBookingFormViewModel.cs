@@ -21,7 +21,6 @@ namespace CarService.WebApplication.Models.ServiceBooking
 
         public IEnumerable<SelectListItem> Services { get; set; }
 
-        [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
         [Display(Name = "Data")]

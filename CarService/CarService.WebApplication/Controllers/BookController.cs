@@ -2,6 +2,7 @@
 using CarService.Logic.ModelsDTO;
 using CarService.Logic.Services.Abstract;
 using CarService.WebApplication.Helpers;
+using CarService.WebApplication.Helpers.ActionFilters;
 using CarService.WebApplication.Helpers.Extensions;
 using CarService.WebApplication.Models.Car;
 using CarService.WebApplication.Models.ServiceBooking;
@@ -41,7 +42,8 @@ namespace CarService.WebApplication.Controllers
             InitializeDropdown(model);
             return View(model);
         }
-
+        
+        [ServiceBookingDateTimeFilter]
         [HttpPost]
         public ActionResult AddServiceBooking(ServiceBookingFormViewModel model)
         {
