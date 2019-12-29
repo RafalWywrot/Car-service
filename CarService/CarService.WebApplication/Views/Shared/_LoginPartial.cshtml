@@ -1,33 +1,24 @@
 ﻿@using CarService.WebApplication.Helpers
 
-@if (Request.IsAuthenticated)
+
+@using (Html.BeginForm("LogOff", "Account", new { @area = "" },FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
 {
-    using (Html.BeginForm("LogOff", "Account", new { @area = "" },FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-        @Html.AntiForgeryToken()
-        <ul class="nav navbar-nav navbar-right">
-            @if (User.IsInRole(SystemRoles.Admin))
-            {
-                <li>@Html.ActionLink("Zamówienia", "Index", "Book", new { @area = "Admin" }, null)</li>
-                <li>@Html.ActionLink("Usługi", "Index", "Service", new { @area = "Admin" }, null)</li>
-                <li>@Html.ActionLink("Użytkownicy", "Index", "Users", new { @area = "Admin" }, null)</li>
-            }
-            @if (User.IsInRole(SystemRoles.User))
-            {
-                <li>@Html.ActionLink("Auta", "Index", "Car", new { @area = "" }, null)</li>
-                <li>@Html.ActionLink("Usługi", "Index", "Book", new { @area = "" }, null)</li>
-            }
-            <li>
-                @Html.ActionLink("Ustawienia", "Index", "Manage", new { @area = "" }, htmlAttributes: new { title = "Manage" })
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
-        </ul>
-    }
-}
-else
-{
+    @Html.AntiForgeryToken()
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Zarejestruj", "Register", "Account", new { @area = "" }, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Zaloguj", "Login", "Account", new { @area = "" }, htmlAttributes: new { id = "loginLink" })</li>
+        @if (User.IsInRole(SystemRoles.Admin))
+        {
+            <li>@Html.ActionLink("Zamówienia", "Index", "Book", new { @area = "Admin" }, null)</li>
+            <li>@Html.ActionLink("Usługi", "Index", "Service", new { @area = "Admin" }, null)</li>
+            <li>@Html.ActionLink("Użytkownicy", "Index", "Users", new { @area = "Admin" }, null)</li>
+        }
+        @if (User.IsInRole(SystemRoles.User))
+        {
+            <li>@Html.ActionLink("Auta", "Index", "Car", new { @area = "" }, null)</li>
+            <li>@Html.ActionLink("Usługi", "Index", "Book", new { @area = "" }, null)</li>
+        }
+        <li>
+            @Html.ActionLink("Ustawienia", "Index", "Manage", new { @area = "" }, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
     </ul>
 }

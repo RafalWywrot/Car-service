@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "IndexRoleUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>strona startowa dla normalnych użytkowników</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-2">
+            <a class="btn btn-default" href="@Url.Action("Index", "Car")">Auta</a>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-default" href="@Url.Action("Index", "Book")">Usługi</a>
+        </div>
+    </div>
+</div>
