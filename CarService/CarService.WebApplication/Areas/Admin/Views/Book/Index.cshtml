@@ -57,10 +57,9 @@
             }
             else if (item.Status == Resource.BookingStatusVerify)
             {
-                <button class='' data-id="@item.Id" data-url='@Url.Action("", "Book", new { @area = "Admin"})'>Zaakceptuj</button>
-                <button class='' data-id="@item.Id" data-url='@Url.Action("", "Book", new { @area = "Admin"})'>Zrezygnuj</button>
+                <button class='statusAccept' data-id="@item.Id" data-url='@Url.Action("SetAsAccepted", "Book", new { @area = "Admin"})'>Zaakceptuj</button>
+                <button class='statusDecline' data-id="@item.Id" data-url='@Url.Action("SetAsDecline", "Book", new { @area = "Admin"})'>Zrezygnuj</button>
             }
-            
             przyciski do dodania, w tym dane kontaktowe
         </td>
     </tr>
@@ -73,6 +72,42 @@
     <script>
         (function ($) {
             $(".statusVerify").click(function () {
+                var url = $(this).attr('data-url');
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        'bookingServiceId': id
+                    },
+                    success: function (result) {
+                        alert('ok');
+                    },
+                    error: function (xhr) {
+                        alert('Error');
+                    }
+                });
+            });
+
+            $(".statusAccept").click(function () {
+                var url = $(this).attr('data-url');
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        'bookingServiceId': id
+                    },
+                    success: function (result) {
+                        alert('ok');
+                    },
+                    error: function (xhr) {
+                        alert('Error');
+                    }
+                });
+            });
+
+            $(".statusDecline").click(function () {
                 var url = $(this).attr('data-url');
                 var id = $(this).attr('data-id');
                 $.ajax({

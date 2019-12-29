@@ -40,5 +40,65 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        public JsonResult SetAsAccepted(int bookingServiceId)
+        {
+            try
+            {
+                _bookingService.SetStatusAsAccepted(bookingServiceId);
+                return Json(new { });
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public JsonResult SetAsDecline(int bookingServiceId)
+        {
+            try
+            {
+                _bookingService.SetStatusAsDeclined(bookingServiceId);
+                return Json(new { });
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public JsonResult SetAsInProgress(int bookingServiceId)
+        {
+            try
+            {
+                _bookingService.SetStatusInProgress(bookingServiceId);
+                return Json(new { });
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public JsonResult SetAsFinished(int bookingServiceId)
+        {
+            try
+            {
+                _bookingService.SetStatusAsFinished(bookingServiceId);
+                return Json(new { });
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
