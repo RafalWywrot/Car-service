@@ -32,25 +32,10 @@ namespace CarService.WebApplication.Areas.Admin
                     opt => opt.MapFrom(src => src.AsSoonAsPossible ? "Jak najszybciej" : src.DateStarted.Value.ToShortDateString())
                );
 
-            CreateMap<DTO.BookingServiceDTO, ServiceBookingFormAdminViewModel>()
-                .ForMember(
-                    dest => dest.CarName,
-                    opt => opt.MapFrom(src => $"{src.Car.Model.Brand.Name} / {src.Car.Model.Name}")
-               ).ForMember(
-                    dest => dest.ServiceName,
-                    opt => opt.MapFrom(src => src.Service.Name)
-               ).ForMember(
-                    dest => dest.Comment,
-                    opt => opt.MapFrom(src => src.UserComment)
-               ).ForMember(
-                    dest => dest.DateCreated,
-                    opt => opt.MapFrom(src => src.AsSoonAsPossible ? "Jak najszybciej" : src.DateStarted.Value.ToShortDateString())
-               );
-
             CreateMap<DTO.BookingServiceDTO, ServiceBookingDateAdminViewModel>()
                 .ForMember(
                     dest => dest.DateCreated,
-                    opt => opt.MapFrom(src => src.DateStarted.Value)
+                    opt => opt.MapFrom(src => src.DateStarted)
                );
         }
     }

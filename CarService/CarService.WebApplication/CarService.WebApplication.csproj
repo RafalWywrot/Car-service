@@ -229,7 +229,7 @@
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Models\BookAdminViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ServiceBookingDateAdminViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\ServiceBookingFormAdminViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ServiceBookingDetailAdminViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ServiceBookingSummaryAdminViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
