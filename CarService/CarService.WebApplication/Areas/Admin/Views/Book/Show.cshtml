@@ -1,0 +1,91 @@
+﻿@model CarService.WebApplication.Areas.Admin.Models.ServiceBookingDetailAdminViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Szczegóły zamówienia</h2>
+
+<div class="form-horizontal">
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label col-md-4">Model</label>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.CarDetails.Model, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">Rocznik</label>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.CarDetails.Year, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">Pojemność</label>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.CarDetails.EngineCapacity, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">Moc</label>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.CarDetails.EnginePower, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">Paliwo</label>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.CarDetails.Fuel, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">Skrzynia biegów</label>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.CarDetails.Transmission, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceDetails.ServiceName, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.ServiceDetails.ServiceName, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceDetails.DateCreated, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.ServiceDetails.DateCreated, new { @class = "form-control col-md-6", @readonly = "readonly" })
+                    @if (Model.ServiceDetails.Status == Resource.BookingStatusCreated || Model.ServiceDetails.Status == Resource.BookingStatusVerify)
+                    {
+                        @Html.ActionLink("Zmień datę", "EditDate", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success col-md-4" })
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceDetails.Comment, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextAreaFor(model => model.ServiceDetails.Comment, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceDetails.Status, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.ServiceDetails.Status, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

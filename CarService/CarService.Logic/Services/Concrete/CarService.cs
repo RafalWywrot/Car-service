@@ -42,6 +42,12 @@ namespace CarService.Logic.Services.Concrete
             return Mapper.Map<CarDTO>(_carRepository.GetCar(carId));
         }
 
+        public CarSummaryDTO GetCarDetails(int carId)
+        {
+            var car = _carRepository.GetCar(carId);
+            return Mapper.Map<CarSummaryDTO>(car);
+        }
+
         public IEnumerable<IdNamePair> GetFuelTypes()
         {
             return _carRepository.GetFuelTypes().Select(x => new IdNamePair
