@@ -70,10 +70,11 @@ namespace CarService.Logic.Services.Concrete
             });
         }
 
-        public void UpdateDateServiceBooking(int id, DateTime date)
+        public void UpdateDateServiceBooking(int id, DateTime date, string reason)
         {
             var currentBooking = _carMainteanceRepository.GetBooking(id);
             currentBooking.DateStarted = date;
+            currentBooking.UserComment +=  $" powód zmiany daty: {reason}";
             currentBooking.AsSoonAsPossible = false;
 
             _carMainteanceRepository.UpdateServiceBooking(currentBooking);

@@ -56,7 +56,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            _carMainteanceService.UpdateDateServiceBooking(model.Id, model.DateCreated.Value);
+            _carMainteanceService.UpdateDateServiceBooking(model.Id, model.DateCreated.Value, model.Comment);
             return RedirectToAction("Index");
         }
 
