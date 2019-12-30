@@ -1,5 +1,5 @@
 ﻿@model CarService.WebApplication.Areas.Admin.Models.ServiceBookingDetailAdminViewModel
-
+@using CarService.WebApplication.Helpers
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -83,13 +83,37 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.ServiceDetails.Mechanic, htmlAttributes: new { @class = "control-label col-md-4" })
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.ServiceDetails.Mechanic, new { @class = "form-control", @readonly = "readonly" })
-                    @Html.ActionLink("Przypisz mechanika", "EditMechanic", "Book", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success" })
+            @if (User.IsInRole(SystemRoles.Admin))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ServiceDetails.Mechanic, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.ServiceDetails.Mechanic, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ActionLink("Przypisz mechanika", "EditMechanic", "Book", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success" })
+                    </div>
                 </div>
-            </div>
+            }
+            @if (User.IsInRole(SystemRoles.Mechanic))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ServiceDetails.Mechanic, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @if (string.IsNullOrEmpty(Model.ServiceDetails.Mechanic))
+                    {
+                        <div class="col-md-8">
+                        @using (Html.BeginForm("AssignToMechanic", "Book", new { bookingServiceId = Model.ServiceDetails.Id }, FormMethod.Post, new { }))
+                        {
+                            <input type="submit" value="Przypisz do mnie" class="btn btn-success" />
+                        }
+                    </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-8">
+                            @Html.TextBox("ServiceDetails.Mechanic", "Do Ciebie", new { @class = "form-control", @readonly = "readonly" })
+                        </div> 
+                    }
+                </div>
+            }
         </div>
     </div>
 </div>

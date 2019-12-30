@@ -32,8 +32,18 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var allBookings = _carMainteanceService.GetAllBookings();
-            var model = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allBookings);
-            return View(model);
+            if (User.IsInRole(SystemRoles.Admin))
+            {
+                var model = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allBookings);
+                return View("Index", model);
+            }
+            var userId = User.Identity.GetUserId();
+            var modelForMechanic = new ServiceBookingSeparatedAdminViewModel
+            {
+                ServicesAlreadyAssigned = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allBookings.Where(x => x.MechanicId == userId)),
+                ServicesUnassignedToAnyMechanic = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allBookings.Where(x => string.IsNullOrEmpty(x.MechanicId)))
+            };
+            return View("IndexMechanic", modelForMechanic);
         }
 
         public ViewResult Show(int bookingServiceId)
@@ -65,6 +75,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = SystemRoles.Admin)]
         public ActionResult EditMechanic(int bookingServiceId)
         {
             var mechanics = _userManager.Users.ToList().Where(x => x.Roles.Select(c => c.Name).Contains(SystemRoles.Mechanic)).ToList();
@@ -78,6 +89,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = SystemRoles.Admin)]
         [HttpPost]
         public ActionResult EditMechanic(ServiceBookingMechanicAdminViewModel model)
         {
@@ -89,6 +101,15 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             }
 
             _bookingService.AssignUser(model.ServiceBookingId, model.MechanicId);
+            return RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = SystemRoles.Mechanic)]
+        [HttpPost]
+        public ActionResult AssignToMechanic(int bookingServiceId)
+        {
+            var userId = User.Identity.GetUserId();
+            _bookingService.AssignUser(bookingServiceId, userId);
             return RedirectToAction("Index");
         }
 
