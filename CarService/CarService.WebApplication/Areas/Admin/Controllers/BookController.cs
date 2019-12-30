@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace CarService.WebApplication.Areas.Admin.Controllers
 {
-    [Authorize(Roles = SystemRoles.Admin)]
+    [Authorize(Roles = SystemRoles.Admin + ", " + SystemRoles.Mechanic)]
     public class BookController : Controller
     {
         private readonly ICarMainteanceService _carMainteanceService;
