@@ -8,5 +8,6 @@
         void SetStatusAsDeclined(int id);
         void SetStatusInProgress(int id);
         void SetStatusAsFinished(int id);
+        void AssignUser(int serviceBookingId, string user);
     }
 }

@@ -1,5 +1,7 @@
-﻿using CarService.Logic.Services.Abstract;
+﻿using CarService.Identity;
+using CarService.Logic.Services.Abstract;
 using CarService.Repository.CustomTypes;
+using CarService.Repository.Entities;
 using CarService.Repository.Repositories.Abstract;
 
 namespace CarService.Logic.Services.Concrete
@@ -7,10 +9,29 @@ namespace CarService.Logic.Services.Concrete
     public class BookingService : IBookingService
     {
         private readonly ICarMainteanceRepository _carMainteanceRepository;
+        private readonly ILinkServiceBookingUserRepository _linkServiceBookingUserRepository;
 
-        public BookingService(ICarMainteanceRepository carMainteanceRepository)
+        public BookingService(ICarMainteanceRepository carMainteanceRepository, ILinkServiceBookingUserRepository linkServiceBookingUserRepository)
         {
             _carMainteanceRepository = carMainteanceRepository;
+            _linkServiceBookingUserRepository = linkServiceBookingUserRepository;
+        }
+
+        public void AssignUser(int serviceBookingId, string user)
+        {
+            var service = _linkServiceBookingUserRepository.Get(serviceBookingId);
+            if (service != null)
+            {
+                service.UserId = user;
+                _linkServiceBookingUserRepository.Update(service);
+                return;
+            }
+            var newService = new LinkBookingServiceUser
+            {
+                BookingServiceId = serviceBookingId,
+                UserId = user
+            };
+            _linkServiceBookingUserRepository.Add(newService);
         }
 
         public void SetStatusAsAccepted(int id)
