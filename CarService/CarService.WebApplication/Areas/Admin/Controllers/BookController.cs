@@ -5,7 +5,10 @@ using CarService.WebApplication.Helpers;
 using CarService.WebApplication.Helpers.ActionFilters;
 using CarService.WebApplication.Models.Car;
 using CarService.WebApplication.Models.ServiceBooking;
+using CarService.WebApplication.Models.User;
+using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace CarService.WebApplication.Areas.Admin.Controllers
@@ -16,12 +19,14 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
         private readonly ICarMainteanceService _carMainteanceService;
         private readonly IBookingService _bookingService;
         private readonly ICarService _carService;
+        private readonly ApplicationUserManager _userManager;
 
-        public BookController(ICarMainteanceService carMainteanceService, IBookingService bookingService, ICarService carService)
+        public BookController(ICarMainteanceService carMainteanceService, IBookingService bookingService, ICarService carService, ApplicationUserManager userManager)
         {
             _carMainteanceService = carMainteanceService;
             _bookingService = bookingService;
             _carService = carService;
+            _userManager = userManager;
         }
 
         public ActionResult Index()
@@ -57,6 +62,30 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
                 return View(model);
 
             _carMainteanceService.UpdateDateServiceBooking(model.Id, model.DateCreated.Value, model.Comment);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult EditMechanic(int bookingServiceId)
+        {
+            var mechanics = _userManager.Users.ToList().Where(x => x.Roles.Select(c => c.Name).Contains(SystemRoles.Mechanic)).ToList();
+            var model = new ServiceBookingMechanicAdminViewModel
+            {
+                Mechanics = Mapper.Map<IEnumerable<UserBasicViewModel>>(mechanics)
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditMechanic(ServiceBookingMechanicAdminViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var mechanics = _userManager.Users.ToList().Where(x => x.Roles.Select(c => c.Name).Contains(SystemRoles.Mechanic)).ToList();
+                model.Mechanics = Mapper.Map<IEnumerable<UserBasicViewModel>>(mechanics);
+                return View(model);
+            }
+
+            _bookingService.AssignUser(model.ServiceBookingId, model.MechanicId);
             return RedirectToAction("Index");
         }
 
@@ -132,6 +161,20 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             catch (System.Exception)
             {
 
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public JsonResult AssignUser(int bookingServiceId, string userId)
+        {
+            try
+            {
+                _bookingService.AssignUser(bookingServiceId, userId);
+                return Json(new { });
+            }
+            catch (System.Exception)
+            {
                 throw;
             }
         }
