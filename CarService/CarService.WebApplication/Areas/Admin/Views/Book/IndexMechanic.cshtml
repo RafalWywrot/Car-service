@@ -1,0 +1,235 @@
+﻿@model CarService.WebApplication.Areas.Admin.Models.ServiceBookingSeparatedAdminViewModel
+@section Styles{
+    @Styles.Render("~/Content/dataTables")
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <h4>Usługi przypisane do Ciebie</h4>
+    <table id="MechanicAssignBookingsIndexTable" class="table table-condensed display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().CarName)</th>
+                    <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().ServiceName)</th>
+                    <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().DateThatClientSelect)</th>
+                    <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Comment)</th>
+                    <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Status)</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ServicesAlreadyAssigned)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.CarName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ServiceName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DateThatClientSelect)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Comment)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>
+                            @Html.ActionLink("Szczegóły", "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
+                        </td>
+                        <td>
+                            akcje @*do wykonania, czyli zmiana statusow*@
+                        </td>
+                        <td>
+                            @if (item.Status == Resource.BookingStatusCreated)
+                            {
+                                <button class='changeToVerify' data-id="@item.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>Rozpocznij weryfikację</button>
+                            }
+                            else if (item.Status == Resource.BookingStatusVerify)
+                            {
+                                <button class='changeToAccept' data-id="@item.Id" data-url='@Url.Action("SetAsAccepted", "Book", new { @area = "Admin"})'>Zaakceptuj</button>
+                                <button class='changeToDecline' data-id="@item.Id" data-url='@Url.Action("SetAsDecline", "Book", new { @area = "Admin"})'>Zrezygnuj</button>
+                            }
+                            else if (item.Status == Resource.BookingStatusAccepted)
+                            {
+                                <button class='changeToInProgress' data-id="@item.Id" data-url='@Url.Action("SetAsInProgress", "Book", new { @area = "Admin"})'>Do zrobienia</button>
+                            }
+                            else if (item.Status == Resource.BookingStatusInProgress)
+                            {
+                                <button class='changeToFinished' data-id="@item.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>Do odebrania</button>
+                            }
+                            dane kontaktowe
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+</div>
+
+<div style="margin-top: 3em;">
+    <h4>Usługi nieprzypisane</h4>
+
+    <table id="MechanicFreeToGetBookingsIndexTable" class="table table-condensed display" style="width:100%">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().CarName)</th>
+                <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().ServiceName)</th>
+                <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().DateThatClientSelect)</th>
+                <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Comment)</th>
+                <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Status)</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ServicesUnassignedToAnyMechanic)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.CarName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ServiceName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DateThatClientSelect)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Comment)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                    <td>
+                        @Html.ActionLink("Szczegóły", "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
+                    </td>
+                    <td>
+                        @if (item.Status == Resource.BookingStatusCreated)
+                        {
+                            <button class='changeToVerify' data-id="@item.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>Rozpocznij weryfikację</button>
+                        }
+                        else if (item.Status == Resource.BookingStatusVerify)
+                        {
+                            <button class='changeToAccept' data-id="@item.Id" data-url='@Url.Action("SetAsAccepted", "Book", new { @area = "Admin"})'>Zaakceptuj</button>
+                            <button class='changeToDecline' data-id="@item.Id" data-url='@Url.Action("SetAsDecline", "Book", new { @area = "Admin"})'>Zrezygnuj</button>
+                        }
+                        else if (item.Status == Resource.BookingStatusAccepted)
+                        {
+                            <button class='changeToInProgress' data-id="@item.Id" data-url='@Url.Action("SetAsInProgress", "Book", new { @area = "Admin"})'>Do zrobienia</button>
+                        }
+                        else if (item.Status == Resource.BookingStatusInProgress)
+                        {
+                            <button class='changeToFinished' data-id="@item.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>Do odebrania</button>
+                        }
+                        dane kontaktowe
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/bundles/dataTables")
+    <script>
+        (function ($) {
+            $("#MechanicAssignBookingsIndexTable").DataTable({
+                "language": {
+                    "url": "/Scripts/DataTable/polishTranslation.json"
+                }
+            });
+
+            $("#MechanicFreeToGetBookingsIndexTable").DataTable({
+                "language": {
+                    "url": "/Scripts/DataTable/polishTranslation.json"
+                }
+            });
+        })(jQuery);
+    </script>
+    <script>
+        (function ($) {
+            $(".changeToVerify").click(function () {
+                var url = $(this).attr('data-url');
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        'bookingServiceId': id
+                    },
+                    success: function (result) {
+                        alert('ok');
+                    },
+                    error: function (xhr) {
+                        alert('Error');
+                    }
+                });
+            });
+
+            $(".changeToAccept").click(function () {
+                var url = $(this).attr('data-url');
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        'bookingServiceId': id
+                    },
+                    success: function (result) {
+                        if (result.success) {
+                            alert('ok');
+                        }
+                        alert(result.message);
+                    },
+                    error: function (xhr) {
+                        alert('Error');
+                    }
+                });
+            });
+
+            $(".changeToDecline").click(function () {
+                var url = $(this).attr('data-url');
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        'bookingServiceId': id
+                    },
+                    success: function (result) {
+                        alert('ok');
+                    },
+                    error: function (xhr) {
+                        alert('Error');
+                    }
+                });
+            });
+
+            $(".changeToInProgress").click(function () {
+                var url = $(this).attr('data-url');
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        'bookingServiceId': id
+                    },
+                    success: function (result) {
+                        alert('ok');
+                    },
+                    error: function (xhr) {
+                        alert('Error');
+                    }
+                });
+            });
+
+
+            $(".changeToFinished").click(function () {
+                var url = $(this).attr('data-url');
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        'bookingServiceId': id
+                    },
+                    success: function (result) {
+                        alert('ok');
+                    },
+                    error: function (xhr) {
+                        alert('Error');
+                    }
+                });
+            });
+        })(jQuery);
+    </script>
+}
