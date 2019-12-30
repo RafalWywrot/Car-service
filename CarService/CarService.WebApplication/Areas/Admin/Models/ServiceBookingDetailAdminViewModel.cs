@@ -1,5 +1,4 @@
 ﻿using CarService.Logic.ModelsDTO;
-using CarService.WebApplication.Models.Car;
 using CarService.WebApplication.Models.ServiceBooking;
 
 namespace CarService.WebApplication.Areas.Admin.Models

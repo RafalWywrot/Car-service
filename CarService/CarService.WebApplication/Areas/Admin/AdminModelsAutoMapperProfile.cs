@@ -30,6 +30,9 @@ namespace CarService.WebApplication.Areas.Admin
                ).ForMember(
                     dest => dest.DateThatClientSelect,
                     opt => opt.MapFrom(src => src.AsSoonAsPossible ? "Jak najszybciej" : src.DateStarted.Value.ToShortDateString())
+               ).ForMember(
+                    dest => dest.Mechanic,
+                    opt => opt.MapFrom(src => src.MechanicFullName)
                );
 
             CreateMap<DTO.BookingServiceDTO, ServiceBookingDateAdminViewModel>()

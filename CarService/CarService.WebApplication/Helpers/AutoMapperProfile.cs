@@ -94,6 +94,12 @@ namespace CarService.WebApplication.Helpers
                 .ForMember(
                     dest => dest.Status,
                     opt => opt.ResolveUsing(src => Mapper.Map<string>(src.Status))
+                ).ForMember(
+                    dest => dest.MechanicId,
+                    opt => opt.ResolveUsing(src => src.AssignedUser?.Id)
+                ).ForMember(
+                    dest => dest.MechanicFullName,
+                    opt => opt.ResolveUsing(src => $"{(string.IsNullOrEmpty(src.AssignedUser?.Name) ? string.Empty : src.AssignedUser?.Name)}{(string.IsNullOrEmpty(src.AssignedUser?.Surname) ? string.Empty : " " + src.AssignedUser?.Surname)}" )
                 )
                 .ReverseMap();
 
@@ -132,6 +138,12 @@ namespace CarService.WebApplication.Helpers
                ).ForMember(
                     dest => dest.DateCreated,
                     opt => opt.Ignore()
+               ).ForMember(
+                    dest => dest.DateCreated,
+                    opt => opt.Ignore()
+               ).ForMember(
+                    dest => dest.Mechanic,
+                    opt => opt.MapFrom(src => src.MechanicFullName)
                );
                
 

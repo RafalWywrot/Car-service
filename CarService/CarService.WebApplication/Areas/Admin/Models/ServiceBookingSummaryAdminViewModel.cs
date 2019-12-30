@@ -28,5 +28,8 @@ namespace CarService.WebApplication.Areas.Admin.Models
 
         [Display(Name = "Data")]
         public string DateThatClientSelect { get; set; }
+
+        [Display(Name = "Mechanik")]
+        public string Mechanic { get; set; }
     }
 }

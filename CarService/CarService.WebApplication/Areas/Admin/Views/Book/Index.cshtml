@@ -12,21 +12,12 @@
 <table id="adminBookIndexTable" class="table table-condensed display" style="width:100%">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CarName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ServiceName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateThatClientSelect)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comment)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
+            <th>@Html.DisplayNameFor(model => model.CarName)</th>
+            <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
+            <th>@Html.DisplayNameFor(model => model.DateThatClientSelect)</th>
+            <th>@Html.DisplayNameFor(model => model.Comment)</th>
+            <th>@Html.DisplayNameFor(model => model.Status)</th>
+            <th>@Html.DisplayNameFor(model => model.Mechanic)</th>
             <th></th>
             <th></th>
             <th></th>
@@ -50,6 +41,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mechanic)
                 </td>
                 <td>
                     @Html.ActionLink("Szczegóły", "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })

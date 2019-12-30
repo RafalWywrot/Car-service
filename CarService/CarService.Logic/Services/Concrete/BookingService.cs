@@ -1,6 +1,9 @@
-﻿using CarService.Logic.Services.Abstract;
+﻿using CarService.Identity;
+using CarService.Logic.Services.Abstract;
 using CarService.Repository.CustomTypes;
+using CarService.Repository.Entities;
 using CarService.Repository.Repositories.Abstract;
+using System;
 
 namespace CarService.Logic.Services.Concrete
 {
@@ -11,6 +14,18 @@ namespace CarService.Logic.Services.Concrete
         public BookingService(ICarMainteanceRepository carMainteanceRepository)
         {
             _carMainteanceRepository = carMainteanceRepository;
+        }
+
+        public void AssignUser(int serviceBookingId, string user)
+        {
+            var service = _carMainteanceRepository.GetBooking(serviceBookingId);
+            if (service == null)
+                throw new NullReferenceException();
+
+            var newUser = new ApplicationUser();
+            newUser.SetId(user);
+            service.AssignedUser = newUser;
+            _carMainteanceRepository.UpdateServiceBooking(service);
         }
 
         public void SetStatusAsAccepted(int id)

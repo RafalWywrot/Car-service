@@ -45,6 +45,7 @@
     <Reference Include="NHibernate, Version=5.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.5.0.0\lib\net461\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate.AspNet.Identity, Version=5.0.2.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
     </Reference>
@@ -79,6 +80,10 @@
     <Compile Include="Services\Concrete\CarService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarService.Identity\CarService.Identity.csproj">
+      <Project>{6DAC16B8-7B35-4CDC-BBC3-A8C253721C07}</Project>
+      <Name>CarService.Identity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarService.Repository\CarService.Repository.csproj">
       <Project>{3c078c00-e794-4425-aa22-6049520036d0}</Project>
       <Name>CarService.Repository</Name>
