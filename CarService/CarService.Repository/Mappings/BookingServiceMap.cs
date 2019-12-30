@@ -18,8 +18,9 @@ namespace CarService.Repository.Mappings
             Map(x => x.UserComment, "ClientComment");
             Map(x => x.AsSoonAsPossible, "AsSoonAsPossible");
 
-            References(x => x.Service, "ServiceId");
-            References(x => x.Car, "CarId");
+            References(x => x.Service, "ServiceId").Cascade.None();
+            References(x => x.Car, "CarId").Cascade.None();
+            References(x => x.AssignedUser, "MechanicId").Cascade.None();
         }
     }
 }

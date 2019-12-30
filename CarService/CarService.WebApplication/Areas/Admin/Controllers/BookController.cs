@@ -68,9 +68,12 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
         public ActionResult EditMechanic(int bookingServiceId)
         {
             var mechanics = _userManager.Users.ToList().Where(x => x.Roles.Select(c => c.Name).Contains(SystemRoles.Mechanic)).ToList();
+            var booking = _carMainteanceService.GetBooking(bookingServiceId);
             var model = new ServiceBookingMechanicAdminViewModel
             {
-                Mechanics = Mapper.Map<IEnumerable<UserBasicViewModel>>(mechanics)
+                Mechanics = Mapper.Map<IEnumerable<UserBasicViewModel>>(mechanics),
+                MechanicId = booking.MechanicId,
+                ServiceBookingId = bookingServiceId
             };
             return View(model);
         }

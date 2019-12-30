@@ -82,6 +82,14 @@
                     @Html.TextBoxFor(model => model.ServiceDetails.Status, new { @class = "form-control", @readonly = "readonly" })
                 </div>
             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceDetails.Mechanic, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.ServiceDetails.Mechanic, new { @class = "form-control", @readonly = "readonly" })
+                    @Html.ActionLink("Przypisz mechanika", "EditMechanic", "Book", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success" })
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -24,5 +24,8 @@ namespace CarService.WebApplication.Models.ServiceBooking
 
         [Display(Name = "Status")]
         public string Status { get; set; }
+
+        [Display(Name = "Mechanik")]
+        public string Mechanic { get; set; }
     }
 }
