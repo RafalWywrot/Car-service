@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CarService.WebApplication.Areas.Admin.Controllers
 {
+    [Authorize(Roles = SystemRoles.Admin)]
     public class ServiceController : BaseController
     {
         private readonly ICarMainteanceService _carMainteanceService;

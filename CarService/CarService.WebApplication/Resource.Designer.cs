@@ -70,6 +70,15 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tworzenie nowej usługi.
+        /// </summary>
+        public static string AddServiceTitle {
+            get {
+                return ResourceManager.GetString("AddServiceTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Jak najszybciej.
         /// </summary>
         public static string AsSoonAsPossible {
@@ -498,6 +507,15 @@ namespace CarService.WebApplication {
         public static string Mechanic {
             get {
                 return ResourceManager.GetString("Mechanic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nazwa.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         

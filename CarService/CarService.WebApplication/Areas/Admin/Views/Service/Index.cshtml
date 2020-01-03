@@ -1,13 +1,22 @@
 ﻿@model IEnumerable<CarService.Logic.ModelsDTO.IdNamePair>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Resource.Services;
 }
 
-<p>
-    @Html.ActionLink("Create New", "Add")
-</p>
-<table class="table">
+<h2>@Resource.Services</h2>
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Add", "Service", new { @area = "Admin" }, FormMethod.Get, null))
+        {
+            <button type="submit" class="btn btn-success btn-">
+                @Resource.ButtonAdd
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        }
+    </div>
+</div>
+<table class="table" style="margin-top: 1vh">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -15,16 +24,17 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink(Resource.ButtonEdit, "Edit", new { id = item.Id }, new { @class = "btn btn-default" } ) |
+                @Html.ActionLink(Resource.ButtonDelete, "Delete", new { id = item.Id }, new { @class = "btn btn-default" })
+            </td>
+        </tr>
+    }
 
 </table>

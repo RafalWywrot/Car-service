@@ -318,4 +318,10 @@
   <data name="Users" xml:space="preserve">
     <value>Użytkownicy</value>
   </data>
+  <data name="AddServiceTitle" xml:space="preserve">
+    <value>Tworzenie nowej usługi</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
 </root>
