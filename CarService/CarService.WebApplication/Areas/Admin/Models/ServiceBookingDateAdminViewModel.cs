@@ -7,14 +7,14 @@ namespace CarService.WebApplication.Areas.Admin.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
-        [Display(Name = "Data")]
+        [Display(Name = "Date", ResourceType = typeof(Resource))]
         public DateTime? DateCreated { get; set; }
 
-        [Required]
-        [Display(Name = "Powód zmiany daty")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "EditDateCause", ResourceType = typeof(Resource))]
         public string Comment { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace CarService.WebApplication.Areas.Admin.Models
     {
         public IEnumerable<UserBasicViewModel> Mechanics { get; set; }
 
-        [Required]
-        [Display(Name = "Mechanik")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Mechanic", ResourceType = typeof(Resource))]
         public string MechanicId { get; set; }
 
         public int ServiceBookingId { get; set; }

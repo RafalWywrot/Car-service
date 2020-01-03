@@ -1,49 +1,49 @@
 ﻿@model CarService.WebApplication.Areas.Admin.Models.ServiceBookingDetailAdminViewModel
 @using CarService.WebApplication.Helpers
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = Resource.BookingDetails;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Szczegóły zamówienia</h2>
+<h2>@Resource.BookingDetails</h2>
 
 <div class="form-horizontal">
     <hr />
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="control-label col-md-4">Model</label>
+                <label class="control-label col-md-4">@Resource.CarModel</label>
                 <div class="col-md-8">
                     @Html.TextBoxFor(model => model.CarDetails.Model, new { @class = "form-control  col-md-6", @readonly = "readonly" })
-                    @Html.ActionLink("Historia auta", "History", "Car", new { @area = "Admin", carId = Model.CarDetails.Id }, new { @class = "btn btn-success col-md-4" })
+                    @Html.ActionLink(Resource.HistoryCarButton, "History", "Car", new { @area = "Admin", carId = Model.CarDetails.Id }, new { @class = "btn btn-success col-md-4" })
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4">Rocznik</label>
+                <label class="control-label col-md-4">@Resource.CarYear</label>
                 <div class="col-md-8">
                     @Html.TextBoxFor(model => model.CarDetails.Year, new { @class = "form-control", @readonly = "readonly" })
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4">Pojemność</label>
+                <label class="control-label col-md-4">@Resource.CarCapacity</label>
                 <div class="col-md-8">
                     @Html.TextBoxFor(model => model.CarDetails.EngineCapacity, new { @class = "form-control", @readonly = "readonly" })
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4">Moc</label>
+                <label class="control-label col-md-4">@Resource.CarPower</label>
                 <div class="col-md-8">
                     @Html.TextBoxFor(model => model.CarDetails.EnginePower, new { @class = "form-control", @readonly = "readonly" })
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4">Paliwo</label>
+                <label class="control-label col-md-4">@Resource.CarFuel</label>
                 <div class="col-md-8">
                     @Html.TextBoxFor(model => model.CarDetails.Fuel, new { @class = "form-control", @readonly = "readonly" })
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4">Skrzynia biegów</label>
+                <label class="control-label col-md-4">@Resource.CarTransmission</label>
                 <div class="col-md-8">
                     @Html.TextBoxFor(model => model.CarDetails.Transmission, new { @class = "form-control", @readonly = "readonly" })
                 </div>
@@ -64,7 +64,7 @@
                     @Html.TextBoxFor(model => model.ServiceDetails.DateCreated, new { @class = "form-control col-md-6", @readonly = "readonly" })
                     @if (Model.ServiceDetails.Status == Resource.BookingStatusCreated || Model.ServiceDetails.Status == Resource.BookingStatusVerify)
                     {
-                        @Html.ActionLink("Zmień datę", "EditDate", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success col-md-4" })
+                        @Html.ActionLink(Resource.ChangeDate, "EditDate", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success col-md-4" })
                     }
                 </div>
             </div>
@@ -89,7 +89,7 @@
                     @Html.LabelFor(model => model.ServiceDetails.Mechanic, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
                         @Html.TextBoxFor(model => model.ServiceDetails.Mechanic, new { @class = "form-control", @readonly = "readonly" })
-                        @Html.ActionLink("Przypisz mechanika", "EditMechanic", "Book", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success" })
+                        @Html.ActionLink(Resource.AssignMechanic, "EditMechanic", "Book", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success" })
                     </div>
                 </div>
             }
@@ -102,14 +102,14 @@
                         <div class="col-md-8">
                             @using (Html.BeginForm("AssignToMechanic", "Book", new { bookingServiceId = Model.ServiceDetails.Id }, FormMethod.Post, new { }))
                             {
-                                <input type="submit" value="Przypisz do mnie" class="btn btn-success" />
+                                <input type="submit" value="@Resource.AssignToMe" class="btn btn-success" />
                             }
                         </div>
                     }
                     else
                     {
                         <div class="col-md-8">
-                            @Html.TextBox("ServiceDetails.Mechanic", "Do Ciebie", new { @class = "form-control", @readonly = "readonly" })
+                            @Html.TextBox("ServiceDetails.Mechanic", Resource.ToYou, new { @class = "form-control", @readonly = "readonly" })
                         </div>
                     }
                 </div>

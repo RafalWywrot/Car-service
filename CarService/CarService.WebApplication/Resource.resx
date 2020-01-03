@@ -345,4 +345,58 @@
   <data name="UserName" xml:space="preserve">
     <value>Imię</value>
   </data>
+  <data name="AssignMechanic" xml:space="preserve">
+    <value>Przypisz mechanika</value>
+  </data>
+  <data name="AssignToMe" xml:space="preserve">
+    <value>Przypisz do mnie</value>
+  </data>
+  <data name="BookingDetails" xml:space="preserve">
+    <value>Szczegóły zamówienia</value>
+  </data>
+  <data name="Bookings" xml:space="preserve">
+    <value>Zamówienia</value>
+  </data>
+  <data name="BookingStatusChangeToAccept" xml:space="preserve">
+    <value>Zaakceptuj</value>
+  </data>
+  <data name="BookingStatusChangeToDecline" xml:space="preserve">
+    <value>Zrezygnuj</value>
+  </data>
+  <data name="BookingStatusChangeToDo" xml:space="preserve">
+    <value>Do zrobienia</value>
+  </data>
+  <data name="BookingStatusChangeToPickUp" xml:space="preserve">
+    <value>Do odebrania</value>
+  </data>
+  <data name="BookingStatusChangeToVerify" xml:space="preserve">
+    <value>Rozpocznij weryfikację</value>
+  </data>
+  <data name="BookingsUnassigned" xml:space="preserve">
+    <value>Usługi nieprzypisane</value>
+  </data>
+  <data name="ChangeDate" xml:space="preserve">
+    <value>Zmień datę</value>
+  </data>
+  <data name="ChangeDateOfBookingTitle" xml:space="preserve">
+    <value>Ustaw datę usługi</value>
+  </data>
+  <data name="ChangeMechanicOfBookingTitle" xml:space="preserve">
+    <value>Przypisz mechanika do usługi</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Szczegóły</value>
+  </data>
+  <data name="HistoryCarButton" xml:space="preserve">
+    <value>Historia auta</value>
+  </data>
+  <data name="ToYou" xml:space="preserve">
+    <value>Do Ciebie</value>
+  </data>
+  <data name="YourBookings" xml:space="preserve">
+    <value>Usługi przypisane do Ciebie</value>
+  </data>
+  <data name="EditDateCause" xml:space="preserve">
+    <value>Powód zmiany daty</value>
+  </data>
 </root>

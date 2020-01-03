@@ -97,6 +97,24 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Przypisz mechanika.
+        /// </summary>
+        public static string AssignMechanic {
+            get {
+                return ResourceManager.GetString("AssignMechanic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przypisz do mnie.
+        /// </summary>
+        public static string AssignToMe {
+            get {
+                return ResourceManager.GetString("AssignToMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Jak najszybciej.
         /// </summary>
         public static string AsSoonAsPossible {
@@ -106,11 +124,74 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Szczegóły zamówienia.
+        /// </summary>
+        public static string BookingDetails {
+            get {
+                return ResourceManager.GetString("BookingDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zamówienia.
+        /// </summary>
+        public static string Bookings {
+            get {
+                return ResourceManager.GetString("Bookings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zaakceptowane.
         /// </summary>
         public static string BookingStatusAccepted {
             get {
                 return ResourceManager.GetString("BookingStatusAccepted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zaakceptuj.
+        /// </summary>
+        public static string BookingStatusChangeToAccept {
+            get {
+                return ResourceManager.GetString("BookingStatusChangeToAccept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zrezygnuj.
+        /// </summary>
+        public static string BookingStatusChangeToDecline {
+            get {
+                return ResourceManager.GetString("BookingStatusChangeToDecline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do zrobienia.
+        /// </summary>
+        public static string BookingStatusChangeToDo {
+            get {
+                return ResourceManager.GetString("BookingStatusChangeToDo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do odebrania.
+        /// </summary>
+        public static string BookingStatusChangeToPickUp {
+            get {
+                return ResourceManager.GetString("BookingStatusChangeToPickUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rozpocznij weryfikację.
+        /// </summary>
+        public static string BookingStatusChangeToVerify {
+            get {
+                return ResourceManager.GetString("BookingStatusChangeToVerify", resourceCulture);
             }
         }
         
@@ -156,6 +237,15 @@ namespace CarService.WebApplication {
         public static string BookingStatusVerify {
             get {
                 return ResourceManager.GetString("BookingStatusVerify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usługi nieprzypisane.
+        /// </summary>
+        public static string BookingsUnassigned {
+            get {
+                return ResourceManager.GetString("BookingsUnassigned", resourceCulture);
             }
         }
         
@@ -331,6 +421,33 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zmień datę.
+        /// </summary>
+        public static string ChangeDate {
+            get {
+                return ResourceManager.GetString("ChangeDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ustaw datę usługi.
+        /// </summary>
+        public static string ChangeDateOfBookingTitle {
+            get {
+                return ResourceManager.GetString("ChangeDateOfBookingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przypisz mechanika do usługi.
+        /// </summary>
+        public static string ChangeMechanicOfBookingTitle {
+            get {
+                return ResourceManager.GetString("ChangeMechanicOfBookingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zmień hasło.
         /// </summary>
         public static string ChangePassword {
@@ -412,11 +529,29 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Szczegóły.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edycja samochodu.
         /// </summary>
         public static string EditCar {
             get {
                 return ResourceManager.GetString("EditCar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Powód zmiany daty.
+        /// </summary>
+        public static string EditDateCause {
+            get {
+                return ResourceManager.GetString("EditDateCause", resourceCulture);
             }
         }
         
@@ -471,6 +606,15 @@ namespace CarService.WebApplication {
         public static string History {
             get {
                 return ResourceManager.GetString("History", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Historia auta.
+        /// </summary>
+        public static string HistoryCarButton {
+            get {
+                return ResourceManager.GetString("HistoryCarButton", resourceCulture);
             }
         }
         
@@ -709,6 +853,15 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do Ciebie.
+        /// </summary>
+        public static string ToYou {
+            get {
+                return ResourceManager.GetString("ToYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Imię.
         /// </summary>
         public static string UserName {
@@ -732,6 +885,15 @@ namespace CarService.WebApplication {
         public static string Year {
             get {
                 return ResourceManager.GetString("Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usługi przypisane do Ciebie.
+        /// </summary>
+        public static string YourBookings {
+            get {
+                return ResourceManager.GetString("YourBookings", resourceCulture);
             }
         }
         
