@@ -4,7 +4,9 @@ using CarService.Logic.Services.Abstract;
 using CarService.WebApplication.Helpers;
 using CarService.WebApplication.Helpers.Extensions;
 using CarService.WebApplication.Models.Car;
+using CarService.WebApplication.Models.ServiceBooking;
 using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -14,10 +16,12 @@ namespace CarService.WebApplication.Controllers
     public class CarController : Controller
     {
         private readonly ICarService _carService;
+        private readonly ICarMainteanceService _carMainteanceService;
 
-        public CarController(ICarService carService)
+        public CarController(ICarService carService, ICarMainteanceService carMainteanceService)
         {
             _carService = carService;
+            _carMainteanceService = carMainteanceService;
         }
 
         // GET: Car
@@ -72,7 +76,14 @@ namespace CarService.WebApplication.Controllers
             var models = _carService.GetModels(brandId);
             return Json(models.ToSelectListItems(x => x.Id, x => x.Name), JsonRequestBehavior.AllowGet);
         }
-        
+
+        public ViewResult History(int carId)
+        {
+            var allBookings = _carMainteanceService.GetBookingsByCar(carId);
+            var model = Mapper.Map<IEnumerable<ServiceBookingSummaryViewModel>>(allBookings);
+            return View(model);
+        }
+
         private void InitializeCarDropdowns(CarFormViewModel model)
         {
             model.CarBrands = _carService.GetAll().ToSelectListItems(x => x.Id, x => x.Name);
