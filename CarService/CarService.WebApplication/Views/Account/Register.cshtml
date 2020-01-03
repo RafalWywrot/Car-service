@@ -1,15 +1,15 @@
 ﻿@model CarService.WebApplication.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Rejestracja";
+    ViewBag.Title = Resource.RegisterTitle;
     Layout = "~/Views/Shared/_UnathorizeLayout.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@Resource.RegisterTitle</h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Tworzenie nowego konta.</h4>
+    <h4>@Resource.CreateAccount</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
@@ -32,7 +32,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Zarejestruj" />
+            <input type="submit" class="btn btn-default" value="@Resource.Register" />
         </div>
     </div>
 }

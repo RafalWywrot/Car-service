@@ -240,4 +240,82 @@
   <data name="ServiceCancel" xml:space="preserve">
     <value>Zrezygnuj</value>
   </data>
+  <data name="ChangeAccountSettings" xml:space="preserve">
+    <value>Zmień ustawienia konta</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Zmień hasło</value>
+  </data>
+  <data name="ChangePasswordTitle" xml:space="preserve">
+    <value>Zmiana hasła</value>
+  </data>
+  <data name="ComparePasswordError" xml:space="preserve">
+    <value>Hasła do siebie nie pasują</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Potwierdź hasło</value>
+  </data>
+  <data name="CreateAccount" xml:space="preserve">
+    <value>Tworzenie konta</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Obecne hasło</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ForgotPasswordTitle" xml:space="preserve">
+    <value>Przypomnienie hasła</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Zaloguj</value>
+  </data>
+  <data name="LoginIntoSystem" xml:space="preserve">
+    <value>Zaloguj się</value>
+  </data>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Logowanie</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Wyloguj</value>
+  </data>
+  <data name="ManageAccount" xml:space="preserve">
+    <value>Zarządzanie kontem</value>
+  </data>
+  <data name="NewBookings" xml:space="preserve">
+    <value>Nowe zamówienia</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nowe hasło</value>
+  </data>
+  <data name="OldBookings" xml:space="preserve">
+    <value>Stare zamówienia</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Hasło</value>
+  </data>
+  <data name="PasswordLengthError" xml:space="preserve">
+    <value>{0} musi mieć co najmniej 6 znaków</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Zarejestruj</value>
+  </data>
+  <data name="RegisterTitle" xml:space="preserve">
+    <value>Rejestracja</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Zapamiętaj mnie</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Wyślij</value>
+  </data>
+  <data name="SetPassword" xml:space="preserve">
+    <value>Utwórz hasło</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Użytkownicy</value>
+  </data>
 </root>

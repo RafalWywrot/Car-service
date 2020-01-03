@@ -1,24 +1,24 @@
 ﻿@model CarService.WebApplication.Models.IndexViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = Resource.ManageAccount;
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@Resource.ManageAccount</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
+    <h4>@Resource.ChangeAccountSettings</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>Password:</dt>
+        <dt>@Resource.Password:</dt>
         <dd>
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("Change your password", "ChangePassword", null, new { @class = "btn btn-default" })
+                @Html.ActionLink(Resource.ChangePassword, "ChangePassword", null, new { @class = "btn btn-default" })
             }
             else
             {
-                @Html.ActionLink("Create", "SetPassword")
+                @Html.ActionLink(Resource.SetPassword, "SetPassword")
             }
         </dd>
 
