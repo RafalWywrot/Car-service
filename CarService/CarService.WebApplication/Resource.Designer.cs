@@ -70,6 +70,24 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dodaj mechanika.
+        /// </summary>
+        public static string AddMechanic {
+            get {
+                return ResourceManager.GetString("AddMechanic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodawanie mechanika.
+        /// </summary>
+        public static string AddMechanicTitle {
+            get {
+                return ResourceManager.GetString("AddMechanicTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tworzenie nowej usługi.
         /// </summary>
         public static string AddServiceTitle {
@@ -219,6 +237,15 @@ namespace CarService.WebApplication {
         public static string CarFuel {
             get {
                 return ResourceManager.GetString("CarFuel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto nie posiada jeszcze żadnej historii.
+        /// </summary>
+        public static string CarHistoryEmpty {
+            get {
+                return ResourceManager.GetString("CarHistoryEmpty", resourceCulture);
             }
         }
         
@@ -399,6 +426,15 @@ namespace CarService.WebApplication {
         public static string EditServiceTitle {
             get {
                 return ResourceManager.GetString("EditServiceTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edycja użytkownika.
+        /// </summary>
+        public static string EditUserTitle {
+            get {
+                return ResourceManager.GetString("EditUserTitle", resourceCulture);
             }
         }
         
@@ -592,6 +628,15 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Role.
+        /// </summary>
+        public static string Roles {
+            get {
+                return ResourceManager.GetString("Roles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wyślij.
         /// </summary>
         public static string Send {
@@ -651,6 +696,24 @@ namespace CarService.WebApplication {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nazwisko.
+        /// </summary>
+        public static string Surname {
+            get {
+                return ResourceManager.GetString("Surname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imię.
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
         

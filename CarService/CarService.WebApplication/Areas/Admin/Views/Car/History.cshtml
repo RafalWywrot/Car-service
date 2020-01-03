@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<CarService.WebApplication.Areas.Admin.Models.ServiceBookingSummaryAdminViewModel>
 
 @{
-    ViewBag.Title = "History";
+    ViewBag.Title = Resource.History;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (!Model.Any())
 {
-    <h2>Auto nie posiada jeszcze żadnej historii</h2>
+    <h2>@Resource.CarHistoryEmpty</h2>
 }
-<h2>Historia @Model.First().CarName</h2>
+<h2>@Resource.History @Model.First().CarName</h2>
 
 <table class="table">
     <thead>
@@ -35,5 +35,5 @@
 </table>
 
 <div>
-    @Html.ActionLink("Back", "Show", "Book", new { @area = "Admin", bookingServiceId = Model.First().Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink(Resource.ButtonBack, "Show", "Book", new { @area = "Admin", bookingServiceId = Model.First().Id }, new { @class = "btn btn-default" })
 </div>

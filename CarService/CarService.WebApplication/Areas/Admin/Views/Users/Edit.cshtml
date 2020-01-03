@@ -1,10 +1,10 @@
 ﻿@model CarService.WebApplication.Models.User.UserBasicViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = Resource.EditUserTitle;
 }
 
-<h2>Edit</h2>
+<h2>@Resource.EditUserTitle</h2>
 
 @using (Html.BeginForm())
 {
@@ -41,12 +41,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="@Resource.ButtonSave" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(Resource.ButtonBack, "Index", new { @area = "Admin" }, new { @class = "btn btn-default" })
 </div>

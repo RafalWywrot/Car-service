@@ -324,4 +324,25 @@
   <data name="Name" xml:space="preserve">
     <value>Nazwa</value>
   </data>
+  <data name="AddMechanic" xml:space="preserve">
+    <value>Dodaj mechanika</value>
+  </data>
+  <data name="AddMechanicTitle" xml:space="preserve">
+    <value>Dodawanie mechanika</value>
+  </data>
+  <data name="CarHistoryEmpty" xml:space="preserve">
+    <value>Auto nie posiada jeszcze żadnej historii</value>
+  </data>
+  <data name="EditUserTitle" xml:space="preserve">
+    <value>Edycja użytkownika</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Nazwisko</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Imię</value>
+  </data>
 </root>
