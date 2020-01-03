@@ -29,7 +29,7 @@ namespace CarService.WebApplication.Controllers
         {
             var userId = User.Identity.GetUserId();
             var cars = _carService.GetUserCars(userId);
-            return View(cars);
+            return View(Mapper.Map<IEnumerable<CarSummaryViewModel>>(cars));
         }
         
         public ActionResult Add()
@@ -86,8 +86,11 @@ namespace CarService.WebApplication.Controllers
 
         private void InitializeCarDropdowns(CarFormViewModel model)
         {
-            model.CarBrands = _carService.GetAll().ToSelectListItems(x => x.Id, x => x.Name);
-            model.CarModels = _carService.GetModels(model.CarBrandId).ToSelectListItems(x => x.Id, x => x.Name);
+            var carBrands = _carService.GetAll();
+            model.CarBrands = carBrands.ToSelectListItems(x => x.Id, x => x.Name);
+
+            int carBrandId = model.CarBrandId == 0 ? carBrands.FirstOrDefault()?.Id ?? model.CarBrandId : model.CarBrandId;
+            model.CarModels = _carService.GetModels(carBrandId).ToSelectListItems(x => x.Id, x => x.Name);
 
             model.TransmissionOptions = _carService.GetTransmissionOptions().ToSelectListItems(x => x.Id, x => x.Name);
             model.FuelOptions = _carService.GetFuelTypes().ToSelectListItems(x => x.Id, x => x.Name);

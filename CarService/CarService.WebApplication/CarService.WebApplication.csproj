@@ -252,6 +252,7 @@
     <Compile Include="Helpers\SystemRoles.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Car\CarFormViewModel.cs" />
+    <Compile Include="Models\Car\CarSummaryViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ServiceBooking\ServiceBookingFormViewModel.cs" />
     <Compile Include="Models\ServiceBooking\ServiceBookingSummaryViewModel.cs" />

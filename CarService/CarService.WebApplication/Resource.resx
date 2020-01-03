@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCarTitle" xml:space="preserve">
+    <value>Tworzenie nowego samochodu</value>
+  </data>
   <data name="BookingStatusAccepted" xml:space="preserve">
     <value>Zaakceptowane</value>
   </data>
@@ -134,5 +137,107 @@
   </data>
   <data name="BookingStatusVerify" xml:space="preserve">
     <value>W trakcie weryfikacji</value>
+  </data>
+  <data name="ButtonAdd" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="ButtonBack" xml:space="preserve">
+    <value>Powróć</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
+  <data name="ButtonEdit" xml:space="preserve">
+    <value>Edytuj</value>
+  </data>
+  <data name="CarBrand" xml:space="preserve">
+    <value>Marka</value>
+  </data>
+  <data name="CarCapacity" xml:space="preserve">
+    <value>Pojemność</value>
+  </data>
+  <data name="CarFuel" xml:space="preserve">
+    <value>Paliwo</value>
+  </data>
+  <data name="CarModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="CarOdometer" xml:space="preserve">
+    <value>Przebieg</value>
+  </data>
+  <data name="CarPower" xml:space="preserve">
+    <value>Moc</value>
+  </data>
+  <data name="Cars" xml:space="preserve">
+    <value>Samochody</value>
+  </data>
+  <data name="CarTransmission" xml:space="preserve">
+    <value>Skrzynia biegów</value>
+  </data>
+  <data name="CarYear" xml:space="preserve">
+    <value>Rocznik</value>
+  </data>
+  <data name="EditCar" xml:space="preserve">
+    <value>Edycja samochodu</value>
+  </data>
+  <data name="EditServiceTitle" xml:space="preserve">
+    <value>Edycja usługi</value>
+  </data>
+  <data name="FieldRequired" xml:space="preserve">
+    <value>Pole {0} jest wymagane</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>Historia</value>
+  </data>
+  <data name="HistoryCarTitle" xml:space="preserve">
+    <value>Historia twojego auta</value>
+  </data>
+  <data name="HomePageTitle" xml:space="preserve">
+    <value>Strona główna</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Usługi</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Rok</value>
+  </data>
+  <data name="YourCars" xml:space="preserve">
+    <value>Twoje samochody</value>
+  </data>
+  <data name="AsSoonAsPossible" xml:space="preserve">
+    <value>Jak najszybciej</value>
+  </data>
+  <data name="Car" xml:space="preserve">
+    <value>Samochód</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Komentarz</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Mechanic" xml:space="preserve">
+    <value>Mechanik</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Usługa</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="Caution" xml:space="preserve">
+    <value>Uwaga</value>
+  </data>
+  <data name="Cautions" xml:space="preserve">
+    <value>Uwagi</value>
+  </data>
+  <data name="DateService" xml:space="preserve">
+    <value>Termin</value>
+  </data>
+  <data name="ServiceCancel" xml:space="preserve">
+    <value>Zrezygnuj</value>
   </data>
 </root>

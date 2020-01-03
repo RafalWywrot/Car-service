@@ -8,42 +8,42 @@ namespace CarService.WebApplication.Models.Car
     {
         public int Id { get; set; }
         public string UserId { get; set; }
-
-        [Required]
-        [Display(Name = "Marka")]
+        
+        [Display(Name = "CarBrand", ResourceType = typeof(Resource))]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         public int CarBrandId { get; set; }
         public IEnumerable<SelectListItem> CarBrands{ get; set; }
 
-        [Required]
-        [Display(Name = "Model")]
-        [Range(1, int.MaxValue, ErrorMessage = "Pole wymagane")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "CarModel", ResourceType = typeof(Resource))]
+        [Range(1, int.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         public int CarModelId { get; set; }
         public IEnumerable<SelectListItem> CarModels { get; set; }
 
-        [Required]
-        [Display(Name = "Rok")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "CarYear", ResourceType = typeof(Resource))]
         public int Year { get; set; }
 
-        [Required]
-        [Display(Name = "Pojemność")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "CarCapacity", ResourceType = typeof(Resource))]
         public double EngineCapacity { get; set; }
 
-        [Required]
-        [Display(Name = "Skrzynia")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "CarTransmission", ResourceType = typeof(Resource))]
         public int TransmissionId { get; set; }
         public IEnumerable<SelectListItem> TransmissionOptions { get; set; }
 
-        [Required]
-        [Display(Name = "Przebieg")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "CarOdometer", ResourceType = typeof(Resource))]
         public int Odometer { get; set; }
 
-        [Required]
-        [Display(Name = "Paliwo")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "CarFuel", ResourceType = typeof(Resource))]
         public int FuelTypeId { get; set; }
         public IEnumerable<SelectListItem> FuelOptions { get; set; }
 
-        [Required]
-        [Display(Name = "Moc")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "CarPower", ResourceType = typeof(Resource))]
         public int EnginePower { get; set; }
     }
 }

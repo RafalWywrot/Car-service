@@ -1,103 +1,134 @@
 ﻿@model IEnumerable<CarService.WebApplication.Models.ServiceBooking.ServiceBookingSummaryViewModel>
-
+@section Styles{
+    @Styles.Render("~/Content/dataTables")
+}
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Resource.Services;
 }
 <div>
+    <div class="row" style="margin-top: 1vh; margin-bottom:1vh;">
+        <div class="col-md-12">
+            @using (Html.BeginForm("AddServiceBooking", "Book", FormMethod.Get))
+            {
+                <button type="submit" class="btn btn-success btn-">
+                    @Resource.ButtonAdd
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            }
+        </div>
+    </div>
     <h4>Obecne</h4>
-    <p>
-        @Html.ActionLink("Dodaj usługę", "AddServiceBooking")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CarName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ServiceName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comment)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.Where(x => x.Status != Resource.BookingStatusDeclined && x.Status != Resource.BookingStatusFinished))
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CarName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ServiceName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Comment)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @if (item.Status == Resource.BookingStatusCreated)
+    <div class="row">
+        <div class="col-md-12">
+            <table id="userBookIndexTableCurrent" class="table table-condensed display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CarName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ServiceName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Comment)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbead>
+                    @foreach (var item in Model.Where(x => x.Status != Resource.BookingStatusDeclined && x.Status != Resource.BookingStatusFinished))
                     {
-                        @Html.ActionLink("Edit", "Edit", new { bookingServiceId = item.Id })
-                        <span>|</span>
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CarName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ServiceName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Comment)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @if (item.Status == Resource.BookingStatusCreated)
+                                {
+                                    @Html.ActionLink(Resource.ButtonEdit, "Edit", new { bookingServiceId = item.Id })
+                                    <span>|</span>
+                                    @Html.ActionLink(Resource.ServiceCancel, "Delete", new { id = item.Id })
+                                }
+                            </td>
+                        </tr>
                     }
-                </td>
-            </tr>
-        }
-
-    </table>
+                </tbead>
+            </table>
+        </div>
+    </div>
 </div>
 
 <div style="margin-top:30px;">
     <h4>Historyczne</h4>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CarName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ServiceName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comment)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.Where(x => x.Status == Resource.BookingStatusDeclined || x.Status == Resource.BookingStatusFinished))
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CarName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ServiceName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Comment)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @if (item.Status == Resource.BookingStatusCreated)
+    <div class="row">
+        <div class="col-md-12">
+            <table id="userBookIndexTableHistory" class="table table-condensed display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CarName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ServiceName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Comment)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Where(x => x.Status == Resource.BookingStatusDeclined || x.Status == Resource.BookingStatusFinished))
                     {
-                        @Html.ActionLink("Edit", "Edit", new { bookingServiceId = item.Id })
-                        <span>|</span>
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CarName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ServiceName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Comment)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                        </tr>
                     }
-                </td>
-            </tr>
-        }
+                </tbody>
 
-    </table>
+            </table>
+        </div>
+    </div>
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/dataTables")
+    <script>
+        (function ($) {
+            $("#userBookIndexTableCurrent").DataTable({
+                "language": {
+                    "url": "/Scripts/DataTable/polishTranslation.json"
+                }
+            });
+            $("#userBookIndexTableHistory").DataTable({
+                "language": {
+                    "url": "/Scripts/DataTable/polishTranslation.json"
+                }
+            });
+        })(jQuery);
+    </script>
+}

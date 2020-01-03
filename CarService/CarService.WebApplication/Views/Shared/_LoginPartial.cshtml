@@ -18,8 +18,8 @@
         
         @if (User.IsInRole(SystemRoles.User))
         {
-            <li>@Html.ActionLink("Auta", "Index", "Car", new { @area = "" }, null)</li>
-            <li>@Html.ActionLink("Usługi", "Index", "Book", new { @area = "" }, null)</li>
+            <li>@Html.ActionLink(Resource.Cars, "Index", "Car", new { @area = "" }, null)</li>
+            <li>@Html.ActionLink(Resource.Services, "Index", "Book", new { @area = "" }, null)</li>
         }
         <li>
             @Html.ActionLink("Ustawienia", "Index", "Manage", new { @area = "" }, htmlAttributes: new { title = "Manage" })

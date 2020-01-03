@@ -1,71 +1,98 @@
-﻿@model IEnumerable<CarService.Logic.ModelsDTO.CarSummaryDTO>
-
+﻿@model IEnumerable<CarService.WebApplication.Models.Car.CarSummaryViewModel>
+@section Styles{
+    @Styles.Render("~/Content/dataTables")
+}
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = @Resource.YourCars;
 }
 
-<h2>Index</h2>
+<h2>@Resource.YourCars</h2>
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Add", "Car", FormMethod.Get))
+        {
+            <button type="submit" class="btn btn-success btn-">
+                @Resource.ButtonAdd
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        }
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Add")
-</p>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Model)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Year)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EngineCapacity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Transmission)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Odometer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fuel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EnginePower)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Year)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EngineCapacity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Transmission)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Odometer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fuel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EnginePower)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { carId = item.Id }, new { @class = "btn btn-default" }) |
-                @Html.ActionLink("Delete", "Delete", new { carId = item.Id }, new { @class = "btn btn-default" }) |
-                @Html.ActionLink("Historia", "History", "Car", new { @area = "", carId = item.Id}, new { @class = "btn btn-default" })
-            </td>
-        </tr>
-    }
-
-</table>
+<div class="row" style="margin-top:1vh">
+    <div class="col-md-12">
+        <table id="userCarIndex" class="table table-condensed display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Model)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Year)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EngineCapacity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transmission)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Odometer)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fuel)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EnginePower)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Model)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Year)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EngineCapacity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Transmission)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Odometer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fuel)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EnginePower)
+                        </td>
+                        <td>
+                            @Html.ActionLink(Resource.ButtonEdit, "Edit", new { carId = item.Id }, new { @class = "btn btn-default" }) |
+                            @Html.ActionLink(Resource.ButtonDelete, "Delete", new { carId = item.Id }, new { @class = "btn btn-default" }) |
+                            @Html.ActionLink(Resource.History, "History", "Car", new { @area = "", carId = item.Id }, new { @class = "btn btn-default" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/dataTables")
+    <script>
+        (function ($) {
+            $("#userCarIndex").DataTable({
+                "language": {
+                    "url": "/Scripts/DataTable/polishTranslation.json"
+                }
+            });
+        })(jQuery);
+    </script>
+}
