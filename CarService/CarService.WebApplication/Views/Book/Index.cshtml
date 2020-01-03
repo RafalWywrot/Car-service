@@ -3,51 +3,101 @@
 @{
     ViewBag.Title = "Index";
 }
+<div>
+    <h4>Obecne</h4>
+    <p>
+        @Html.ActionLink("Dodaj usługę", "AddServiceBooking")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CarName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "AddServiceBooking")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CarName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ServiceName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model.Where(x => x.Status != Resource.BookingStatusDeclined && x.Status != Resource.BookingStatusFinished))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @if (item.Status == Resource.BookingStatusCreated)
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { bookingServiceId = item.Id })
+                        <span>|</span>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    }
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CarName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ServiceName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @if (item.Status == Resource.BookingStatusCreated)
-            {
-                @Html.ActionLink("Edit", "Edit", new { bookingServiceId = item.Id })
-                <span>|</span>
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            }
-        </td>
-    </tr>
-}
+    </table>
+</div>
 
-</table>
+<div style="margin-top:30px;">
+    <h4>Historyczne</h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CarName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Where(x => x.Status == Resource.BookingStatusDeclined || x.Status == Resource.BookingStatusFinished))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @if (item.Status == Resource.BookingStatusCreated)
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { bookingServiceId = item.Id })
+                        <span>|</span>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

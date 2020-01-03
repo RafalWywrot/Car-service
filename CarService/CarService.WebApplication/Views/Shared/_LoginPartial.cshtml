@@ -7,7 +7,8 @@
     <ul class="nav navbar-nav navbar-right">
         @if (User.IsInRole(SystemRoles.Admin) || User.IsInRole(SystemRoles.Mechanic))
         {
-            <li>@Html.ActionLink("Zamówienia", "Index", "Book", new { @area = "Admin" }, null)</li>
+            <li>@Html.ActionLink("Nowe Zamówienia", "Index", "Book", new { @area = "Admin" }, null)</li>
+            <li>@Html.ActionLink("Zakończone Zamówienia", "Index", "Book", new { @area = "Admin" }, null)</li>
         }
         @if (User.IsInRole(SystemRoles.Admin))
         {
