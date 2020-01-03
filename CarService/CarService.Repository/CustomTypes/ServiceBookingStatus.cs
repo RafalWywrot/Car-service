@@ -6,7 +6,7 @@
         Verify = 1,
         Accepted = 2,
         Declined = 3,
-        InProgress = 4,
+        InProgress = 4, //w trakcie realizacji
         Finished = 5
     }
 }
