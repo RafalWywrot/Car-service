@@ -9,28 +9,28 @@ namespace CarService.WebApplication.Models.ServiceBooking
     {
         public int Id { get; set; }
 
-        [Required]
-        [Display(Name = "Samochód")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Car", ResourceType = typeof(Resource))]
         public int CarId { get; set; }
 
         public IEnumerable<SelectListItem> Cars { get; set; }
 
-        [Required]
-        [Display(Name = "Usługa")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Service", ResourceType = typeof(Resource))]
         public int ServiceId { get; set; }
 
         public IEnumerable<SelectListItem> Services { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
-        [Display(Name = "Data")]
+        [Display(Name = "Date", ResourceType = typeof(Resource))]
         public DateTime? DateCreated { get; set; }
 
-        [Required]
-        [Display(Name = "Termin")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "DateService", ResourceType = typeof(Resource))]
         public bool AsSoonAsPossible { get; set; }
 
-        [Display(Name = "Uwagi")]
+        [Display(Name = "Cautions", ResourceType = typeof(Resource))]
         public string Comment { get; set; }
     }
 }

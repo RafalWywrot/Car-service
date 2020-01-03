@@ -61,11 +61,137 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tworzenie nowego samochodu.
+        /// </summary>
+        public static string AddCarTitle {
+            get {
+                return ResourceManager.GetString("AddCarTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodaj mechanika.
+        /// </summary>
+        public static string AddMechanic {
+            get {
+                return ResourceManager.GetString("AddMechanic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodawanie mechanika.
+        /// </summary>
+        public static string AddMechanicTitle {
+            get {
+                return ResourceManager.GetString("AddMechanicTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tworzenie nowej usługi.
+        /// </summary>
+        public static string AddServiceTitle {
+            get {
+                return ResourceManager.GetString("AddServiceTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przypisz mechanika.
+        /// </summary>
+        public static string AssignMechanic {
+            get {
+                return ResourceManager.GetString("AssignMechanic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przypisz do mnie.
+        /// </summary>
+        public static string AssignToMe {
+            get {
+                return ResourceManager.GetString("AssignToMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jak najszybciej.
+        /// </summary>
+        public static string AsSoonAsPossible {
+            get {
+                return ResourceManager.GetString("AsSoonAsPossible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Szczegóły zamówienia.
+        /// </summary>
+        public static string BookingDetails {
+            get {
+                return ResourceManager.GetString("BookingDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zamówienia.
+        /// </summary>
+        public static string Bookings {
+            get {
+                return ResourceManager.GetString("Bookings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zaakceptowane.
         /// </summary>
         public static string BookingStatusAccepted {
             get {
                 return ResourceManager.GetString("BookingStatusAccepted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zaakceptuj.
+        /// </summary>
+        public static string BookingStatusChangeToAccept {
+            get {
+                return ResourceManager.GetString("BookingStatusChangeToAccept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zrezygnuj.
+        /// </summary>
+        public static string BookingStatusChangeToDecline {
+            get {
+                return ResourceManager.GetString("BookingStatusChangeToDecline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do zrobienia.
+        /// </summary>
+        public static string BookingStatusChangeToDo {
+            get {
+                return ResourceManager.GetString("BookingStatusChangeToDo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do odebrania.
+        /// </summary>
+        public static string BookingStatusChangeToPickUp {
+            get {
+                return ResourceManager.GetString("BookingStatusChangeToPickUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rozpocznij weryfikację.
+        /// </summary>
+        public static string BookingStatusChangeToVerify {
+            get {
+                return ResourceManager.GetString("BookingStatusChangeToVerify", resourceCulture);
             }
         }
         
@@ -111,6 +237,672 @@ namespace CarService.WebApplication {
         public static string BookingStatusVerify {
             get {
                 return ResourceManager.GetString("BookingStatusVerify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usługi nieprzypisane.
+        /// </summary>
+        public static string BookingsUnassigned {
+            get {
+                return ResourceManager.GetString("BookingsUnassigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodaj.
+        /// </summary>
+        public static string ButtonAdd {
+            get {
+                return ResourceManager.GetString("ButtonAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Powróć.
+        /// </summary>
+        public static string ButtonBack {
+            get {
+                return ResourceManager.GetString("ButtonBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuń.
+        /// </summary>
+        public static string ButtonDelete {
+            get {
+                return ResourceManager.GetString("ButtonDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edytuj.
+        /// </summary>
+        public static string ButtonEdit {
+            get {
+                return ResourceManager.GetString("ButtonEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zapisz.
+        /// </summary>
+        public static string ButtonSave {
+            get {
+                return ResourceManager.GetString("ButtonSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Samochód.
+        /// </summary>
+        public static string Car {
+            get {
+                return ResourceManager.GetString("Car", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marka.
+        /// </summary>
+        public static string CarBrand {
+            get {
+                return ResourceManager.GetString("CarBrand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pojemność.
+        /// </summary>
+        public static string CarCapacity {
+            get {
+                return ResourceManager.GetString("CarCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paliwo.
+        /// </summary>
+        public static string CarFuel {
+            get {
+                return ResourceManager.GetString("CarFuel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto nie posiada jeszcze żadnej historii.
+        /// </summary>
+        public static string CarHistoryEmpty {
+            get {
+                return ResourceManager.GetString("CarHistoryEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Model.
+        /// </summary>
+        public static string CarModel {
+            get {
+                return ResourceManager.GetString("CarModel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przebieg.
+        /// </summary>
+        public static string CarOdometer {
+            get {
+                return ResourceManager.GetString("CarOdometer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moc.
+        /// </summary>
+        public static string CarPower {
+            get {
+                return ResourceManager.GetString("CarPower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Samochody.
+        /// </summary>
+        public static string Cars {
+            get {
+                return ResourceManager.GetString("Cars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skrzynia biegów.
+        /// </summary>
+        public static string CarTransmission {
+            get {
+                return ResourceManager.GetString("CarTransmission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rocznik.
+        /// </summary>
+        public static string CarYear {
+            get {
+                return ResourceManager.GetString("CarYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uwaga.
+        /// </summary>
+        public static string Caution {
+            get {
+                return ResourceManager.GetString("Caution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uwagi.
+        /// </summary>
+        public static string Cautions {
+            get {
+                return ResourceManager.GetString("Cautions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmień ustawienia konta.
+        /// </summary>
+        public static string ChangeAccountSettings {
+            get {
+                return ResourceManager.GetString("ChangeAccountSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmień datę.
+        /// </summary>
+        public static string ChangeDate {
+            get {
+                return ResourceManager.GetString("ChangeDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ustaw datę usługi.
+        /// </summary>
+        public static string ChangeDateOfBookingTitle {
+            get {
+                return ResourceManager.GetString("ChangeDateOfBookingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przypisz mechanika do usługi.
+        /// </summary>
+        public static string ChangeMechanicOfBookingTitle {
+            get {
+                return ResourceManager.GetString("ChangeMechanicOfBookingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmień hasło.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmiana hasła.
+        /// </summary>
+        public static string ChangePasswordTitle {
+            get {
+                return ResourceManager.GetString("ChangePasswordTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Komentarz.
+        /// </summary>
+        public static string Comment {
+            get {
+                return ResourceManager.GetString("Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hasła do siebie nie pasują.
+        /// </summary>
+        public static string ComparePasswordError {
+            get {
+                return ResourceManager.GetString("ComparePasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Potwierdź hasło.
+        /// </summary>
+        public static string ConfirmPassword {
+            get {
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tworzenie konta.
+        /// </summary>
+        public static string CreateAccount {
+            get {
+                return ResourceManager.GetString("CreateAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obecne hasło.
+        /// </summary>
+        public static string CurrentPassword {
+            get {
+                return ResourceManager.GetString("CurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data.
+        /// </summary>
+        public static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Termin.
+        /// </summary>
+        public static string DateService {
+            get {
+                return ResourceManager.GetString("DateService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Szczegóły.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edycja samochodu.
+        /// </summary>
+        public static string EditCar {
+            get {
+                return ResourceManager.GetString("EditCar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Powód zmiany daty.
+        /// </summary>
+        public static string EditDateCause {
+            get {
+                return ResourceManager.GetString("EditDateCause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edycja usługi.
+        /// </summary>
+        public static string EditServiceTitle {
+            get {
+                return ResourceManager.GetString("EditServiceTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edycja użytkownika.
+        /// </summary>
+        public static string EditUserTitle {
+            get {
+                return ResourceManager.GetString("EditUserTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pole {0} jest wymagane.
+        /// </summary>
+        public static string FieldRequired {
+            get {
+                return ResourceManager.GetString("FieldRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Przypomnienie hasła.
+        /// </summary>
+        public static string ForgotPasswordTitle {
+            get {
+                return ResourceManager.GetString("ForgotPasswordTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Historia.
+        /// </summary>
+        public static string History {
+            get {
+                return ResourceManager.GetString("History", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Historia auta.
+        /// </summary>
+        public static string HistoryCarButton {
+            get {
+                return ResourceManager.GetString("HistoryCarButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Historia twojego auta.
+        /// </summary>
+        public static string HistoryCarTitle {
+            get {
+                return ResourceManager.GetString("HistoryCarTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strona główna.
+        /// </summary>
+        public static string HomePageTitle {
+            get {
+                return ResourceManager.GetString("HomePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zaloguj.
+        /// </summary>
+        public static string LogIn {
+            get {
+                return ResourceManager.GetString("LogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zaloguj się.
+        /// </summary>
+        public static string LoginIntoSystem {
+            get {
+                return ResourceManager.GetString("LoginIntoSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logowanie.
+        /// </summary>
+        public static string LoginTitle {
+            get {
+                return ResourceManager.GetString("LoginTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wyloguj.
+        /// </summary>
+        public static string LogOff {
+            get {
+                return ResourceManager.GetString("LogOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zarządzanie kontem.
+        /// </summary>
+        public static string ManageAccount {
+            get {
+                return ResourceManager.GetString("ManageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mechanik.
+        /// </summary>
+        public static string Mechanic {
+            get {
+                return ResourceManager.GetString("Mechanic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nazwa.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nowe zamówienia.
+        /// </summary>
+        public static string NewBookings {
+            get {
+                return ResourceManager.GetString("NewBookings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nowe hasło.
+        /// </summary>
+        public static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stare zamówienia.
+        /// </summary>
+        public static string OldBookings {
+            get {
+                return ResourceManager.GetString("OldBookings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hasło.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} musi mieć co najmniej 6 znaków.
+        /// </summary>
+        public static string PasswordLengthError {
+            get {
+                return ResourceManager.GetString("PasswordLengthError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zarejestruj.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rejestracja.
+        /// </summary>
+        public static string RegisterTitle {
+            get {
+                return ResourceManager.GetString("RegisterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zapamiętaj mnie.
+        /// </summary>
+        public static string RememberMe {
+            get {
+                return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role.
+        /// </summary>
+        public static string Roles {
+            get {
+                return ResourceManager.GetString("Roles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wyślij.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usługa.
+        /// </summary>
+        public static string Service {
+            get {
+                return ResourceManager.GetString("Service", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zrezygnuj.
+        /// </summary>
+        public static string ServiceCancel {
+            get {
+                return ResourceManager.GetString("ServiceCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usługi.
+        /// </summary>
+        public static string Services {
+            get {
+                return ResourceManager.GetString("Services", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Utwórz hasło.
+        /// </summary>
+        public static string SetPassword {
+            get {
+                return ResourceManager.GetString("SetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ustawienia.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nazwisko.
+        /// </summary>
+        public static string Surname {
+            get {
+                return ResourceManager.GetString("Surname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do Ciebie.
+        /// </summary>
+        public static string ToYou {
+            get {
+                return ResourceManager.GetString("ToYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imię.
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Użytkownicy.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rok.
+        /// </summary>
+        public static string Year {
+            get {
+                return ResourceManager.GetString("Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usługi przypisane do Ciebie.
+        /// </summary>
+        public static string YourBookings {
+            get {
+                return ResourceManager.GetString("YourBookings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twoje samochody.
+        /// </summary>
+        public static string YourCars {
+            get {
+                return ResourceManager.GetString("YourCars", resourceCulture);
             }
         }
     }

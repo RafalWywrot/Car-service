@@ -41,20 +41,23 @@ namespace CarService.WebApplication.Models
 
     public class ChangePasswordViewModel
     {
-        [Required]
+        [MinLength(6, ErrorMessageResourceName = "PasswordLengthError", ErrorMessageResourceType = typeof(Resource))]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "CurrentPassword", ResourceType = typeof(Resource))]
         public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [MinLength(6, ErrorMessageResourceName = "PasswordLengthError", ErrorMessageResourceType = typeof(Resource))]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "NewPassword", ResourceType = typeof(Resource))]
         public string NewPassword { get; set; }
 
+        [MinLength(6, ErrorMessageResourceName = "PasswordLengthError", ErrorMessageResourceType = typeof(Resource))]
+        [Compare("NewPassword", ErrorMessageResourceName = "ComparePasswordError", ErrorMessageResourceType = typeof(Resource))]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "ConfirmPassword", ResourceType = typeof(Resource))]
         public string ConfirmPassword { get; set; }
     }
 

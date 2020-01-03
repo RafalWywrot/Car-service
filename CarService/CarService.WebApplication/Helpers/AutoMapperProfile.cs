@@ -41,6 +41,30 @@ namespace CarService.WebApplication.Helpers
                     opt => opt.MapFrom(src => src.Transmission.Name)
                 );
 
+            CreateMap<DTO.CarSummaryDTO, CarSummaryViewModel>()
+                .ForMember(
+                    dest => dest.EngineCapacity,
+                    opt => opt.MapFrom(src => src.EngineCapacity)
+                ).ForMember(
+                    dest => dest.EnginePower,
+                    opt => opt.MapFrom(src => src.EnginePower)
+                ).ForMember(
+                    dest => dest.Fuel,
+                    opt => opt.MapFrom(src => src.Fuel)
+                ).ForMember(
+                    dest => dest.Model,
+                    opt => opt.MapFrom(src => src.Model)
+                ).ForMember(
+                    dest => dest.Odometer,
+                    opt => opt.MapFrom(src => src.Odometer)
+                ).ForMember(
+                    dest => dest.Transmission,
+                    opt => opt.MapFrom(src => src.Transmission)
+                ).ForMember(
+                    dest => dest.Year,
+                    opt => opt.MapFrom(src => src.Year)
+                );
+
             CreateMap<Entity.Car, DTO.CarDTO>()
                 .ForMember(
                     dest => dest.TransmissionId,

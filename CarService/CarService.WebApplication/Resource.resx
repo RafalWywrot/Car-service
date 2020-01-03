@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCarTitle" xml:space="preserve">
+    <value>Tworzenie nowego samochodu</value>
+  </data>
   <data name="BookingStatusAccepted" xml:space="preserve">
     <value>Zaakceptowane</value>
   </data>
@@ -134,5 +137,266 @@
   </data>
   <data name="BookingStatusVerify" xml:space="preserve">
     <value>W trakcie weryfikacji</value>
+  </data>
+  <data name="ButtonAdd" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="ButtonBack" xml:space="preserve">
+    <value>Powróć</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
+  <data name="ButtonEdit" xml:space="preserve">
+    <value>Edytuj</value>
+  </data>
+  <data name="CarBrand" xml:space="preserve">
+    <value>Marka</value>
+  </data>
+  <data name="CarCapacity" xml:space="preserve">
+    <value>Pojemność</value>
+  </data>
+  <data name="CarFuel" xml:space="preserve">
+    <value>Paliwo</value>
+  </data>
+  <data name="CarModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="CarOdometer" xml:space="preserve">
+    <value>Przebieg</value>
+  </data>
+  <data name="CarPower" xml:space="preserve">
+    <value>Moc</value>
+  </data>
+  <data name="Cars" xml:space="preserve">
+    <value>Samochody</value>
+  </data>
+  <data name="CarTransmission" xml:space="preserve">
+    <value>Skrzynia biegów</value>
+  </data>
+  <data name="CarYear" xml:space="preserve">
+    <value>Rocznik</value>
+  </data>
+  <data name="EditCar" xml:space="preserve">
+    <value>Edycja samochodu</value>
+  </data>
+  <data name="EditServiceTitle" xml:space="preserve">
+    <value>Edycja usługi</value>
+  </data>
+  <data name="FieldRequired" xml:space="preserve">
+    <value>Pole {0} jest wymagane</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>Historia</value>
+  </data>
+  <data name="HistoryCarTitle" xml:space="preserve">
+    <value>Historia twojego auta</value>
+  </data>
+  <data name="HomePageTitle" xml:space="preserve">
+    <value>Strona główna</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Usługi</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Rok</value>
+  </data>
+  <data name="YourCars" xml:space="preserve">
+    <value>Twoje samochody</value>
+  </data>
+  <data name="AsSoonAsPossible" xml:space="preserve">
+    <value>Jak najszybciej</value>
+  </data>
+  <data name="Car" xml:space="preserve">
+    <value>Samochód</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Komentarz</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Mechanic" xml:space="preserve">
+    <value>Mechanik</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Usługa</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="Caution" xml:space="preserve">
+    <value>Uwaga</value>
+  </data>
+  <data name="Cautions" xml:space="preserve">
+    <value>Uwagi</value>
+  </data>
+  <data name="DateService" xml:space="preserve">
+    <value>Termin</value>
+  </data>
+  <data name="ServiceCancel" xml:space="preserve">
+    <value>Zrezygnuj</value>
+  </data>
+  <data name="ChangeAccountSettings" xml:space="preserve">
+    <value>Zmień ustawienia konta</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Zmień hasło</value>
+  </data>
+  <data name="ChangePasswordTitle" xml:space="preserve">
+    <value>Zmiana hasła</value>
+  </data>
+  <data name="ComparePasswordError" xml:space="preserve">
+    <value>Hasła do siebie nie pasują</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Potwierdź hasło</value>
+  </data>
+  <data name="CreateAccount" xml:space="preserve">
+    <value>Tworzenie konta</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Obecne hasło</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ForgotPasswordTitle" xml:space="preserve">
+    <value>Przypomnienie hasła</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Zaloguj</value>
+  </data>
+  <data name="LoginIntoSystem" xml:space="preserve">
+    <value>Zaloguj się</value>
+  </data>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Logowanie</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Wyloguj</value>
+  </data>
+  <data name="ManageAccount" xml:space="preserve">
+    <value>Zarządzanie kontem</value>
+  </data>
+  <data name="NewBookings" xml:space="preserve">
+    <value>Nowe zamówienia</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nowe hasło</value>
+  </data>
+  <data name="OldBookings" xml:space="preserve">
+    <value>Stare zamówienia</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Hasło</value>
+  </data>
+  <data name="PasswordLengthError" xml:space="preserve">
+    <value>{0} musi mieć co najmniej 6 znaków</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Zarejestruj</value>
+  </data>
+  <data name="RegisterTitle" xml:space="preserve">
+    <value>Rejestracja</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Zapamiętaj mnie</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Wyślij</value>
+  </data>
+  <data name="SetPassword" xml:space="preserve">
+    <value>Utwórz hasło</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Użytkownicy</value>
+  </data>
+  <data name="AddServiceTitle" xml:space="preserve">
+    <value>Tworzenie nowej usługi</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="AddMechanic" xml:space="preserve">
+    <value>Dodaj mechanika</value>
+  </data>
+  <data name="AddMechanicTitle" xml:space="preserve">
+    <value>Dodawanie mechanika</value>
+  </data>
+  <data name="CarHistoryEmpty" xml:space="preserve">
+    <value>Auto nie posiada jeszcze żadnej historii</value>
+  </data>
+  <data name="EditUserTitle" xml:space="preserve">
+    <value>Edycja użytkownika</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Nazwisko</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Imię</value>
+  </data>
+  <data name="AssignMechanic" xml:space="preserve">
+    <value>Przypisz mechanika</value>
+  </data>
+  <data name="AssignToMe" xml:space="preserve">
+    <value>Przypisz do mnie</value>
+  </data>
+  <data name="BookingDetails" xml:space="preserve">
+    <value>Szczegóły zamówienia</value>
+  </data>
+  <data name="Bookings" xml:space="preserve">
+    <value>Zamówienia</value>
+  </data>
+  <data name="BookingStatusChangeToAccept" xml:space="preserve">
+    <value>Zaakceptuj</value>
+  </data>
+  <data name="BookingStatusChangeToDecline" xml:space="preserve">
+    <value>Zrezygnuj</value>
+  </data>
+  <data name="BookingStatusChangeToDo" xml:space="preserve">
+    <value>Do zrobienia</value>
+  </data>
+  <data name="BookingStatusChangeToPickUp" xml:space="preserve">
+    <value>Do odebrania</value>
+  </data>
+  <data name="BookingStatusChangeToVerify" xml:space="preserve">
+    <value>Rozpocznij weryfikację</value>
+  </data>
+  <data name="BookingsUnassigned" xml:space="preserve">
+    <value>Usługi nieprzypisane</value>
+  </data>
+  <data name="ChangeDate" xml:space="preserve">
+    <value>Zmień datę</value>
+  </data>
+  <data name="ChangeDateOfBookingTitle" xml:space="preserve">
+    <value>Ustaw datę usługi</value>
+  </data>
+  <data name="ChangeMechanicOfBookingTitle" xml:space="preserve">
+    <value>Przypisz mechanika do usługi</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Szczegóły</value>
+  </data>
+  <data name="HistoryCarButton" xml:space="preserve">
+    <value>Historia auta</value>
+  </data>
+  <data name="ToYou" xml:space="preserve">
+    <value>Do Ciebie</value>
+  </data>
+  <data name="YourBookings" xml:space="preserve">
+    <value>Usługi przypisane do Ciebie</value>
+  </data>
+  <data name="EditDateCause" xml:space="preserve">
+    <value>Powód zmiany daty</value>
   </data>
 </root>

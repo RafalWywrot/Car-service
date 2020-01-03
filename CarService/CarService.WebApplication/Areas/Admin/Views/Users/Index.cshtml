@@ -3,17 +3,26 @@
     @Styles.Render("~/Content/dataTables")
 }
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Resource.Users;
 }
 
-<h2>Index</h2>
+<h2>@Resource.Users</h2>
 
-<p>
-    @Html.ActionLink("Dodaj mechanika", "Add")
-</p>
-<div class="row">
+<div class="row" style="margin-bottom: 20px;">
     <div class="col-md-12">
-        <table id="testedtable" class="table table-condensed display" style="width:100%">
+        @using (Html.BeginForm("Add", "Users", new { @area = "Admin" }, FormMethod.Get, null))
+        {
+            <button type="submit" class="btn btn-success btn-">
+                @Resource.AddMechanic
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        }
+    </div>
+</div>
+
+<div class="row" >
+    <div class="col-md-12">
+        <table id="userstable" class="table table-condensed display" style="width:100%">
             <thead>
                 <tr>
                     <th>
@@ -48,8 +57,8 @@
                             @Html.DisplayFor(modelItem => item.Roles)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { userId = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { userId = item.Id })
+                            @Html.ActionLink(Resource.ButtonEdit, "Edit", new { userId = item.Id }, new { @class = "btn btn-default" }) |
+                            @Html.ActionLink(Resource.ButtonDelete, "Delete", new { userId = item.Id }, new { @class = "btn btn-default" })
                         </td>
                     </tr>
                 }
@@ -62,7 +71,7 @@
     @Scripts.Render("~/bundles/dataTables")
     <script>
         (function ($) {
-            $("#testedtable").DataTable({
+            $("#userstable").DataTable({
                 "language": {
                     "url": "/Scripts/DataTable/polishTranslation.json"
                 }

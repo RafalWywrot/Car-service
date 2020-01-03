@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "IndexRoleUser";
+    ViewBag.Title = Resource.HomePageTitle;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,10 +9,10 @@
 <div class="row">
     <div class="col-md-12">
         <div class="col-md-2">
-            <a class="btn btn-default" href="@Url.Action("Index", "Car")">Auta</a>
+            <a class="btn btn-default" href="@Url.Action("Index", "Car")">@Resource.Cars</a>
         </div>
         <div class="col-md-2">
-            <a class="btn btn-default" href="@Url.Action("Index", "Book")">Usługi</a>
+            <a class="btn btn-default" href="@Url.Action("Index", "Book")">@Resource.Services</a>
         </div>
     </div>
 </div>

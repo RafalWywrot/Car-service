@@ -1,37 +1,39 @@
 ﻿@model IEnumerable<CarService.WebApplication.Models.ServiceBooking.ServiceBookingSummaryViewModel>
 
 @{
-    ViewBag.Title = "History";
+    ViewBag.Title = Resource.HistoryCarTitle;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (!Model.Any())
 {
     <h2>Auto nie posiada jeszcze żadnej historii</h2>
 }
-<h2>Historia @Model.First().CarName</h2>
+else
+{
+    <h2>@Resource.HistoryCarTitle @Model.First().CarName</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
-            <th>@Html.DisplayNameFor(model => model.DateCreated)</th>
-            <th>@Html.DisplayNameFor(model => model.Comment)</th>
-            <th>@Html.DisplayNameFor(model => model.Status)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var bookedService in Model)
-        {
+    <table class="table">
+        <thead>
             <tr>
-                <td>@bookedService.ServiceName</td>
-                <td>@bookedService.DateCreated</td>
-                <td>@bookedService.Comment</td>
-                <td>@bookedService.Status</td>
+                <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
+                <th>@Html.DisplayNameFor(model => model.DateCreated)</th>
+                <th>@Html.DisplayNameFor(model => model.Comment)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
             </tr>
-        }
-    </tbody>
-</table>
-
+        </thead>
+        <tbody>
+            @foreach (var bookedService in Model)
+            {
+                <tr>
+                    <td>@bookedService.ServiceName</td>
+                    <td>@bookedService.DateCreated</td>
+                    <td>@bookedService.Comment</td>
+                    <td>@bookedService.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 <div>
-    @Html.ActionLink("Back", "Index", "Car", new { @area = ""}, new { @class = "btn btn-default" })
+    @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default" })
 </div>

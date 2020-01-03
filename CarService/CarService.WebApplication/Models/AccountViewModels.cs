@@ -5,8 +5,8 @@ namespace CarService.WebApplication.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Email", ResourceType = typeof(Resource))]
         public string Email { get; set; }
     }
 
@@ -36,67 +36,72 @@ namespace CarService.WebApplication.Models
         [Display(Name = "Remember this browser?")]
         public bool RememberBrowser { get; set; }
 
+        [Display(Name = "RememberMe", ResourceType = typeof(Resource))]
         public bool RememberMe { get; set; }
     }
 
     public class ForgotViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Email", ResourceType = typeof(Resource))]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Email", ResourceType = typeof(Resource))]
         [EmailAddress]
         public string Email { get; set; }
-
-        [Required]
+        
         [DataType(DataType.Password)]
-        [Display(Name = "Hasło")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Password", ResourceType = typeof(Resource))]
         public string Password { get; set; }
 
-        [Display(Name = "Zapamiętaj mnie?")]
+        [Display(Name = "RememberMe", ResourceType = typeof(Resource))]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
-        [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Email", ResourceType = typeof(Resource))]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "{0} musi posiadać przynajmniej {2} znaków.", MinimumLength = 6)]
+        [MinLength(6, ErrorMessageResourceName = "PasswordLengthError", ErrorMessageResourceType = typeof(Resource))]
         [DataType(DataType.Password)]
-        [Display(Name = "Hasło")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Password", ResourceType = typeof(Resource))]
         public string Password { get; set; }
 
+        [MinLength(6, ErrorMessageResourceName = "PasswordLengthError", ErrorMessageResourceType = typeof(Resource))]
+        [Compare("Password", ErrorMessageResourceName = "CompareError", ErrorMessageResourceType = typeof(Resource))]
         [DataType(DataType.Password)]
-        [Display(Name = "Potwierdź hasło")]
-        [Compare("Password", ErrorMessage = "Hasła do siebie nie pasują.")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "ConfirmPassword", ResourceType = typeof(Resource))]
         public string ConfirmPassword { get; set; }
     }
 
     public class ResetPasswordViewModel
     {
-        [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Email", ResourceType = typeof(Resource))]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [MinLength(6, ErrorMessageResourceName = "PasswordLengthError", ErrorMessageResourceType = typeof(Resource))]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Password", ResourceType = typeof(Resource))]
         public string Password { get; set; }
 
+        [MinLength(6, ErrorMessageResourceName = "PasswordLengthError", ErrorMessageResourceType = typeof(Resource))]
+        [Compare("Password", ErrorMessageResourceName = "CompareError", ErrorMessageResourceType = typeof(Resource))]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "ConfirmPassword", ResourceType = typeof(Resource))]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -104,9 +109,9 @@ namespace CarService.WebApplication.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Email", ResourceType = typeof(Resource))]
         public string Email { get; set; }
     }
 }
