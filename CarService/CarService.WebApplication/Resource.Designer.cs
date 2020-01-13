@@ -583,6 +583,33 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;&lt;strong&gt;Witaj w CarService&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Prosimy o potwierdzenie adresu e-mail&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Cześć {0},&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p style=&quot;text-align: left;&quot;&gt;Aby ukończyć tworzenia konta i rozpoczęcie korzystania &amp;nbsp;z systemu proszę o potwierdzenie adresu email&lt;/p&gt;
+        ///&lt;p style=&quot;text-align: center;&quot;&gt;&lt;a href=&quot;{1}&quot; target=&quot;_blank&quot;  role [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string EmailConfirmationContent {
+            get {
+                return ResourceManager.GetString("EmailConfirmationContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;&lt;strong&gt;Witaj w CarService&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Twoje konto zostało założone&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Cześć {0},&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Oto twoje dane logowania&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;strong&gt;Login: &lt;/strong&gt;{1}&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p style=&quot;text-alig [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string EmailMechanicCreatedAccountContent {
+            get {
+                return ResourceManager.GetString("EmailMechanicCreatedAccountContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pole {0} jest wymagane.
         /// </summary>
         public static string FieldRequired {
@@ -696,6 +723,15 @@ namespace CarService.WebApplication {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imię.
+        /// </summary>
+        public static string NameUser {
+            get {
+                return ResourceManager.GetString("NameUser", resourceCulture);
             }
         }
         

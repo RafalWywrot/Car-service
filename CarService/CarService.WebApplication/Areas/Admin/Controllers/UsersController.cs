@@ -27,7 +27,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var users = _userManager.Users.ToList();
-            return View(Mapper.Map<IEnumerable<UserBasicViewModel>>(users));
+            return View(Mapper.Map<IEnumerable<UserBasicViewModel>>(users.Where(x => x.Active)));
         }
 
         [HttpGet]
@@ -66,7 +66,8 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
                 return View(model);
             }
 
-            await _userManager.SendEmailAsync(model.Email, "Your account has been created", $"Your login is {model.Email}, password {password}. Click <a href=\"${Url.Action("Login", "Account", new { userId = user.Id})} \">here</a> to log in");
+            var callbackUrl = Url.Action("Login", "Account", new { @area = "" }, protocol: Request.Url.Scheme);
+            await _userManager.SendEmailAsync(model.Email, "Your account has been created", string.Format(Resource.EmailMechanicCreatedAccountContent, model.Name, model.Email, password, callbackUrl));
 
             return RedirectToAction("Index", "Users", new { @area = "Admin" });
         }
@@ -96,6 +97,18 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             user.Email = model.Email;
             await _userManager.UpdateAsync(user);
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                throw new NullReferenceException();
+
+            user.Active = false;
+            await _userManager.UpdateAsync(user);
+            return RedirectToAction("Index");
         }
     }
 }

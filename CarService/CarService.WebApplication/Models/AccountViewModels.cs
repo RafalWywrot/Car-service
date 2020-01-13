@@ -65,6 +65,14 @@ namespace CarService.WebApplication.Models
 
     public class RegisterViewModel
     {
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "NameUser", ResourceType = typeof(Resource))]
+        public string Name { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Surname", ResourceType = typeof(Resource))]
+        public string Surname { get; set; }
+
         [EmailAddress]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         [Display(Name = "Email", ResourceType = typeof(Resource))]
@@ -77,7 +85,7 @@ namespace CarService.WebApplication.Models
         public string Password { get; set; }
 
         [MinLength(6, ErrorMessageResourceName = "PasswordLengthError", ErrorMessageResourceType = typeof(Resource))]
-        [Compare("Password", ErrorMessageResourceName = "CompareError", ErrorMessageResourceType = typeof(Resource))]
+        [Compare("Password", ErrorMessageResourceName = "ComparePasswordError", ErrorMessageResourceType = typeof(Resource))]
         [DataType(DataType.Password)]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         [Display(Name = "ConfirmPassword", ResourceType = typeof(Resource))]
