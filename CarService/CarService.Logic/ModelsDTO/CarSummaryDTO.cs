@@ -10,5 +10,6 @@
         public int Odometer { get; set; }
         public string Fuel { get; set; }
         public int EnginePower { get; set; }
+        public string UserId { get; set; }
     }
 }

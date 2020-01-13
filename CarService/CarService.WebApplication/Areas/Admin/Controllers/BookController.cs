@@ -67,10 +67,12 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
         {
             var bookingService = _carMainteanceService.GetBooking(bookingServiceId);
             var car = _carService.GetCarDetails(bookingService.Car.Id);
+            var user = _userManager.FindById(car.UserId);
             var model = new ServiceBookingDetailAdminViewModel
             {
                 ServiceDetails = Mapper.Map<ServiceBookingSummaryViewModel>(bookingService),
-                CarDetails = car
+                CarDetails = car,
+                User = Mapper.Map<UserBasicViewModel>(user)
             };
             return View(model);
         }
