@@ -420,4 +420,7 @@
   &lt;br&gt;
 &lt;/p&gt;</value>
   </data>
+  <data name="NameUser" xml:space="preserve">
+    <value>Imię</value>
+  </data>
 </root>

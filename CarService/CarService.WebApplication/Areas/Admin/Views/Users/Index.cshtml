@@ -58,7 +58,10 @@
                         </td>
                         <td>
                             @Html.ActionLink(Resource.ButtonEdit, "Edit", new { userId = item.Id }, new { @class = "btn btn-default" }) |
-                            @Html.ActionLink(Resource.ButtonDelete, "Delete", new { userId = item.Id }, new { @class = "btn btn-default" })
+                            @using (Html.BeginForm("Delete", "Users", new { @userId = item.Id, @area = "Admin" }, FormMethod.Post, new { }))
+                            {
+                                <input type="submit" class="btn btn-default" value="@Resource.ButtonDelete" />
+                            }
                         </td>
                     </tr>
                 }

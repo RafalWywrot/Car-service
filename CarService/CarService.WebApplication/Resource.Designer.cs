@@ -727,6 +727,15 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Imię.
+        /// </summary>
+        public static string NameUser {
+            get {
+                return ResourceManager.GetString("NameUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nowe zamówienia.
         /// </summary>
         public static string NewBookings {

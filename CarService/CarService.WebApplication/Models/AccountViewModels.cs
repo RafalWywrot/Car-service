@@ -65,6 +65,14 @@ namespace CarService.WebApplication.Models
 
     public class RegisterViewModel
     {
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "NameUser", ResourceType = typeof(Resource))]
+        public string Name { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "Surname", ResourceType = typeof(Resource))]
+        public string Surname { get; set; }
+
         [EmailAddress]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         [Display(Name = "Email", ResourceType = typeof(Resource))]

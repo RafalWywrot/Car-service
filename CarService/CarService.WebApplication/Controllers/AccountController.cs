@@ -136,7 +136,13 @@ namespace CarService.WebApplication.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Active = false };
+            var user = new ApplicationUser {
+                Name = model.Name,
+                Surname = model.Surname,
+                UserName = model.Email,
+                Email = model.Email,
+                Active = false
+            };
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
             {
@@ -155,7 +161,7 @@ namespace CarService.WebApplication.Controllers
             // Send an email with this link
             string code = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
             var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-            await _userManager.SendEmailAsync(model.Email, "Confirm your account", string.Format(Resource.EmailConfirmationContent, model.Email, callbackUrl));
+            await _userManager.SendEmailAsync(model.Email, "Confirm your account", string.Format(Resource.EmailConfirmationContent, model.Name, callbackUrl));
 
             return RedirectToAction("Index", "Home");
         }
