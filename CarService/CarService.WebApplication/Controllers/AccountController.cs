@@ -155,7 +155,7 @@ namespace CarService.WebApplication.Controllers
             // Send an email with this link
             string code = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
             var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-            await _userManager.SendEmailAsync(model.Email, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+            await _userManager.SendEmailAsync(model.Email, "Confirm your account", string.Format(Resource.EmailConfirmationContent, model.Email, callbackUrl));
 
             return RedirectToAction("Index", "Home");
         }

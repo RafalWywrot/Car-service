@@ -19,7 +19,7 @@ namespace CarService.WebApplication.Models.User
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
+        //[Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         [Display(Name = "Roles", ResourceType = typeof(Resource))]
         public string Roles { get; set; }
     }

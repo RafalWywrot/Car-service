@@ -399,4 +399,25 @@
   <data name="EditDateCause" xml:space="preserve">
     <value>Powód zmiany daty</value>
   </data>
+  <data name="EmailConfirmationContent" xml:space="preserve">
+    <value>&lt;p style="text-align: center;"&gt;&lt;span style="font-size: 24px;"&gt;&lt;strong&gt;Witaj w CarService&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="font-size: 18px;"&gt;Prosimy o potwierdzenie adresu e-mail&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;Cześć {0},&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;Aby ukończyć tworzenia konta i rozpoczęcie korzystania &amp;nbsp;z systemu proszę o potwierdzenie adresu email&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;a href="{1}" target="_blank"  role="button"&gt;Potwierdź adres e-mail&lt;/a&gt;
+  &lt;br&gt;
+&lt;/p&gt;
+</value>
+  </data>
+  <data name="EmailMechanicCreatedAccountContent" xml:space="preserve">
+    <value>&lt;p style="text-align: center;"&gt;&lt;span style="font-size: 24px;"&gt;&lt;strong&gt;Witaj w CarService&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="font-size: 18px;"&gt;Twoje konto zostało założone&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;Cześć {0},&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;Oto twoje dane logowania&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;&lt;strong&gt;Login: &lt;/strong&gt;{1}&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;&lt;strong&gt;Hasło: &lt;/strong&gt;{2}&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;a href="{3}" target="_blank"  role="button"&gt;Zaloguj się&lt;/a&gt;
+  &lt;br&gt;
+&lt;/p&gt;</value>
+  </data>
 </root>
