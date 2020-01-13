@@ -23,22 +23,21 @@ namespace CarService.WebApplication.Helpers
                     opt => opt.MapFrom(src => src.Name)
                 );
             CreateMap<Entity.Car, DTO.CarSummaryDTO>()
-                .ForMember
-                (
+                .ForMember(
                     dest => dest.Id,
                     opt => opt.MapFrom(src => src.Id)
-                ).ForMember
-                (
+                ).ForMember(
                     dest => dest.Model,
                     opt => opt.MapFrom(src => $"{src.Model.Brand.Name} / {src.Model.Name}")
-                ).ForMember
-                (
+                ).ForMember(
                     dest => dest.Fuel,
                     opt => opt.MapFrom(src => src.Fuel.Name)
-                ).ForMember
-                (
+                ).ForMember(
                     dest => dest.Transmission,
                     opt => opt.MapFrom(src => src.Transmission.Name)
+                ).ForMember(
+                    dest => dest.UserId,
+                    opt => opt.MapFrom(src => src.AssignedUser.Id)
                 );
 
             CreateMap<DTO.CarSummaryDTO, CarSummaryViewModel>()

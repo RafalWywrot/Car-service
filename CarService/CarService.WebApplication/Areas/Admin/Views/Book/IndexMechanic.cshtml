@@ -19,7 +19,6 @@
                 <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Status)</th>
                 <th></th>
                 <th></th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -33,9 +32,6 @@
                     <td>@Html.DisplayFor(modelItem => item.Status)</td>
                     <td>
                         @Html.ActionLink(Resource.Details, "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
-                    </td>
-                    <td>
-                        akcje @*do wykonania, czyli zmiana statusow*@
                     </td>
                     <td>
                         @if (item.Status == Resource.BookingStatusCreated)
@@ -55,7 +51,6 @@
                         {
                             <button class='changeToFinished' data-id="@item.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToPickUp</button>
                         }
-                        dane kontaktowe
                     </td>
                 </tr>
             }
@@ -112,7 +107,6 @@
                             {
                                 <button class='changeToFinished' data-id="@item.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToPickUp</button>
                             }
-                            dane kontaktowe
                         </td>
                     </tr>
                 }
@@ -129,13 +123,33 @@
             $("#MechanicAssignBookingsIndexTable").DataTable({
                 "language": {
                     "url": "/Scripts/DataTable/polishTranslation.json"
-                }
+                },
+                'columnDefs': [
+                    {
+                        targets: -2,
+                        'className': 'dt-body-center'
+                    },
+                    {
+                        targets: -1,
+                        'orderable': false
+                    }
+                ]
             });
 
             $("#MechanicFreeToGetBookingsIndexTable").DataTable({
                 "language": {
                     "url": "/Scripts/DataTable/polishTranslation.json"
-                }
+                },
+                'columnDefs': [
+                    {
+                        targets: -2,
+                        'className': 'dt-body-center'
+                    },
+                    {
+                        targets: -1,
+                        'orderable': false
+                    }
+                ]
             });
         })(jQuery);
     </script>
