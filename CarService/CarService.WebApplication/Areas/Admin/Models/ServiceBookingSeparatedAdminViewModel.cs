@@ -6,5 +6,6 @@ namespace CarService.WebApplication.Areas.Admin.Models
     {
         public IEnumerable<ServiceBookingSummaryAdminViewModel> ServicesUnassignedToAnyMechanic { get; set; }
         public IEnumerable<ServiceBookingSummaryAdminViewModel> ServicesAlreadyAssigned { get; set; }
+        public bool IsArchived { get; set; }
     }
 }

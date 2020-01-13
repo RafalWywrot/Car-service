@@ -161,10 +161,7 @@ namespace CarService.WebApplication.Helpers
                     opt => opt.MapFrom(src => src.Service.Name)
                ).ForMember(
                     dest => dest.DateCreated,
-                    opt => opt.Ignore()
-               ).ForMember(
-                    dest => dest.DateCreated,
-                    opt => opt.Ignore()
+                    opt => opt.MapFrom(src => (src.DateStarted != null ? src.DateStarted.Value.ToShortDateString() : "nieustawiona"))
                ).ForMember(
                     dest => dest.Mechanic,
                     opt => opt.MapFrom(src => src.MechanicFullName)

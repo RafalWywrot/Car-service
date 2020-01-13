@@ -754,7 +754,7 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stare zamówienia.
+        ///   Looks up a localized string similar to Zamówienia zrealizowane.
         /// </summary>
         public static string OldBookings {
             get {

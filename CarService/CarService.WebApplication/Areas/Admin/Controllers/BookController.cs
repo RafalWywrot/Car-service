@@ -31,21 +31,38 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            var allBookings = _carMainteanceService.GetAllBookings();
+            var allUnfinishedBookings = _carMainteanceService.GetUnfinishedBookings();
             if (User.IsInRole(SystemRoles.Admin))
             {
-                var model = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allBookings);
+                var model = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allUnfinishedBookings);
                 return View("Index", model);
             }
             var userId = User.Identity.GetUserId();
             var modelForMechanic = new ServiceBookingSeparatedAdminViewModel
             {
-                ServicesAlreadyAssigned = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allBookings.Where(x => x.MechanicId == userId)),
-                ServicesUnassignedToAnyMechanic = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allBookings.Where(x => string.IsNullOrEmpty(x.MechanicId)))
+                ServicesAlreadyAssigned = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allUnfinishedBookings.Where(x => x.MechanicId == userId)),
+                ServicesUnassignedToAnyMechanic = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allUnfinishedBookings.Where(x => string.IsNullOrEmpty(x.MechanicId)))
             };
             return View("IndexMechanic", modelForMechanic);
         }
-
+        
+        public ActionResult Archived()
+        {
+            var allFinishedBookings = _carMainteanceService.GetArchivedBookings();
+            if (User.IsInRole(SystemRoles.Admin))
+            {
+                var model = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allFinishedBookings);
+                return View("Index", model);
+            }
+            var userId = User.Identity.GetUserId();
+            var modelForMechanic = new ServiceBookingSeparatedAdminViewModel
+            {
+                IsArchived = true,
+                ServicesAlreadyAssigned = Mapper.Map<IEnumerable<ServiceBookingSummaryAdminViewModel>>(allFinishedBookings.Where(x => x.MechanicId == userId))
+            };
+            return View("IndexMechanic", modelForMechanic);
+        }
+        
         public ViewResult Show(int bookingServiceId)
         {
             var bookingService = _carMainteanceService.GetBooking(bookingServiceId);
