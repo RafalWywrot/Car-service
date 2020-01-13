@@ -7,7 +7,7 @@
         @if (User.IsInRole(SystemRoles.Admin) || User.IsInRole(SystemRoles.Mechanic))
         {
             <li>@Html.ActionLink(Resource.NewBookings, "Index", "Book", new { @area = "Admin" }, null)</li>
-            <li>@Html.ActionLink(Resource.OldBookings, "Index", "Book", new { @area = "Admin" }, null)</li>
+            <li>@Html.ActionLink(Resource.OldBookings, "Archived", "Book", new { @area = "Admin" }, null)</li>
         }
         @if (User.IsInRole(SystemRoles.Admin))
         {

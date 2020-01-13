@@ -40,6 +40,18 @@ namespace CarService.Logic.Services.Concrete
         {
             return Mapper.Map<IEnumerable<BookingServiceDTO>>(_carMainteanceRepository.GetAllBookings());
         }
+        
+        public IEnumerable<BookingServiceDTO> GetUnfinishedBookings()
+        {
+            var bookings = _carMainteanceRepository.GetAllBookings();
+            return Mapper.Map<IEnumerable<BookingServiceDTO>>(bookings.Where(x => x.Status != Repository.CustomTypes.ServiceBookingStatus.Finished && x.Status != Repository.CustomTypes.ServiceBookingStatus.Declined));
+        }
+
+        public IEnumerable<BookingServiceDTO> GetArchivedBookings()
+        {
+            var bookings = _carMainteanceRepository.GetAllBookings();
+            return Mapper.Map<IEnumerable<BookingServiceDTO>>(bookings.Where(x => x.Status == Repository.CustomTypes.ServiceBookingStatus.Finished || x.Status == Repository.CustomTypes.ServiceBookingStatus.Declined));
+        }
 
         public BookingServiceDTO GetBooking(int id)
         {

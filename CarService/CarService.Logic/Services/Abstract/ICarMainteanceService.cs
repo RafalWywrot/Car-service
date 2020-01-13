@@ -14,6 +14,8 @@ namespace CarService.Logic.Services.Abstract
         IEnumerable<BookingServiceDTO> GetBookings(string userId);
         IEnumerable<BookingServiceDTO> GetBookingsByCar(int carId);
         IEnumerable<BookingServiceDTO> GetAllBookings();
+        IEnumerable<BookingServiceDTO> GetUnfinishedBookings();
+        IEnumerable<BookingServiceDTO> GetArchivedBookings();
         BookingServiceDTO GetBooking(int id);
         void UpdateServiceBooking(BookingServiceDTO bookingService);
         void UpdateDateServiceBooking(int id, DateTime date, string reason);

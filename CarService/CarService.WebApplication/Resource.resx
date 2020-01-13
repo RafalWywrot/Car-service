@@ -289,7 +289,7 @@
     <value>Nowe hasło</value>
   </data>
   <data name="OldBookings" xml:space="preserve">
-    <value>Stare zamówienia</value>
+    <value>Zamówienia zrealizowane</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Hasło</value>
