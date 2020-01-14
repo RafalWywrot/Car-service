@@ -3,27 +3,15 @@
     @Styles.Render("~/Content/dataTables")
 }
 @{
-    ViewBag.Title = @Resource.YourCars;
-    bool anyOldCar = Model.Any(x => x.Active == false);
+    ViewBag.Title = @Resource.PreviousCars;
 }
 
-<h2>@Resource.YourCars</h2>
-<div class="row">
-    <div class="col-md-12">
-        @using (Html.BeginForm("Add", "Car", FormMethod.Get))
-        {
-            <button type="submit" class="btn btn-success btn-">
-                @Resource.ButtonAdd
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-        }
-    </div>
-</div>
+<h2>@Resource.PreviousCars</h2>
 
 <div class="row" style="margin-top:1vh">
     <div class="col-md-12">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" }) @*for error when cannot delete car*@
-        <table id="userCarIndex" class="table table-condensed display" style="width:100%">
+        <table id="userPreviousCarIndex" class="table table-condensed display" style="width:100%">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Model)</th>
@@ -37,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Where(x => x.Active))
+                @foreach (var item in Model)
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Model)</td>
@@ -48,12 +36,10 @@
                         <td>@Html.DisplayFor(modelItem => item.Fuel)</td>
                         <td>@Html.DisplayFor(modelItem => item.EnginePower)</td>
                         <td>
-                            @Html.ActionLink(Resource.ButtonEdit, "Edit", new { carId = item.Id }, new { @class = "btn btn-default" }) |
-                            @using (Html.BeginForm("Delete", "Car", new { @carId = item.Id, @area = "" }, FormMethod.Post, new { @class = "form-horizontal" }))
+                            @using (Html.BeginForm("ActivateCar", "Car", new { @carId = item.Id, @area = "" }, FormMethod.Post, new { @class = "form-horizontal" }))
                             {
-                                <input type="submit" class="btn btn-default" value="@Resource.ButtonDelete" /> <span>|</span>
+                                <input type="submit" class="btn btn-default" value="Przywróć" /> <span></span>
                             }
-                            @Html.ActionLink(Resource.History, "History", "Car", new { @area = "", carId = item.Id }, new { @class = "btn btn-default" })
                         </td>
                     </tr>
                 }
@@ -61,19 +47,12 @@
         </table>
     </div>
 </div>
-@if (anyOldCar)
-{
-    <div class="row">
-        <div class="col-md-12">
-            @Html.ActionLink("Zobacz stare samochody", "PreviousCars", "Car", new { @area = "" }, new { @class = "btn btn-default" })
-        </div>
-    </div>
-}
+
 @section Scripts {
     @Scripts.Render("~/bundles/dataTables")
     <script>
         (function ($) {
-            $("#userCarIndex").DataTable({
+            $("#userPreviousCarIndex").DataTable({
                 "language": {
                     "url": "/Scripts/DataTable/polishTranslation.json"
                 }

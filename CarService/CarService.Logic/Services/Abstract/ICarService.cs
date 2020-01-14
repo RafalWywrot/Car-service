@@ -15,5 +15,6 @@ namespace CarService.Logic.Services.Abstract
         IEnumerable<IdNamePair> GetFuelTypes();
         void AddCar(CarDTO car, string userId);
         void DeleteCar(int carId);
+        void ActivateCar(int carId);
     }
 }

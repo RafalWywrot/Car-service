@@ -98,6 +98,19 @@ namespace CarService.WebApplication.Controllers
             }
         }
 
+        public ActionResult PreviousCars()
+        {
+            var cars = GetCars();
+            return View(cars.Where(x => x.Active == false));
+        }
+
+        [HttpPost]
+        public ActionResult ActivateCar(int carId)
+        {
+            _carService.ActivateCar(carId);
+            return RedirectToAction("Index");
+        }
+
         private IEnumerable<CarSummaryViewModel> GetCars()
         {
             var userId = User.Identity.GetUserId();

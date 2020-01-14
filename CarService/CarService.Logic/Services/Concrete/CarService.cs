@@ -110,5 +110,12 @@ namespace CarService.Logic.Services.Concrete
             car.Active = false;
             _carRepository.UpdateCar(car);
         }
+
+        public void ActivateCar(int carId)
+        {
+            var car = _carRepository.GetCar(carId);
+            car.Active = true;
+            _carRepository.UpdateCar(car);
+        }
     }
 }

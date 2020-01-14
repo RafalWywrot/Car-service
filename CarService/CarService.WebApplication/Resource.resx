@@ -426,4 +426,7 @@
   <data name="PhoneNumber" xml:space="preserve">
     <value>Numer telefonu</value>
   </data>
+  <data name="PreviousCars" xml:space="preserve">
+    <value>Poprzednie auta</value>
+  </data>
 </root>

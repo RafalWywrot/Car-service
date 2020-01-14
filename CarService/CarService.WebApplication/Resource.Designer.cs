@@ -790,6 +790,15 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Poprzednie auta.
+        /// </summary>
+        public static string PreviousCars {
+            get {
+                return ResourceManager.GetString("PreviousCars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zarejestruj.
         /// </summary>
         public static string Register {
