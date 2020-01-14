@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using CarService.WebApplication.Models;
 using CarService.Identity;
 using CarService.WebApplication.Helpers;
+using CarService.WebApplication.Helpers.Extensions;
 
 namespace CarService.WebApplication.Controllers
 {
@@ -137,8 +138,8 @@ namespace CarService.WebApplication.Controllers
                 return View(model);
 
             var user = new ApplicationUser {
-                Name = model.Name,
-                Surname = model.Surname,
+                Name = model.Name.FirstCharToUpper(),
+                Surname = model.Surname.FirstCharToUpper(),
                 UserName = model.Email,
                 Email = model.Email,
                 PhoneNumber = model.PhoneNumber,

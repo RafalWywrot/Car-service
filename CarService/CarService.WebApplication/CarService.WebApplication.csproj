@@ -248,6 +248,7 @@
     <Compile Include="Helpers\AutoMapperProfile.cs" />
     <Compile Include="Helpers\Extensions\CollectionExtensions.cs" />
     <Compile Include="Helpers\Extensions\ModelState.cs" />
+    <Compile Include="Helpers\Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\Mail.cs" />
     <Compile Include="Helpers\SystemRoles.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

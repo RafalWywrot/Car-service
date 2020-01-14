@@ -44,8 +44,8 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
 
             var user = new ApplicationUser
             {
-                Name = model.Name,
-                Surname = model.Surname,
+                Name = model.Name.FirstCharToUpper(),
+                Surname = model.Surname.FirstCharToUpper(),
                 Email = model.Email,
                 UserName = model.Email,
                 PhoneNumber = model.PhoneNumber,
