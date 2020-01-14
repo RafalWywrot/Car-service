@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CarService.Logic.Exceptions;
 using CarService.Logic.ModelsDTO;
 using CarService.Logic.Services.Abstract;
 using CarService.WebApplication.Helpers;
@@ -27,9 +28,7 @@ namespace CarService.WebApplication.Controllers
         // GET: Car
         public ActionResult Index()
         {
-            var userId = User.Identity.GetUserId();
-            var cars = _carService.GetUserCars(userId);
-            return View(Mapper.Map<IEnumerable<CarSummaryViewModel>>(cars));
+            return View(GetCars());
         }
         
         public ActionResult Add()
@@ -82,6 +81,28 @@ namespace CarService.WebApplication.Controllers
             var allBookings = _carMainteanceService.GetBookingsByCar(carId);
             var model = Mapper.Map<IEnumerable<ServiceBookingSummaryViewModel>>(allBookings);
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int carId)
+        {
+            try
+            {
+                _carService.DeleteCar(carId);
+                return RedirectToAction("Index");
+            }
+            catch (CarException)
+            {
+                ModelState.AddModelError(string.Empty, "Auto jest w trakcie niezakończonych usług. Nie możesz usunąć auta");
+                return View("Index", GetCars());
+            }
+        }
+
+        private IEnumerable<CarSummaryViewModel> GetCars()
+        {
+            var userId = User.Identity.GetUserId();
+            var cars = _carService.GetUserCars(userId);
+            return Mapper.Map<IEnumerable<CarSummaryViewModel>>(cars);
         }
 
         private void InitializeCarDropdowns(CarFormViewModel model)
