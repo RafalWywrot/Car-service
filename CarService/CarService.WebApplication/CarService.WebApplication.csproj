@@ -254,6 +254,7 @@
     <Compile Include="Models\Car\CarFormViewModel.cs" />
     <Compile Include="Models\Car\CarSummaryViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ServiceBooking\ServiceBookingDetailViewModel.cs" />
     <Compile Include="Models\ServiceBooking\ServiceBookingFormViewModel.cs" />
     <Compile Include="Models\ServiceBooking\ServiceBookingSummaryViewModel.cs" />
     <Compile Include="Models\TestAutoMapperViewModel.cs" />
@@ -362,6 +363,7 @@
     <Content Include="Views\Home\IndexRoleUser.cshtml" />
     <Content Include="Views\Book\_Date.cshtml" />
     <Content Include="Views\Car\History.cshtml" />
+    <Content Include="Views\Book\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

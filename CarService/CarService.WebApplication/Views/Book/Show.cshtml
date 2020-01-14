@@ -1,0 +1,59 @@
+﻿@model CarService.WebApplication.Models.ServiceBooking.ServiceBookingDetailViewModel
+@{
+    ViewBag.Title = Resource.BookingDetails;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Resource.BookingDetails</h2>
+
+<div class="form-horizontal">
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label col-md-4">@Resource.CarModel</label>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.CarDetails.Model, new { @class = "form-control  col-md-6", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceDetails.ServiceName, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.ServiceDetails.ServiceName, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">Numer do mechanika</label>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.MechanicPhoneNumber, new { @class = "form-control  col-md-6", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceDetails.DateCreated, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.ServiceDetails.DateCreated, new { @class = "form-control col-md-6", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceDetails.Comment, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextAreaFor(model => model.ServiceDetails.Comment, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceDetails.Status, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.ServiceDetails.Status, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink(Resource.ButtonBack, "Index", "Book", new { @area = "" }, new { @class = "btn btn-default" })
+</div>

@@ -423,4 +423,7 @@
   <data name="NameUser" xml:space="preserve">
     <value>Imię</value>
   </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Numer telefonu</value>
+  </data>
 </root>

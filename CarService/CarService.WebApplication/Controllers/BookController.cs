@@ -6,6 +6,7 @@ using CarService.WebApplication.Helpers.ActionFilters;
 using CarService.WebApplication.Helpers.Extensions;
 using CarService.WebApplication.Models.Car;
 using CarService.WebApplication.Models.ServiceBooking;
+using CarService.WebApplication.Models.User;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,16 @@ namespace CarService.WebApplication.Controllers
     {
         private readonly ICarMainteanceService _carMainteanceService;
         private readonly ICarService _carService;
+        private readonly ApplicationUserManager _userManager;
 
-        public BookController(ICarMainteanceService carMainteanceService, ICarService carService)
+        public BookController(
+            ICarMainteanceService carMainteanceService,
+            ICarService carService,
+            ApplicationUserManager userManager)
         {
             _carMainteanceService = carMainteanceService;
             _carService = carService;
+            _userManager = userManager;
         }
 
         public ActionResult Index()
@@ -30,6 +36,20 @@ namespace CarService.WebApplication.Controllers
             var userId = User.Identity.GetUserId();
             var bookingsOfAllCars = _carMainteanceService.GetBookings(userId);
             var model = Mapper.Map<IEnumerable<ServiceBookingSummaryViewModel>>(bookingsOfAllCars);
+            return View(model);
+        }
+
+        public ViewResult Show(int bookingServiceId)
+        {
+            var bookingService = _carMainteanceService.GetBooking(bookingServiceId);
+            var car = _carService.GetCarDetails(bookingService.Car.Id);
+            var mechanic = _userManager.FindById(bookingService.MechanicId);
+            var model = new ServiceBookingDetailViewModel
+            {
+                ServiceDetails = Mapper.Map<ServiceBookingSummaryViewModel>(bookingService),
+                CarDetails = car,
+                MechanicPhoneNumber = mechanic?.PhoneNumber ?? string.Empty
+            };
             return View(model);
         }
 

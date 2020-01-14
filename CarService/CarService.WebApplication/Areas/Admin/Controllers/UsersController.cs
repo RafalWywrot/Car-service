@@ -48,6 +48,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
                 Surname = model.Surname,
                 Email = model.Email,
                 UserName = model.Email,
+                PhoneNumber = model.PhoneNumber,
                 Active = true
             };
 
