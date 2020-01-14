@@ -102,7 +102,7 @@ namespace CarService.WebApplication.Controllers
         private void InitializeDropdown(ServiceBookingFormViewModel model)
         {
             var userId = User.Identity.GetUserId();
-            model.Cars = _carService.GetUserCars(userId).ToSelectListItems(x => x.Id, x => x.Model);
+            model.Cars = _carService.GetUserCars(userId).Where(x => x.Active).ToSelectListItems(x => x.Id, x => x.Model);
             model.Services = _carMainteanceService.GetServices().ToSelectListItems(x => x.Id, x => x.Name);
         }
     }
