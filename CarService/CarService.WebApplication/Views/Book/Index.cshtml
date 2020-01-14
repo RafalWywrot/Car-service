@@ -36,6 +36,7 @@
                             @Html.DisplayNameFor(model => model.Status)
                         </th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbead>
@@ -61,6 +62,9 @@
                                     <span>|</span>
                                     @Html.ActionLink(Resource.ServiceCancel, "Delete", new { id = item.Id })
                                 }
+                            </td>
+                            <td>
+                                @Html.ActionLink(Resource.Details, "Show", new { @area = "", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
                             </td>
                         </tr>
                     }
@@ -89,6 +93,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Status)
                         </th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,6 +112,9 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Status)
                             </td>
+                            <td>
+                                @Html.ActionLink(Resource.Details, "Show", new { @area = "", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -122,12 +130,32 @@
             $("#userBookIndexTableCurrent").DataTable({
                 "language": {
                     "url": "/Scripts/DataTable/polishTranslation.json"
-                }
+                },
+                'columnDefs': [
+                    {
+                        targets: -1,
+                        'className': 'dt-body-center'
+                    },
+                    {
+                        targets: [-1, -2],
+                        'orderable': false
+                    }
+                ]
             });
             $("#userBookIndexTableHistory").DataTable({
                 "language": {
                     "url": "/Scripts/DataTable/polishTranslation.json"
-                }
+                },
+                'columnDefs': [
+                    {
+                        targets: -1,
+                        'className': 'dt-body-center'
+                    },
+                    {
+                        targets: [-1, -2],
+                        'orderable': false
+                    }
+                ]
             });
         })(jQuery);
     </script>
