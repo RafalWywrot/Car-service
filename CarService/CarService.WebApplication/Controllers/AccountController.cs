@@ -141,6 +141,7 @@ namespace CarService.WebApplication.Controllers
                 Surname = model.Surname,
                 UserName = model.Email,
                 Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
                 Active = false
             };
             var result = await _userManager.CreateAsync(user, model.Password);

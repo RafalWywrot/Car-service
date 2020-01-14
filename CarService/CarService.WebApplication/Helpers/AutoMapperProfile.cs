@@ -199,24 +199,22 @@ namespace CarService.WebApplication.Helpers
 
             #region Users userManager
             CreateMap<ApplicationUser, UserBasicViewModel>()
-                .ForMember
-                (
+                .ForMember(
                     dest => dest.Id,
                     opt => opt.MapFrom(src => src.Id)
-                ).ForMember
-                (
+                ).ForMember(
                     dest => dest.Name,
                     opt => opt.MapFrom(src => src.Name)
-                ).ForMember
-                (
+                ).ForMember(
                     dest => dest.Surname,
                     opt => opt.MapFrom(src => src.Surname)
-                ).ForMember
-                (
+                ).ForMember(
+                    dest => dest.PhoneNumber,
+                    opt => opt.MapFrom(src => src.PhoneNumber)
+                ).ForMember(
                     dest => dest.Email,
                     opt => opt.MapFrom(src => src.Email)
-                ).ForMember
-                (
+                ).ForMember(
                     dest => dest.Roles,
                     opt => opt.MapFrom(src => string.Join(", ", src.Roles.Select(x => x.Name)))
                 );
