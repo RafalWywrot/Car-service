@@ -42,11 +42,11 @@
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Model)</td>
                         <td>@Html.DisplayFor(modelItem => item.Year)</td>
-                        <td>@Html.DisplayFor(modelItem => item.EngineCapacity)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EngineCapacity)<span> cm<sup>3</sup></span></td>
                         <td>@Html.DisplayFor(modelItem => item.Transmission)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Odometer)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Odometer)<span> km</span></td>
                         <td>@Html.DisplayFor(modelItem => item.Fuel)</td>
-                        <td>@Html.DisplayFor(modelItem => item.EnginePower)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EnginePower)<span> KM</span></td>
                         <td>
                             @Html.ActionLink(Resource.ButtonEdit, "Edit", new { carId = item.Id }, new { @class = "btn btn-default" }) |
                             @using (Html.BeginForm("Delete", "Car", new { @carId = item.Id, @area = "" }, FormMethod.Post, new { @class = "form-horizontal" }))
