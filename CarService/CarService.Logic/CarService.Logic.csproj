@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\CarException.cs" />
     <Compile Include="ModelsDTO\CarBrandDTO.cs" />
     <Compile Include="ModelsDTO\CarDTO.cs" />
     <Compile Include="ModelsDTO\CarModelDTO.cs" />

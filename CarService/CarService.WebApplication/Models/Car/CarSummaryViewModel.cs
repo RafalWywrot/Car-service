@@ -25,5 +25,7 @@ namespace CarService.WebApplication.Models.Car
 
         [Display(Name = "CarPower", ResourceType = typeof(Resource))]
         public int EnginePower { get; set; }
+        
+        public bool Active { get; set; }
     }
 }

@@ -38,6 +38,9 @@ namespace CarService.WebApplication.Helpers
                 ).ForMember(
                     dest => dest.UserId,
                     opt => opt.MapFrom(src => src.AssignedUser.Id)
+                ).ForMember(
+                    dest => dest.Active,
+                    opt => opt.MapFrom(src => src.Active)
                 );
 
             CreateMap<DTO.CarSummaryDTO, CarSummaryViewModel>()
@@ -62,6 +65,9 @@ namespace CarService.WebApplication.Helpers
                 ).ForMember(
                     dest => dest.Year,
                     opt => opt.MapFrom(src => src.Year)
+                ).ForMember(
+                    dest => dest.Active,
+                    opt => opt.MapFrom(src => src.Active)
                 );
 
             CreateMap<Entity.Car, DTO.CarDTO>()

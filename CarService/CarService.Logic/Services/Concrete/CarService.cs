@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CarService.Logic.Exceptions;
 using CarService.Logic.ModelsDTO;
 using CarService.Logic.Services.Abstract;
 using CarService.Repository.Repositories.Abstract;
@@ -97,6 +98,24 @@ namespace CarService.Logic.Services.Concrete
             currentCar.Year = car.Year;
 
             _carRepository.UpdateCar(currentCar);
+        }
+
+        public void DeleteCar(int carId)
+        {
+            var car = _carRepository.GetCar(carId);
+            var servicesCar = car.BookingServices;
+            if (servicesCar.Any(x => x.Status != Repository.CustomTypes.ServiceBookingStatus.Finished || x.Status == Repository.CustomTypes.ServiceBookingStatus.Declined))
+                throw new CarException();
+
+            car.Active = false;
+            _carRepository.UpdateCar(car);
+        }
+
+        public void ActivateCar(int carId)
+        {
+            var car = _carRepository.GetCar(carId);
+            car.Active = true;
+            _carRepository.UpdateCar(car);
         }
     }
 }
