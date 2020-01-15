@@ -54,6 +54,9 @@ namespace CarService.WebApplication.Areas.Admin
                 ).ForMember(
                     dest => dest.CarModelName,
                     opt => opt.MapFrom(src => src.Name)
+                ).ForMember(
+                    dest => dest.Active,
+                    opt => opt.MapFrom(src => src.Active ? 1 : 0)
                 );
         }
     }

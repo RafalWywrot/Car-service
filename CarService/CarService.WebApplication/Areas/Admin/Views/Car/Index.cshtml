@@ -2,6 +2,11 @@
 @section Styles{
     @Styles.Render("~/Content/dataTables")
 }
+<style>
+    .disactive {
+        background-color: #bbbbbb !important;
+    }
+</style>
 @{
     ViewBag.Title = Resource.Cars;
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,11 +19,11 @@
 </p>
 <div class="row">
     <div class="col-md-6">
-        <table id="car-management" class="table hover text-center display" style="width:100%">
+        <table id="car-management" class="row-border hover text-center " style="width:100%">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.CarModelName)</th>*@
                     <th></th>
+                    <th></th> @*active property*@
                     <th>Modele</th>
                     <th></th>
                 </tr>
@@ -30,7 +35,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.CarBrandName) 
                             @Html.ActionLink("Edytuj nazwę", "Update", new { @carBrandId = item.CarBrandId }, new { @class = "btn btn-sm btn-default" }) 
-                            @Html.ActionLink("Dodaj model", "AddNewModel", new { carBrandId = item.CarBrandId }, new { @class = "btn btn-sm btn-default" })</td>
+                            @Html.ActionLink("Dodaj model", "AddNewModel", new { carBrandId = item.CarBrandId }, new { @class = "btn btn-sm btn-default" })
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.Active)</td>
                         @if (string.IsNullOrEmpty(item.CarModelName))
                         {
                             <td>@Html.DisplayName("Brak modeli")</td>
@@ -42,7 +49,14 @@
                             <td>@Html.DisplayFor(modelItem => item.CarModelName)</td>
                             <td>
                                 @Html.ActionLink("Edytuj", "UpdateModel", new { carModelId = item.CarModelId }, new { @class = "btn btn-sm btn-default" }) |
-                                @Html.ActionLink("Usuń", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-sm btn-default" })
+                                @if(item.Active == 1)
+                                {
+                                    @Html.ActionLink("Dezaktywuj", "DeleteModel", new { carModelId = item.CarModelId }, new { @class = "btn btn-sm btn-default" })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Aktywuj", "ReactivateModel", new { carModelId = item.CarModelId }, new { @class = "btn btn-sm btn-default" })
+                                }
                             </td>
                         }
                     </tr>
@@ -57,7 +71,8 @@
     <script>
             (function ($) {
                 var brandName = 0;
-                var modelName = 1;
+                var activeColumn = 1;
+                var modelName = 2;
                 $("#car-management").DataTable({
                     "language": {
                         "url": "/Scripts/DataTable/polishTranslation.json"
@@ -66,7 +81,7 @@
                     "searching": false,
                     "columnDefs": [
                         {
-                            "targets": brandName,
+                            "targets": [brandName, activeColumn ],
                             "visible": false
                         },
                         {
@@ -89,6 +104,12 @@
                                 last = group;
                             }
                         });
+                    },
+                    'rowCallback': function (row, data, index) {
+                        var row = $('td', row);
+                        if (data[activeColumn] === '0') {
+                            row.addClass('disactive');
+                        }
                     }
                 });
             })(jQuery);

@@ -6,6 +6,7 @@ namespace CarService.Logic.Services.Abstract
     public interface ICarService
     {
         IEnumerable<CarBrandDTO> GetAll();
+        IEnumerable<CarBrandDTO> GetBrandsWithAtLeastOneModel();
         IEnumerable<CarModelDTO> GetModels(int carBrandId);
         IEnumerable<CarSummaryDTO> GetUserCars(string userId);
         CarSummaryDTO GetCarDetails(int carId);

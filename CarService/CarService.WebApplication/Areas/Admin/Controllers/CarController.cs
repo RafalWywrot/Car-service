@@ -120,8 +120,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
                 return View(model);
             }
         }
-
-
+        
         public ActionResult UpdateModel(int carModelId)
         {
             var car = _carMainteanceService.GetCarModel(carModelId);
@@ -159,6 +158,18 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
                 ModelState.AddModelError(string.Empty, "Wystąpił bład");
                 return View(model);
             }
+        }
+
+        public ActionResult DeleteModel(int carModelId)
+        {
+            _carMainteanceService.DisActiveCarModel(carModelId);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ReactivateModel(int carModelId)
+        {
+            _carMainteanceService.ActivateCarModel(carModelId);
+            return RedirectToAction("Index");
         }
 
         public ViewResult History(int carId)

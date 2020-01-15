@@ -18,6 +18,8 @@ namespace CarService.Logic.Services.Abstract
         CarModelDTO GetCarModel(int id);
         void AddCarModel(int carBrandId, string name);
         void UpdateCarModel(int carModelId, string name);
+        void DisActiveCarModel(int carModelId);
+        void ActivateCarModel(int carModelId);
         IEnumerable<BookingServiceDTO> GetBookings(string userId);
         IEnumerable<BookingServiceDTO> GetBookingsByCar(int carId);
         IEnumerable<BookingServiceDTO> GetAllBookings();

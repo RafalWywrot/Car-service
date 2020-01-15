@@ -110,6 +110,26 @@ namespace CarService.Logic.Services.Concrete
             _carMainteanceRepository.UpdateCarModel(carModel);
         }
 
+        public void DisActiveCarModel(int carModelId)
+        {
+            var carModel = _carMainteanceRepository.GetCarModel(carModelId);
+            if (carModel == null)
+                throw new Exception();
+
+            carModel.Active = false;
+            _carMainteanceRepository.UpdateCarModel(carModel);
+        }
+
+        public void ActivateCarModel(int carModelId)
+        {
+            var carModel = _carMainteanceRepository.GetCarModel(carModelId);
+            if (carModel == null)
+                throw new Exception();
+
+            carModel.Active = true;
+            _carMainteanceRepository.UpdateCarModel(carModel);
+        }
+
         public IEnumerable<BookingServiceDTO> GetAllBookings()
         {
             return Mapper.Map<IEnumerable<BookingServiceDTO>>(_carMainteanceRepository.GetAllBookings());

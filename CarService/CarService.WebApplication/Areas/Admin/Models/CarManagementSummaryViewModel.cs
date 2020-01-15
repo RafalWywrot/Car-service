@@ -6,5 +6,6 @@
         public int CarModelId{ get; set; }
         public string CarBrandName{ get; set; }
         public string CarModelName { get; set; }
+        public int Active { get; set; }
     }
 }

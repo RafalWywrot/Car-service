@@ -38,6 +38,12 @@ namespace CarService.Logic.Services.Concrete
             return Mapper.Map<IEnumerable<CarBrandDTO>>(carBrands);
         }
 
+        public IEnumerable<CarBrandDTO> GetBrandsWithAtLeastOneModel()
+        {
+            var carBrands = _carRepository.GetAll();
+            return Mapper.Map<IEnumerable<CarBrandDTO>>(carBrands.Where(x => x.Models.Any(c => c.Active)));
+        }
+        
         public CarDTO GetCar(int carId)
         {
             return Mapper.Map<CarDTO>(_carRepository.GetCar(carId));

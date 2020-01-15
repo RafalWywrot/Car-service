@@ -120,11 +120,11 @@ namespace CarService.WebApplication.Controllers
 
         private void InitializeCarDropdowns(CarFormViewModel model)
         {
-            var carBrands = _carService.GetAll();
+            var carBrands = _carService.GetBrandsWithAtLeastOneModel();
             model.CarBrands = carBrands.ToSelectListItems(x => x.Id, x => x.Name);
 
             int carBrandId = model.CarBrandId == 0 ? carBrands.FirstOrDefault()?.Id ?? model.CarBrandId : model.CarBrandId;
-            model.CarModels = _carService.GetModels(carBrandId).ToSelectListItems(x => x.Id, x => x.Name);
+            model.CarModels = _carService.GetModels(carBrandId).Where(x => x.Active).ToSelectListItems(x => x.Id, x => x.Name);
 
             model.TransmissionOptions = _carService.GetTransmissionOptions().ToSelectListItems(x => x.Id, x => x.Name);
             model.FuelOptions = _carService.GetFuelTypes().ToSelectListItems(x => x.Id, x => x.Name);
