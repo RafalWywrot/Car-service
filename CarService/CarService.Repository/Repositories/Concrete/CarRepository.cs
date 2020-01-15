@@ -2,6 +2,7 @@
 using CarService.Repository.Entities;
 using CarService.Repository.Repositories.Abstract;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CarService.Repository.Repositories.Concrete
 {
@@ -29,6 +30,22 @@ namespace CarService.Repository.Repositories.Concrete
         public IEnumerable<CarBrand> GetAll()
         {
             return unitOfWork.Session.QueryOver<CarBrand>().List();
+        }
+
+        public IEnumerable<CarModel> GetAllModels()
+        {
+            var brands = GetAll();
+            var models = new List<CarModel>();
+            foreach (var brand in brands)
+            {
+                if (!brand.Models.Any())
+                {
+                    models.Add(new CarModel { Brand = brand });
+                    continue;
+                }
+                brand.Models.ToList().ForEach(x => models.Add(x));
+            }
+            return models;
         }
 
         public IEnumerable<CarModel> GetAll(int carBrandId)

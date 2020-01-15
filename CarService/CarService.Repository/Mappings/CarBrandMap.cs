@@ -10,6 +10,8 @@ namespace CarService.Repository.Mappings
 
             Id(x => x.Id);
             Map(x => x.Name, "Name").Not.Nullable();
+
+            HasMany(x => x.Models).KeyColumn("CarBrandId").Cascade.Delete();
         }
     }
 }

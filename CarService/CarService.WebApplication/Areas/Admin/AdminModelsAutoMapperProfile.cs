@@ -40,6 +40,24 @@ namespace CarService.WebApplication.Areas.Admin
                     dest => dest.DateCreated,
                     opt => opt.MapFrom(src => src.DateStarted)
                );
+
+            CreateMap<DTO.CarModelDTO, CarManagementSummaryViewModel>()
+                .ForMember(
+                    dest => dest.CarBrandId,
+                    opt => opt.MapFrom(src => src.Brand.Id)
+                ).ForMember(
+                    dest => dest.CarBrandName,
+                    opt => opt.MapFrom(src => src.Brand.Name)
+                ).ForMember(
+                    dest => dest.CarModelId,
+                    opt => opt.MapFrom(src => src.Id)
+                ).ForMember(
+                    dest => dest.CarModelName,
+                    opt => opt.MapFrom(src => src.Name)
+                ).ForMember(
+                    dest => dest.Active,
+                    opt => opt.MapFrom(src => src.Active ? 1 : 0)
+                );
         }
     }
 }

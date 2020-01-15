@@ -11,6 +11,7 @@ namespace CarService.Repository.Mappings
 
             Id(x => x.Id);
             Map(x => x.Name, "Name").Not.Nullable();
+            Map(x => x.Active, "Active").Not.Nullable();
 
             References(x => x.Brand, "CarBrandId").Cascade.None();
         }

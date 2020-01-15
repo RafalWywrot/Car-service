@@ -229,6 +229,9 @@
     <Compile Include="Areas\Admin\Controllers\ServiceController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Models\BookAdminViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CarBrandAdminViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CarModelAdminViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CarManagementSummaryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ServiceBookingSeparatedAdminViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ServiceBookingDateAdminViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ServiceBookingDetailAdminViewModel.cs" />
@@ -308,6 +311,11 @@
     <Content Include="Areas\Admin\Views\Car\History.cshtml" />
     <Content Include="Areas\Admin\Views\Book\EditMechanic.cshtml" />
     <Content Include="Areas\Admin\Views\Book\IndexMechanic.cshtml" />
+    <Content Include="Areas\Admin\Views\Car\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Car\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Car\Update.cshtml" />
+    <Content Include="Areas\Admin\Views\Car\AddNewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Car\UpdateModel.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTable\datatables.js" />
     <Content Include="Scripts\DataTable\datatables.min.js" />

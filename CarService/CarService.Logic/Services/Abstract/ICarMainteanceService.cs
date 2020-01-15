@@ -11,6 +11,15 @@ namespace CarService.Logic.Services.Abstract
         void AddService(string name);
         void UpdateService(int id, string name);
         void AddServiceBooking(BookingServiceDTO bookingService);
+        IEnumerable<CarModelDTO> GetAllCarModels();
+        CarBrandDTO GetCarBrand(int id);
+        void AddCarBrand(string name);
+        void UpdateCarBrand(int id, string name);
+        CarModelDTO GetCarModel(int id);
+        void AddCarModel(int carBrandId, string name);
+        void UpdateCarModel(int carModelId, string name);
+        void DisActiveCarModel(int carModelId);
+        void ActivateCarModel(int carModelId);
         IEnumerable<BookingServiceDTO> GetBookings(string userId);
         IEnumerable<BookingServiceDTO> GetBookingsByCar(int carId);
         IEnumerable<BookingServiceDTO> GetAllBookings();
