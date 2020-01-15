@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CarService.Logic.Exceptions;
 using CarService.Logic.ModelsDTO;
 using CarService.Logic.Services.Abstract;
 using CarService.Repository.Entities;
@@ -12,10 +13,14 @@ namespace CarService.Logic.Services.Concrete
     public class CarMainteanceService : ICarMainteanceService
     {
         private readonly ICarMainteanceRepository _carMainteanceRepository;
+        private readonly ICarRepository _carRepository;
 
-        public CarMainteanceService(ICarMainteanceRepository carMainteanceRepository)
+        public CarMainteanceService(
+            ICarMainteanceRepository carMainteanceRepository,
+            ICarRepository carRepository)
         {
             _carMainteanceRepository = carMainteanceRepository;
+            _carRepository = carRepository;
         }
 
         public void AddService(string name)
@@ -34,6 +39,75 @@ namespace CarService.Logic.Services.Concrete
                 AsSoonAsPossible = bookingService.AsSoonAsPossible
             };
             _carMainteanceRepository.AddServiceBooking(newServiceBooking);
+        }
+
+        public IEnumerable<CarModelDTO> GetAllCarModels()
+        {
+            return Mapper.Map<IEnumerable<CarModelDTO>>(_carRepository.GetAllModels());
+        }
+
+        public CarBrandDTO GetCarBrand(int id)
+        {
+            return Mapper.Map<CarBrandDTO>(_carMainteanceRepository.GetCarBrand(id));
+        }
+
+        public void AddCarBrand(string name)
+        {
+            var carBrands = _carMainteanceRepository.GetCarBrands();
+            if (carBrands.Any(x => x.Name.ToUpper() == name.ToUpper()))
+                throw new CarException();
+
+            _carMainteanceRepository.AddCarBrand(new CarBrand { Name = name });
+        }
+
+        public void UpdateCarBrand(int id, string name)
+        {
+            var carBrands = _carMainteanceRepository.GetCarBrands();
+            if (carBrands.Any(x => x.Name.ToUpper() == name.ToUpper()))
+                throw new CarException();
+
+            var car = carBrands.Single(x => x.Id == id);
+            car.Name = name;
+            _carMainteanceRepository.UpdateCarBrand(car);
+        }
+
+        public CarModelDTO GetCarModel(int id)
+        {
+            return Mapper.Map<CarModelDTO>(_carMainteanceRepository.GetCarModel(id));
+        }
+
+        public void AddCarModel(int carBrandId, string name)
+        {
+            var carBrands = _carMainteanceRepository.GetCarBrands();
+            var brand = carBrands.SingleOrDefault(x => x.Id == carBrandId);
+            if (brand == null)
+                throw new Exception();
+            
+            if (brand.Models.Any(x => x.Name.ToUpper() == name.ToUpper()))
+                throw new CarException();
+
+            _carMainteanceRepository.AddCarModel(
+                new CarModel {
+                    Brand = new CarBrand { Id = carBrandId },
+                    Name = name }
+                );
+        }
+
+        public void UpdateCarModel(int carModelId, string name)
+        {
+            var carModel = _carMainteanceRepository.GetCarModel(carModelId);
+            if (carModel == null)
+                throw new Exception();
+
+            var brand = _carMainteanceRepository.GetCarBrand(carModel.Brand.Id);
+            if (brand == null)
+                throw new Exception();
+
+            if (brand.Models.Any(x => x.Name.ToUpper() == name.ToUpper()))
+                throw new CarException();
+
+            carModel.Name = name;
+            _carMainteanceRepository.UpdateCarModel(carModel);
         }
 
         public IEnumerable<BookingServiceDTO> GetAllBookings()

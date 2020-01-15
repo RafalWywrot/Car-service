@@ -11,6 +11,7 @@
         }
         @if (User.IsInRole(SystemRoles.Admin))
         {
+            <li>@Html.ActionLink(Resource.Cars, "Index", "Car", new { @area = "Admin" }, null)</li>
             <li>@Html.ActionLink(Resource.Services, "Index", "Service", new { @area = "Admin" }, null)</li>
             <li>@Html.ActionLink(Resource.Users, "Index", "Users", new { @area = "Admin" }, null)</li>
         }

@@ -49,7 +49,58 @@ namespace CarService.Repository.Repositories.Concrete
             }
         }
 
-        public void AddServiceBooking(BookingServiceEntity bookingService)
+        public CarBrand GetCarBrand(int id)
+        {
+            return unitOfWork.Session.Get<CarBrand>(id);
+        }
+
+        public IEnumerable<CarBrand> GetCarBrands()
+        {
+            return unitOfWork.Session.QueryOver<CarBrand>().List();
+        }
+
+        public void AddCarBrand(CarBrand car)
+        {
+            using (var transaction = unitOfWork.Session.BeginTransaction())
+            {
+                unitOfWork.Session.Save(car);
+                transaction.Commit();
+            }
+        }
+
+        public void UpdateCarBrand(CarBrand car)
+        {
+            using (var transaction = unitOfWork.Session.BeginTransaction())
+            {
+                unitOfWork.Session.Update(car);
+                transaction.Commit();
+            }
+        }
+
+        public CarModel GetCarModel(int id)
+        {
+            return unitOfWork.Session.Get<CarModel>(id);
+        }
+
+        public void AddCarModel(CarModel model)
+        {
+            using (var transaction = unitOfWork.Session.BeginTransaction())
+            {
+                unitOfWork.Session.Save(model);
+                transaction.Commit();
+            }
+        }
+
+        public void UpdateCarModel(CarModel model)
+        {
+            using (var transaction = unitOfWork.Session.BeginTransaction())
+            {
+                unitOfWork.Session.Update(model);
+                transaction.Commit();
+            }
+        }
+
+    public void AddServiceBooking(BookingServiceEntity bookingService)
         {
             using (var transaction = unitOfWork.Session.BeginTransaction())
             {
