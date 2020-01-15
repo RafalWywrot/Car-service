@@ -32,7 +32,7 @@ namespace CarService.WebApplication.Helpers.ActionFilters
 
             filterContext.Result = new JsonResult
             {
-                Data = new { success = false, message = "Ustal datę przed zaakceptowaniem" }
+                Data = new JsonObjectResponse("Ustal datę przed zaakceptowaniem" )
             };
             return;
         }
