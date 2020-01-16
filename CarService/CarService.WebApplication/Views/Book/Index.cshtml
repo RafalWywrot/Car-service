@@ -30,7 +30,7 @@
                             @Html.DisplayNameFor(model => model.ServiceName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Comment)
+                            @Html.DisplayNameFor(model => model.DateStarted)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Status)
@@ -50,7 +50,7 @@
                                 @Html.DisplayFor(modelItem => item.ServiceName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Comment)
+                                @Html.DisplayFor(modelItem => item.DateStarted)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Status)
@@ -59,8 +59,6 @@
                                 @if (item.Status == Resource.BookingStatusCreated)
                                 {
                                     @Html.ActionLink(Resource.ButtonEdit, "Edit", new { bookingServiceId = item.Id })
-                                    <span>|</span>
-                                    @Html.ActionLink(Resource.ServiceCancel, "Delete", new { id = item.Id })
                                 }
                             </td>
                             <td>
@@ -88,7 +86,7 @@
                             @Html.DisplayNameFor(model => model.ServiceName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Comment)
+                            @Html.DisplayNameFor(model => model.DateStarted)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Status)
@@ -107,7 +105,7 @@
                                 @Html.DisplayFor(modelItem => item.ServiceName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Comment)
+                                @Html.DisplayFor(modelItem => item.DateStarted)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Status)

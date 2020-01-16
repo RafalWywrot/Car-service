@@ -38,7 +38,7 @@ namespace CarService.WebApplication.Helpers.ActionFilters
             var modelParameter = filterContext.ActionParameters["model"];
             if (modelParameter == null)
                 return null;
-
+            
             return modelParameter as ServiceBookingFormViewModel;
         }
     }

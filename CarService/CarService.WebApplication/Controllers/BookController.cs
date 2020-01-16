@@ -20,15 +20,18 @@ namespace CarService.WebApplication.Controllers
         private readonly ICarMainteanceService _carMainteanceService;
         private readonly ICarService _carService;
         private readonly ApplicationUserManager _userManager;
+        private readonly IBookingService _bookingService;
 
         public BookController(
             ICarMainteanceService carMainteanceService,
             ICarService carService,
-            ApplicationUserManager userManager)
+            ApplicationUserManager userManager,
+            IBookingService bookingService)
         {
             _carMainteanceService = carMainteanceService;
             _carService = carService;
             _userManager = userManager;
+            _bookingService = bookingService;
         }
 
         public ActionResult Index()
@@ -97,6 +100,41 @@ namespace CarService.WebApplication.Controllers
 
             _carMainteanceService.UpdateServiceBooking(Mapper.Map<BookingServiceDTO>(model));
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult ServiceAccept(int bookingServiceId)
+        {
+            _bookingService.SetStatusAsAccepted(bookingServiceId);
+            return RedirectToAction("Show", new { bookingServiceId = bookingServiceId });
+        }
+            
+        public ActionResult ChangeDate(int bookingServiceId)
+        {
+            var bookingService = _carMainteanceService.GetBooking(bookingServiceId);
+            var model = new ServiceBookingDateViewModel
+            {
+                Id = bookingService.Id,
+                DateStarted = bookingService.DateStarted
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ChangeDate(ServiceBookingDateViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            _carMainteanceService.UpdateDateServiceBooking(model.Id, model.DateStarted.Value);
+            return RedirectToAction("Show", new { bookingServiceId = model.Id });
+        }
+
+        [HttpPost]
+        public ActionResult ServiceCancel(int bookingServiceId)
+        {
+            _bookingService.SetStatusAsDeclined(bookingServiceId);
+            return RedirectToAction("Show", new { bookingServiceId = bookingServiceId });
         }
 
         private void InitializeDropdown(ServiceBookingFormViewModel model)

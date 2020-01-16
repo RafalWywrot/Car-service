@@ -148,6 +148,8 @@ namespace CarService.WebApplication.Helpers
                         return Resource.BookingStatusInProgress;
                     case Repository.CustomTypes.ServiceBookingStatus.Verify:
                         return Resource.BookingStatusVerify;
+                    case Repository.CustomTypes.ServiceBookingStatus.WaitingClientApprove:
+                        return Resource.BookingStatusWaitingClient;
                     default:
                         return string.Empty;
                 }
@@ -162,10 +164,13 @@ namespace CarService.WebApplication.Helpers
                     dest => dest.Comment,
                     opt => opt.MapFrom(src => src.UserComment)
                ).ForMember(
+                    dest => dest.MechanicComment,
+                    opt => opt.MapFrom(src => src.MechanicComment)
+               ).ForMember(
                     dest => dest.ServiceName,
                     opt => opt.MapFrom(src => src.Service.Name)
                ).ForMember(
-                    dest => dest.DateCreated,
+                    dest => dest.DateStarted,
                     opt => opt.MapFrom(src => (src.DateStarted != null ? src.DateStarted.Value.ToShortDateString() : "nieustawiona"))
                ).ForMember(
                     dest => dest.Mechanic,
