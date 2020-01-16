@@ -14,6 +14,7 @@ namespace CarService.Repository.Entities
         public virtual DateTime? DateStarted { get; set; }
         public virtual DateTime? DateEnded { get; set; }
         public virtual string UserComment { get; set; }
+        public virtual string MechanicComment { get; set; }
         public virtual bool AsSoonAsPossible { get; set; }
 
         public virtual ApplicationUser AssignedUser { get; set; }

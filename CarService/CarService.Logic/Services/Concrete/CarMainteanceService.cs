@@ -1,7 +1,8 @@
-using AutoMapper;
+﻿using AutoMapper;
 using CarService.Logic.Exceptions;
 using CarService.Logic.ModelsDTO;
 using CarService.Logic.Services.Abstract;
+using CarService.Repository.CustomTypes;
 using CarService.Repository.Entities;
 using CarService.Repository.Repositories.Abstract;
 using System;
@@ -192,7 +193,12 @@ namespace CarService.Logic.Services.Concrete
             _carMainteanceRepository.UpdateServiceBooking(currentBooking);
         }
 
+        public void UpdateDateServiceBooking(int id, DateTime date)
+        {
+            var currentBooking = _carMainteanceRepository.GetBooking(id);
+            currentBooking.DateStarted = date;
             currentBooking.AsSoonAsPossible = false;
+            currentBooking.Status = ServiceBookingStatus.Created;
 
             _carMainteanceRepository.UpdateServiceBooking(currentBooking);
         }
