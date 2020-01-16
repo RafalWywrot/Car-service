@@ -4,6 +4,7 @@
     {
         /// <param name="id">Booking service id</param>
         void SetStatusAsVerified(int id);
+        void SetStatusAsWaitingForClient(int id);
         void SetStatusAsAccepted(int id);
         void SetStatusAsDeclined(int id);
         void SetStatusInProgress(int id);

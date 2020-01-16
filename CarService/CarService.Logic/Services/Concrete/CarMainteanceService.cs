@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using CarService.Logic.Exceptions;
 using CarService.Logic.ModelsDTO;
 using CarService.Logic.Services.Abstract;
@@ -185,7 +185,13 @@ namespace CarService.Logic.Services.Concrete
         {
             var currentBooking = _carMainteanceRepository.GetBooking(id);
             currentBooking.DateStarted = date;
-            currentBooking.UserComment +=  $" powód zmiany daty: {reason}";
+            currentBooking.MechanicComment +=  $" powód zmiany daty: {reason}";
+            currentBooking.AsSoonAsPossible = false;
+            currentBooking.Status = ServiceBookingStatus.WaitingClientApprove;
+
+            _carMainteanceRepository.UpdateServiceBooking(currentBooking);
+        }
+
             currentBooking.AsSoonAsPossible = false;
 
             _carMainteanceRepository.UpdateServiceBooking(currentBooking);

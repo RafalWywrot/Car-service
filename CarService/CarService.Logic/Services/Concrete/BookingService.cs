@@ -68,6 +68,16 @@ namespace CarService.Logic.Services.Concrete
             _carMainteanceRepository.UpdateServiceBooking(booking);
         }
 
+        public void SetStatusAsWaitingForClient(int id)
+        {
+            var booking = _carMainteanceRepository.GetBooking(id);
+            if (booking.Status == ServiceBookingStatus.WaitingClientApprove)
+                return;
+
+            booking.Status = ServiceBookingStatus.WaitingClientApprove;
+            _carMainteanceRepository.UpdateServiceBooking(booking);
+        }
+
         public void SetStatusInProgress(int id)
         {
             var booking = _carMainteanceRepository.GetBooking(id);
