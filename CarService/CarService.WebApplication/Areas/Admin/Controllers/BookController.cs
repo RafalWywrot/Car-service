@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CarService.Logic.Services.Abstract;
+using CarService.Repository.CustomTypes;
 using CarService.WebApplication.Areas.Admin.Models;
 using CarService.WebApplication.Helpers;
 using CarService.WebApplication.Helpers.ActionFilters;
@@ -137,13 +138,12 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
         {
             try
             {
-                _bookingService.SetStatusAsVerified(bookingServiceId);   
-                return Json(new { });
+                _bookingService.SetStatusAsVerified(bookingServiceId);
+                return Json(new JsonObjectResponse());
             }
             catch (System.Exception)
             {
-
-                throw;
+                return Json(new JsonObjectResponse("Not saved"));
             }
         }
 
@@ -153,13 +153,16 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
         {
             try
             {
+                var service = _carMainteanceService.GetBooking(bookingServiceId);
+                if (service.Status == Resource.BookingStatusWaitingClient)
+                    return Json(new JsonObjectResponse("Oczekiwanie na odpowiedź klienta"));
+
                 _bookingService.SetStatusAsAccepted(bookingServiceId);
-                return Json(new { });
+                return Json(new JsonObjectResponse());
             }
             catch (System.Exception)
             {
-
-                throw;
+                return Json(new JsonObjectResponse("Not saved"));
             }
         }
 
@@ -169,12 +172,11 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             try
             {
                 _bookingService.SetStatusAsDeclined(bookingServiceId);
-                return Json(new { });
+                return Json(new JsonObjectResponse());
             }
             catch (System.Exception)
             {
-
-                throw;
+                return Json(new JsonObjectResponse("Not saved"));
             }
         }
 
@@ -184,12 +186,11 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             try
             {
                 _bookingService.SetStatusInProgress(bookingServiceId);
-                return Json(new { });
+                return Json(new JsonObjectResponse());
             }
             catch (System.Exception)
             {
-
-                throw;
+                return Json(new JsonObjectResponse("Not saved"));
             }
         }
 
@@ -199,12 +200,11 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             try
             {
                 _bookingService.SetStatusAsFinished(bookingServiceId);
-                return Json(new { });
+                return Json(new JsonObjectResponse());
             }
             catch (System.Exception)
             {
-
-                throw;
+                return Json(new JsonObjectResponse("Not saved"));
             }
         }
 
@@ -214,11 +214,11 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             try
             {
                 _bookingService.AssignUser(bookingServiceId, userId);
-                return Json(new { });
+                return Json(new JsonObjectResponse());
             }
             catch (System.Exception)
             {
-                throw;
+                return Json(new JsonObjectResponse("Not saved"));
             }
         }
     }

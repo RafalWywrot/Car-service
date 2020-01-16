@@ -241,6 +241,15 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oczekiwanie na akceptację.
+        /// </summary>
+        public static string BookingStatusWaitingClient {
+            get {
+                return ResourceManager.GetString("BookingStatusWaitingClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Usługi nieprzypisane.
         /// </summary>
         public static string BookingsUnassigned {

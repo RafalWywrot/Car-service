@@ -31,9 +31,21 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                @Html.LabelFor(model => model.ServiceDetails.DateCreated, htmlAttributes: new { @class = "control-label col-md-4" })
+                @Html.LabelFor(model => model.ServiceDetails.DateStarted, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.ServiceDetails.DateCreated, new { @class = "form-control col-md-6", @readonly = "readonly" })
+                    @Html.TextBoxFor(model => model.ServiceDetails.DateStarted, new { @class = "form-control col-md-6", @readonly = "readonly" })
+                    @if (Model.ServiceDetails.Status == Resource.BookingStatusWaitingClient)
+                    {
+                        using (Html.BeginForm("ServiceAccept", "Book", new { area = "", bookingServiceId = Model.ServiceDetails.Id }, FormMethod.Post, new { }))
+                        {
+                            <input type="submit" class="btn btn-default" value="Zaakceptuj" />
+                        }
+                        using (Html.BeginForm("ServiceCancel", "Book", new { area = "", bookingServiceId = Model.ServiceDetails.Id }, FormMethod.Post, new { }))
+                        {
+                            <input type="submit" class="btn btn-default" value="@Resource.ServiceCancel" />
+                        }
+                        @Html.ActionLink("Zaproponuj inną datę", "ChangeDate", "Book", new { @area = "", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-default" })
+                    }
                 </div>
             </div>
 
@@ -41,6 +53,13 @@
                 @Html.LabelFor(model => model.ServiceDetails.Comment, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
                     @Html.TextAreaFor(model => model.ServiceDetails.Comment, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceDetails.MechanicComment, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextAreaFor(model => model.ServiceDetails.MechanicComment, new { @class = "form-control", @readonly = "readonly" })
                 </div>
             </div>
 

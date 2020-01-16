@@ -59,13 +59,10 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.ServiceDetails.DateCreated, htmlAttributes: new { @class = "control-label col-md-4" })
+                @Html.LabelFor(model => model.ServiceDetails.DateStarted, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.ServiceDetails.DateCreated, new { @class = "form-control col-md-6", @readonly = "readonly" })
-                    @if (Model.ServiceDetails.Status == Resource.BookingStatusCreated || Model.ServiceDetails.Status == Resource.BookingStatusVerify)
-                    {
-                        @Html.ActionLink(Resource.ChangeDate, "EditDate", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success col-md-4" })
-                    }
+                    @Html.TextBoxFor(model => model.ServiceDetails.DateStarted, new { @class = "form-control col-md-6", @readonly = "readonly" })
+                    @Html.ActionLink(Resource.ChangeDate, "EditDate", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success col-md-4" })
                 </div>
             </div>
 

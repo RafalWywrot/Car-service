@@ -28,5 +28,6 @@ namespace CarService.Logic.Services.Abstract
         BookingServiceDTO GetBooking(int id);
         void UpdateServiceBooking(BookingServiceDTO bookingService);
         void UpdateDateServiceBooking(int id, DateTime date, string reason);
+        void UpdateDateServiceBooking(int id, DateTime date);
     }
 }

@@ -429,4 +429,7 @@
   <data name="PreviousCars" xml:space="preserve">
     <value>Poprzednie auta</value>
   </data>
+  <data name="BookingStatusWaitingClient" xml:space="preserve">
+    <value>Oczekiwanie na akceptację</value>
+  </data>
 </root>

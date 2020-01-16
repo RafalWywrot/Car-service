@@ -14,7 +14,7 @@ namespace CarService.WebApplication.Models.ServiceBooking
         public string ServiceName { get; set; }
 
         [Display(Name = "Date", ResourceType = typeof(Resource))]
-        public string DateCreated { get; set; }
+        public string DateStarted { get; set; }
 
         [Display(Name = "AsSoonAsPossible", ResourceType = typeof(Resource))]
         public bool AsSoonAsPossible { get; set; }
@@ -27,5 +27,8 @@ namespace CarService.WebApplication.Models.ServiceBooking
 
         [Display(Name = "Mechanic", ResourceType = typeof(Resource))]
         public string Mechanic { get; set; }
+
+        [Display(Name = "Komentarz mechanika")]
+        public string MechanicComment { get; set; }
     }
 }

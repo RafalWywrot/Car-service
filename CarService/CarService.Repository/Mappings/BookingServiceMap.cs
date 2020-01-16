@@ -16,6 +16,7 @@ namespace CarService.Repository.Mappings
             Map(x => x.DateStarted, "DateStarted").Nullable();
             Map(x => x.DateEnded, "DateEnded");
             Map(x => x.UserComment, "ClientComment");
+            Map(x => x.MechanicComment, "MechanicComment");
             Map(x => x.AsSoonAsPossible, "AsSoonAsPossible");
 
             References(x => x.Service, "ServiceId").Cascade.None();

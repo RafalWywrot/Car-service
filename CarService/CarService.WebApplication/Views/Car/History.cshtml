@@ -16,7 +16,7 @@ else
         <thead>
             <tr>
                 <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
-                <th>@Html.DisplayNameFor(model => model.DateCreated)</th>
+                <th>@Html.DisplayNameFor(model => model.DateStarted)</th>
                 <th>@Html.DisplayNameFor(model => model.Comment)</th>
                 <th>@Html.DisplayNameFor(model => model.Status)</th>
             </tr>
@@ -26,7 +26,7 @@ else
             {
                 <tr>
                     <td>@bookedService.ServiceName</td>
-                    <td>@bookedService.DateCreated</td>
+                    <td>@bookedService.DateStarted</td>
                     <td>@bookedService.Comment</td>
                     <td>@bookedService.Status</td>
                 </tr>

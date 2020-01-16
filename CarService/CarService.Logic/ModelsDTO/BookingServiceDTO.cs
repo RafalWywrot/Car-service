@@ -11,6 +11,7 @@ namespace CarService.Logic.ModelsDTO
         public string Status { get; set; }
         public DateTime? DateStarted { get; set; }
         public string UserComment { get; set; }
+        public string MechanicComment { get; set; }
         public bool AsSoonAsPossible { get; set; }
         public string MechanicId { get; set; }
         public string MechanicFullName { get; set; }
