@@ -226,6 +226,9 @@ namespace CarService.WebApplication.Helpers
                     dest => dest.Email,
                     opt => opt.MapFrom(src => src.Email)
                 ).ForMember(
+                    dest => dest.Active,
+                    opt => opt.MapFrom(src => src.Active)
+                ).ForMember(
                     dest => dest.Roles,
                     opt => opt.MapFrom(src => string.Join(", ", src.Roles.Select(x => x.Name)))
                 );

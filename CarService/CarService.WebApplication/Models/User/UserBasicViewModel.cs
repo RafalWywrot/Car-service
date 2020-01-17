@@ -28,5 +28,8 @@ namespace CarService.WebApplication.Models.User
         //[Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         [Display(Name = "Roles", ResourceType = typeof(Resource))]
         public string Roles { get; set; }
+
+        [Display(Name = "Status", ResourceType = typeof(Resource))]
+        public bool Active { get; set; }
     }
 }
