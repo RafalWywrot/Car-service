@@ -17,7 +17,6 @@
                 <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().DateThatClientSelect)</th>
                 <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Status)</th>
                 <th></th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -30,25 +29,6 @@
                     <td>@Html.DisplayFor(modelItem => item.Status)</td>
                     <td>
                         @Html.ActionLink(Resource.Details, "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
-                    </td>
-                    <td>
-                        @if (item.Status == Resource.BookingStatusCreated)
-                        {
-                            <button class='changeToVerify' data-id="@item.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToVerify</button>
-                        }
-                        else if (item.Status == Resource.BookingStatusVerify)
-                        {
-                            <button class='changeToAccept' data-id="@item.Id" data-url='@Url.Action("SetAsAccepted", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToAccept</button>
-                            <button class='changeToDecline' data-id="@item.Id" data-url='@Url.Action("SetAsDecline", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToDecline</button>
-                        }
-                        else if (item.Status == Resource.BookingStatusAccepted)
-                        {
-                            <button class='changeToInProgress' data-id="@item.Id" data-url='@Url.Action("SetAsInProgress", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToDo</button>
-                        }
-                        else if (item.Status == Resource.BookingStatusInProgress)
-                        {
-                            <button class='changeToFinished' data-id="@item.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToPickUp</button>
-                        }
                     </td>
                 </tr>
             }
@@ -71,7 +51,6 @@
                     <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().DateThatClientSelect)</th>
                     <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Status)</th>
                     <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -84,25 +63,6 @@
                         <td>@Html.DisplayFor(modelItem => item.Status)</td>
                         <td>
                             @Html.ActionLink("Szczegóły", "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
-                        </td>
-                        <td>
-                            @if (item.Status == Resource.BookingStatusCreated)
-                            {
-                                <button class='changeToVerify' data-id="@item.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToVerify</button>
-                            }
-                            else if (item.Status == Resource.BookingStatusVerify)
-                            {
-                                <button class='changeToAccept' data-id="@item.Id" data-url='@Url.Action("SetAsAccepted", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToAccept</button>
-                                <button class='changeToDecline' data-id="@item.Id" data-url='@Url.Action("SetAsDecline", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToDecline</button>
-                            }
-                            else if (item.Status == Resource.BookingStatusAccepted)
-                            {
-                                <button class='changeToInProgress' data-id="@item.Id" data-url='@Url.Action("SetAsInProgress", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToDo</button>
-                            }
-                            else if (item.Status == Resource.BookingStatusInProgress)
-                            {
-                                <button class='changeToFinished' data-id="@item.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToPickUp</button>
-                            }
                         </td>
                     </tr>
                 }
@@ -122,12 +82,8 @@
                 },
                 'columnDefs': [
                     {
-                        targets: -2,
-                        'className': 'dt-body-center'
-                    },
-                    {
                         targets: -1,
-                        'orderable': false
+                        'className': 'dt-body-center'
                     }
                 ]
             });
@@ -138,17 +94,11 @@
                 },
                 'columnDefs': [
                     {
-                        targets: -2,
-                        'className': 'dt-body-center'
-                    },
-                    {
                         targets: -1,
-                        'orderable': false
+                        'className': 'dt-body-center'
                     }
                 ]
             });
         })(jQuery);
-    </script>
-    <script src="~/Scripts/BookingServices.js">
     </script>
 }

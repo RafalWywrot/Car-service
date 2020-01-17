@@ -20,7 +20,6 @@
                     <th>@Html.DisplayNameFor(model => model.Status)</th>
                     <th>@Html.DisplayNameFor(model => model.Mechanic)</th>
                     <th></th>
-                    <th class="@(isArchived ? "hidden" : "")"></th>
                 </tr>
             </thead>
             <tbody>
@@ -45,25 +44,6 @@
                         <td>
                             @Html.ActionLink("Szczegóły", "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
                         </td>
-                        <td class="@(isArchived ? "hidden" : "")">
-                            @if (item.Status == Resource.BookingStatusCreated)
-                            {
-                                <button class='changeToVerify' data-id="@item.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToVerify</button>
-                            }
-                            else if (item.Status == Resource.BookingStatusVerify)
-                            {
-                                <button class='changeToAccept' data-id="@item.Id" data-url='@Url.Action("SetAsAccepted", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToAccept</button>
-                                <button class='changeToDecline' data-id="@item.Id" data-url='@Url.Action("SetAsDecline", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToDecline</button>
-                            }
-                            else if (item.Status == Resource.BookingStatusAccepted)
-                            {
-                                <button class='changeToInProgress' data-id="@item.Id" data-url='@Url.Action("SetAsInProgress", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToDo</button>
-                            }
-                            else if (item.Status == Resource.BookingStatusInProgress)
-                            {
-                                <button class='changeToFinished' data-id="@item.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToPickUp</button>
-                            }
-                        </td>
                     </tr>
                 }
             </tbody>
@@ -83,18 +63,11 @@
                 },
                 'columnDefs': [
                     {
-                        targets: -2,
-                        'className': 'dt-body-center'
-                    },
-                    {
                         targets: -1,
-                        'orderable': false
+                        'className': 'dt-body-center'
                     }
                 ]
             });
         })(jQuery);
-    </script>
-    <script src="~/Scripts/BookingServices.js">
-        
     </script>
 }
