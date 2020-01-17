@@ -10,6 +10,7 @@ using CarService.WebApplication.Models.User;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace CarService.WebApplication.Areas.Admin.Controllers
@@ -86,12 +87,22 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditDate(ServiceBookingDateAdminViewModel model)
+        public async Task<ActionResult> EditDate(ServiceBookingDateAdminViewModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
 
             _carMainteanceService.UpdateDateServiceBooking(model.Id, model.DateCreated.Value, model.Comment);
+            try
+            {
+                var user = _carMainteanceService.GetUser(model.Id);
+                await _userManager.SendEmailAsync(user.Email, "Zmieniono datę usługi", string.Format(Resource.EmailToClientOfChangedDate, user.Name, model.DateCreated.Value.ToShortDateString()));
+            }
+            catch (System.Exception)
+            {
+                //Logger.Error();
+            }
+            
             return RedirectToAction("Index");
         }
 

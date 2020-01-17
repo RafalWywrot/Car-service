@@ -228,5 +228,11 @@ namespace CarService.Logic.Services.Concrete
 
             _carMainteanceRepository.UpdateServiceBooking(currentBooking);
         }
+
+        public Identity.ApplicationUser GetUser(int serviceId)
+        {
+            var currentBooking = _carMainteanceRepository.GetBooking(serviceId);
+            return currentBooking.Car.AssignedUser;
+        }
     }
 }
