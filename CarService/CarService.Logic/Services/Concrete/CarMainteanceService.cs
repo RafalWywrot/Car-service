@@ -24,9 +24,16 @@ namespace CarService.Logic.Services.Concrete
             _carRepository = carRepository;
         }
 
-        public void AddService(string name)
+        public void AddService(ServiceDTO service)
         {
-            _carMainteanceRepository.AddService(name);
+            var entity = new Service
+            {
+                Name = service.Name,
+                RequiredComment = service.RequiredComment,
+                MessageUser = service.RequiredComment ? service.MessageUser : string.Empty,
+                Active = true
+            };
+            _carMainteanceRepository.AddService(entity);
         }
 
         public void AddServiceBooking(BookingServiceDTO bookingService)
@@ -163,23 +170,27 @@ namespace CarService.Logic.Services.Concrete
             return Mapper.Map<IEnumerable<BookingServiceDTO>>(_carMainteanceRepository.GetBookingsByCar(carId));
         }
 
-        public IdNamePair GetService(int id)
+        public ServiceDTO GetService(int id)
         {
             var entity = _carMainteanceRepository.GetService(id);
-            return new IdNamePair
-            {
-                Id = entity.Id,
-                Name = entity.Name
-            };
+            return Mapper.Map<ServiceDTO>(entity);
         }
 
-        public IEnumerable<IdNamePair> GetServices()
+        public IEnumerable<IdNamePair> GetActiveServices()
         {
-            return _carMainteanceRepository.GetServices().Select(x => new IdNamePair
-            {
-                Id = x.Id,
-                Name = x.Name
-            });
+            return _carMainteanceRepository.GetServices()
+                .Where(x => x.Active)
+                .Select(x => new IdNamePair
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                });
+        }
+
+        public IEnumerable<ServiceDTO> GetServices()
+        {
+            var services = _carMainteanceRepository.GetServices();
+            return Mapper.Map<IEnumerable<ServiceDTO>>(services);
         }
 
         public void UpdateDateServiceBooking(int id, DateTime date, string reason)
@@ -203,9 +214,28 @@ namespace CarService.Logic.Services.Concrete
             _carMainteanceRepository.UpdateServiceBooking(currentBooking);
         }
 
-        public void UpdateService(int id, string name)
+        public void UpdateService(ServiceDTO service)
         {
-            _carMainteanceRepository.UpdateServie(id, name);
+            var serviceEntity = _carMainteanceRepository.GetService(service.Id);
+            if (serviceEntity == null)
+                throw new NullReferenceException();
+
+            serviceEntity.Name = service.Name;
+            serviceEntity.RequiredComment = service.RequiredComment;
+            if (service.RequiredComment)
+                serviceEntity.MessageUser = service.MessageUser;
+
+            _carMainteanceRepository.UpdateServie(serviceEntity);
+        }
+
+        public void SetActiveStatusOfService(int serviceId, bool status)
+        {
+            var serviceEntity = _carMainteanceRepository.GetService(serviceId);
+            if (serviceEntity == null)
+                throw new NullReferenceException();
+
+            serviceEntity.Active = status;
+            _carMainteanceRepository.UpdateServie(serviceEntity);
         }
 
         public void UpdateServiceBooking(BookingServiceDTO bookingService)
