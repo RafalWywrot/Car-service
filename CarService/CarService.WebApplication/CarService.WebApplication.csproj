@@ -320,6 +320,7 @@
     <Content Include="Areas\Admin\Views\Car\Update.cshtml" />
     <Content Include="Areas\Admin\Views\Car\AddNewModel.cshtml" />
     <Content Include="Areas\Admin\Views\Car\UpdateModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\_Comment.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTable\datatables.js" />
     <Content Include="Scripts\DataTable\datatables.min.js" />
@@ -334,6 +335,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_selectServiceDate.js" />
+    <Content Include="Scripts\_serviceRequiredComment.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

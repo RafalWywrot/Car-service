@@ -141,7 +141,7 @@ namespace CarService.WebApplication.Controllers
         {
             var userId = User.Identity.GetUserId();
             model.Cars = _carService.GetUserCars(userId).Where(x => x.Active).ToSelectListItems(x => x.Id, x => x.Model);
-            model.Services = _carMainteanceService.GetServices().ToSelectListItems(x => x.Id, x => x.Name);
+            model.Services = _carMainteanceService.GetActiveServices().ToSelectListItems(x => x.Id, x => x.Name);
         }
     }
 }

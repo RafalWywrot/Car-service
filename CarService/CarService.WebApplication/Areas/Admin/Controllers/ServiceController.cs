@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CarService.Logic.ModelsDTO;
 using CarService.Logic.Services.Abstract;
 using CarService.WebApplication.Areas.Admin.Models;
 using CarService.WebApplication.Controllers;
@@ -26,7 +27,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
 
         public ActionResult Add()
         {
-            return View();
+            return View(new BookAdminViewModel());
         }
 
         [HttpPost]
@@ -35,18 +36,17 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            _carMainteanceService.AddService(model.Name);
+            if (!CheckServiceRequiredComment(model))
+                return View(model);
+            
+            _carMainteanceService.AddService(Mapper.Map<ServiceDTO>(model));
             return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
         {
             var service = _carMainteanceService.GetService(id);
-            var model = new BookAdminViewModel
-            {
-                Id = service.Id,
-                Name = service.Name
-            };
+            var model = Mapper.Map<BookAdminViewModel>(service);
             return View(model);
         }
 
@@ -56,8 +56,37 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            _carMainteanceService.UpdateService(model.Id, model.Name);
+            if (!CheckServiceRequiredComment(model))
+                return View(model);
+
+            _carMainteanceService.UpdateService(Mapper.Map<ServiceDTO>(model));
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int serviceId)
+        {
+            _carMainteanceService.SetActiveStatusOfService(serviceId, false);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Activate(int serviceId)
+        {
+            _carMainteanceService.SetActiveStatusOfService(serviceId, true);
+            return RedirectToAction("Index");
+        }
+
+        private bool CheckServiceRequiredComment(BookAdminViewModel model)
+        {
+            if (model.RequiredComment == false)
+                return true;
+
+            if (!string.IsNullOrEmpty(model.MessageUser))
+                return true;
+
+            ModelState.AddModelError("MessageUser", "Pole wymagane w przypadku zaznaczenia wymagany komentarz");
+            return false;
         }
     }
 }
