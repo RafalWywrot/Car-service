@@ -49,13 +49,13 @@ namespace CarService.WebApplication.Controllers
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
-                ModelState.AddModelError("", "Invalid username or password");
+                ModelState.AddModelError("", "Niepoprawna próba logowania");
                 return View();
             }
 
             if (!user.Active)
             {
-                ModelState.AddModelError("", "You are not available to login due to account is inactive");
+                ModelState.AddModelError("", "Nie masz dostępu do serwisu. Skontaktuj się z administratorem systemu");
                 return View(model);
             }
             // This doesn't count login failures towards account lockout
@@ -71,7 +71,7 @@ namespace CarService.WebApplication.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Niepoprawna próba logowania");
                     return View(model);
             }
         }
@@ -163,7 +163,7 @@ namespace CarService.WebApplication.Controllers
             // Send an email with this link
             string code = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
             var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-            await _userManager.SendEmailAsync(model.Email, "Confirm your account", string.Format(Resource.EmailConfirmationContent, model.Name, callbackUrl));
+            await _userManager.SendEmailAsync(model.Email, "Potwierdzenie konta", string.Format(Resource.EmailConfirmationContent, model.Name, callbackUrl));
 
             return RedirectToAction("Index", "Home");
         }

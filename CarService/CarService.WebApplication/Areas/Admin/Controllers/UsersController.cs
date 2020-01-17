@@ -27,7 +27,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var users = _userManager.Users.ToList();
-            return View(Mapper.Map<IEnumerable<UserBasicViewModel>>(users.Where(x => x.Active)));
+            return View(Mapper.Map<IEnumerable<UserBasicViewModel>>(users));
         }
 
         [HttpGet]
@@ -108,6 +108,18 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
                 throw new NullReferenceException();
 
             user.Active = false;
+            await _userManager.UpdateAsync(user);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Activate(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                throw new NullReferenceException();
+
+            user.Active = true;
             await _userManager.UpdateAsync(user);
             return RedirectToAction("Index");
         }
