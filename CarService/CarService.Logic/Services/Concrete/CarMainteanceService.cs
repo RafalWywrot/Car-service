@@ -186,7 +186,7 @@ namespace CarService.Logic.Services.Concrete
         {
             var currentBooking = _carMainteanceRepository.GetBooking(id);
             currentBooking.DateStarted = date;
-            currentBooking.MechanicComment +=  $" powód zmiany daty: {reason}";
+            currentBooking.MechanicComment =  $"Zmiany daty: {reason}";
             currentBooking.AsSoonAsPossible = false;
             currentBooking.Status = ServiceBookingStatus.WaitingClientApprove;
 
@@ -227,6 +227,12 @@ namespace CarService.Logic.Services.Concrete
             currentBooking.AsSoonAsPossible = bookingService.AsSoonAsPossible;
 
             _carMainteanceRepository.UpdateServiceBooking(currentBooking);
+        }
+
+        public Identity.ApplicationUser GetUser(int serviceId)
+        {
+            var currentBooking = _carMainteanceRepository.GetBooking(serviceId);
+            return currentBooking.Car.AssignedUser;
         }
     }
 }

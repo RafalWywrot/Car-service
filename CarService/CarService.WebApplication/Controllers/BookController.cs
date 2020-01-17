@@ -99,7 +99,7 @@ namespace CarService.WebApplication.Controllers
             }
 
             _carMainteanceService.UpdateServiceBooking(Mapper.Map<BookingServiceDTO>(model));
-            return RedirectToAction("Index");
+            return RedirectToAction("Show", new { bookingServiceId = model.Id });
         }
 
         [HttpPost]

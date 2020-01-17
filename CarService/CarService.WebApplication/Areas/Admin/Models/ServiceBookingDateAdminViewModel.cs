@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarService.WebApplication.Helpers.PropertyAttributes;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace CarService.WebApplication.Areas.Admin.Models
@@ -7,6 +8,7 @@ namespace CarService.WebApplication.Areas.Admin.Models
     {
         public int Id { get; set; }
 
+        [MinDateAttribute]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]

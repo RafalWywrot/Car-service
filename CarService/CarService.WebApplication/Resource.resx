@@ -432,4 +432,12 @@
   <data name="BookingStatusWaitingClient" xml:space="preserve">
     <value>Oczekiwanie na akceptację</value>
   </data>
+  <data name="EmailToClientOfChangedDate" xml:space="preserve">
+    <value>&lt;p style="text-align: center;"&gt;&lt;span style="font-size: 24px;"&gt;&lt;strong&gt;CarService&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="font-size: 18px;"&gt;Nastąpiły zmiany w twojej usłudze&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;Cześć {0},&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;Data twojej usługi została zmieniona. Proponowana przez nas data : &lt;strong&gt;{1}&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;Zaloguj się do systemu i podejmij decyzję&lt;/span&gt;&lt;/p&gt;
+</value>
+  </data>
 </root>
