@@ -36,7 +36,6 @@
                             @Html.DisplayNameFor(model => model.Status)
                         </th>
                         <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbead>
@@ -54,12 +53,6 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Status)
-                            </td>
-                            <td>
-                                @if (item.Status == Resource.BookingStatusCreated)
-                                {
-                                    @Html.ActionLink(Resource.ButtonEdit, "Edit", new { bookingServiceId = item.Id })
-                                }
                             </td>
                             <td>
                                 @Html.ActionLink(Resource.Details, "Show", new { @area = "", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })

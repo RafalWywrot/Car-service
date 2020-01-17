@@ -5,6 +5,12 @@
 }
 
 <h2>@Resource.BookingDetails</h2>
+<div>
+    @if (Model.ServiceDetails.Status == Resource.BookingStatusCreated)
+    {
+        @Html.ActionLink(Resource.ButtonEdit, "Edit", new { bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-primary" })
+    }
+</div>
 
 <div class="form-horizontal">
     <hr />
