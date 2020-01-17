@@ -6,10 +6,12 @@ namespace CarService.Logic.Services.Abstract
 {
     public interface ICarMainteanceService
     {
-        IEnumerable<IdNamePair> GetServices();
-        IdNamePair GetService(int id);
-        void AddService(string name);
-        void UpdateService(int id, string name);
+        IEnumerable<IdNamePair> GetActiveServices();
+        IEnumerable<ServiceDTO> GetServices();
+        ServiceDTO GetService(int id); 
+        void AddService(ServiceDTO service);
+        void UpdateService(ServiceDTO service);
+        void SetActiveStatusOfService(int serviceId, bool status);
         void AddServiceBooking(BookingServiceDTO bookingService);
         IEnumerable<CarModelDTO> GetAllCarModels();
         CarBrandDTO GetCarBrand(int id);

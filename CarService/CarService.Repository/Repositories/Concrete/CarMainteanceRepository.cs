@@ -15,15 +15,11 @@ namespace CarService.Repository.Repositories.Concrete
             this.unitOfWork = unitOfWork;
         }
 
-        public void AddService(string name)
+        public void AddService(Service service)
         {
-            var entity = new Service
-            {
-                Name = name
-            };
             using (var transaction = unitOfWork.Session.BeginTransaction())
             {
-                unitOfWork.Session.Save(entity);
+                unitOfWork.Session.Save(service);
                 transaction.Commit();
             }
         }
@@ -38,13 +34,11 @@ namespace CarService.Repository.Repositories.Concrete
             return unitOfWork.Session.QueryOver<Service>().List();
         }
 
-        public void UpdateServie(int id, string name)
+        public void UpdateServie(Service service)
         {
-            var entity = GetService(id);
-            entity.Name = name;
             using (var transaction = unitOfWork.Session.BeginTransaction())
             {
-                unitOfWork.Session.Update(entity);
+                unitOfWork.Session.Update(service);
                 transaction.Commit();
             }
         }

@@ -58,6 +58,35 @@ namespace CarService.WebApplication.Areas.Admin
                     dest => dest.Active,
                     opt => opt.MapFrom(src => src.Active ? 1 : 0)
                 );
+
+            CreateMap<BookAdminViewModel, DTO.ServiceDTO>()
+                .ForMember(
+                    dest => dest.Id,
+                    opt => opt.MapFrom(src => src.Id)
+                ).ForMember(
+                    dest => dest.Name,
+                    opt => opt.MapFrom(src => src.Name)
+                ).ForMember(
+                    dest => dest.RequiredComment,
+                    opt => opt.MapFrom(src => src.RequiredComment)
+                ).ForMember(
+                    dest => dest.MessageUser,
+                    opt => opt.MapFrom(src => src.MessageUser)
+                )
+                .ReverseMap()
+                .ForMember(
+                    dest => dest.Id,
+                    opt => opt.MapFrom(src => src.Id)
+                ).ForMember(
+                    dest => dest.Name,
+                    opt => opt.MapFrom(src => src.Name)
+                ).ForMember(
+                    dest => dest.RequiredComment,
+                    opt => opt.MapFrom(src => src.RequiredComment)
+                ).ForMember(
+                    dest => dest.MessageUser,
+                    opt => opt.MapFrom(src => src.MessageUser)
+                );
         }
     }
 }

@@ -23,6 +23,8 @@
             </div>
         </div>
 
+        @Html.Partial("_Comment", Model)
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="@Resource.ButtonSave" class="btn btn-default" />
@@ -34,3 +36,9 @@
 <div>
     @Html.ActionLink(Resource.ButtonBack, "Index", new { @area = "Admin" }, new { @class = "btn btn-default" })
 </div>
+
+@section Scripts {
+    <script src="~/Scripts/_serviceRequiredComment.js">
+
+    </script>
+}

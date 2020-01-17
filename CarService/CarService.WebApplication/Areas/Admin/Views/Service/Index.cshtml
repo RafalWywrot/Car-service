@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CarService.Logic.ModelsDTO.IdNamePair>
+﻿@model IEnumerable<CarService.Logic.ModelsDTO.ServiceDTO>
 
 @{
     ViewBag.Title = Resource.Services;
@@ -18,23 +18,25 @@
 </div>
 <table class="table" style="margin-top: 1vh">
     <tr>
-        <th>
-            @Html.DisplayName(Resource.Name)
-        </th>
+        <th>@Html.DisplayName(Resource.Name)</th>
+        <th>Wymagany komentarz</th>
+        <th>Status</th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayName((item.RequiredComment ? "Tak" : "Nie"))</td>
+            <td>@Html.DisplayName((item.Active ? "Aktywna" : "Nieaktywna"))</td>
             <td>
                 @Html.ActionLink(Resource.ButtonEdit, "Edit", new { id = item.Id }, new { @class = "btn btn-default" } ) |
-                @Html.ActionLink(Resource.ButtonDelete, "Delete", new { id = item.Id }, new { @class = "btn btn-default" })
+                @using (Html.BeginForm((@item.Active ? "Delete" : "Activate") , "Service", new { @serviceId = item.Id, @area = "Admin" }, FormMethod.Post, new { }))
+                {
+                    <input type="submit" class="btn btn-default" value="@(item.Active ? "Zablokuj" : "Odblokuj")" />
+                }
             </td>
         </tr>
     }
-
 </table>

@@ -740,6 +740,15 @@ namespace CarService.WebApplication {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wiadomość.
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nazwa.
         /// </summary>
         public static string Name {
@@ -880,6 +889,15 @@ namespace CarService.WebApplication {
         public static string ServiceCancel {
             get {
                 return ResourceManager.GetString("ServiceCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Komentarz wymagany.
+        /// </summary>
+        public static string ServiceCommentRequired {
+            get {
+                return ResourceManager.GetString("ServiceCommentRequired", resourceCulture);
             }
         }
         

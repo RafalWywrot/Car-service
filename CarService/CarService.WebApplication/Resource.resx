@@ -440,4 +440,10 @@
 &lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;Zaloguj się do systemu i podejmij decyzję&lt;/span&gt;&lt;/p&gt;
 </value>
   </data>
+  <data name="ServiceCommentRequired" xml:space="preserve">
+    <value>Komentarz wymagany</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Wiadomość</value>
+  </data>
 </root>

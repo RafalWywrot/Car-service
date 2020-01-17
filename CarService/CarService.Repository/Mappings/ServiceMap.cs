@@ -11,11 +11,14 @@ namespace CarService.Repository.Mappings
 
             Id(x => x.Id);
             Map(x => x.Name, "Name");
+            Map(x => x.RequiredComment, "RequiredComment");
+            Map(x => x.MessageUser, "MessageUser").Nullable();
+            Map(x => x.Active, "Active");
 
             HasMany(x => x.BookingServices)
-              .KeyColumn("ServiceId")
-              .Inverse()
-              .Cascade.AllDeleteOrphan();
+                  .KeyColumn("ServiceId")
+                  .Inverse()
+                  .Cascade.AllDeleteOrphan();
         }
     }
 }
