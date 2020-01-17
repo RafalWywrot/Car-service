@@ -7,8 +7,8 @@ namespace CarService.Repository.Repositories.Abstract
     {
         IEnumerable<Service> GetServices();
         Service GetService(int id);
-        void AddService(string name);
-        void UpdateServie(int id, string name);
+        void AddService(Service service);
+        void UpdateServie(Service service);
         CarBrand GetCarBrand(int id);
         IEnumerable<CarBrand> GetCarBrands();
         void AddCarBrand(CarBrand brand);
