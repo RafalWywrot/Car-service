@@ -186,7 +186,7 @@ namespace CarService.Logic.Services.Concrete
         {
             var currentBooking = _carMainteanceRepository.GetBooking(id);
             currentBooking.DateStarted = date;
-            currentBooking.MechanicComment +=  $" powód zmiany daty: {reason}";
+            currentBooking.MechanicComment =  $"Zmiany daty: {reason}";
             currentBooking.AsSoonAsPossible = false;
             currentBooking.Status = ServiceBookingStatus.WaitingClientApprove;
 

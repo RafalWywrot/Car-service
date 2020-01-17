@@ -62,7 +62,10 @@
                 @Html.LabelFor(model => model.ServiceDetails.DateStarted, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
                     @Html.TextBoxFor(model => model.ServiceDetails.DateStarted, new { @class = "form-control col-md-6", @readonly = "readonly" })
-                    @Html.ActionLink(Resource.ChangeDate, "EditDate", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success col-md-4" })
+                    @if (Model.ServiceDetails.Status != Resource.BookingStatusInProgress && Model.ServiceDetails.Status != Resource.BookingStatusFinished)
+                    {
+                        @Html.ActionLink(Resource.ChangeDate, "EditDate", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success col-md-4" })
+                    }
                 </div>
             </div>
 

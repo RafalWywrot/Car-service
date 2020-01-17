@@ -15,7 +15,6 @@
                 <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().CarName)</th>
                 <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().ServiceName)</th>
                 <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().DateThatClientSelect)</th>
-                <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Comment)</th>
                 <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Status)</th>
                 <th></th>
                 <th></th>
@@ -28,7 +27,6 @@
                     <td>@Html.DisplayFor(modelItem => item.CarName)</td>
                     <td>@Html.DisplayFor(modelItem => item.ServiceName)</td>
                     <td>@Html.DisplayFor(modelItem => item.DateThatClientSelect)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Comment)</td>
                     <td>@Html.DisplayFor(modelItem => item.Status)</td>
                     <td>
                         @Html.ActionLink(Resource.Details, "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
@@ -71,7 +69,6 @@
                     <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().CarName)</th>
                     <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().ServiceName)</th>
                     <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().DateThatClientSelect)</th>
-                    <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Comment)</th>
                     <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Status)</th>
                     <th></th>
                     <th></th>
@@ -84,7 +81,6 @@
                         <td>@Html.DisplayFor(modelItem => item.CarName)</td>
                         <td>@Html.DisplayFor(modelItem => item.ServiceName)</td>
                         <td>@Html.DisplayFor(modelItem => item.DateThatClientSelect)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Comment)</td>
                         <td>@Html.DisplayFor(modelItem => item.Status)</td>
                         <td>
                             @Html.ActionLink("Szczegóły", "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
