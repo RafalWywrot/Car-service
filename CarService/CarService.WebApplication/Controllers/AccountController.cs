@@ -1,22 +1,19 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
+﻿using CarService.Identity;
+using CarService.WebApplication.Helpers;
+using CarService.WebApplication.Helpers.Extensions;
+using CarService.WebApplication.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using CarService.WebApplication.Models;
-using CarService.Identity;
-using CarService.WebApplication.Helpers;
-using CarService.WebApplication.Helpers.Extensions;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace CarService.WebApplication.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

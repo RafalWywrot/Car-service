@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using CarService.Logic.Services.Abstract;
-using CarService.Repository.CustomTypes;
 using CarService.WebApplication.Areas.Admin.Models;
+using CarService.WebApplication.Controllers;
 using CarService.WebApplication.Helpers;
 using CarService.WebApplication.Helpers.ActionFilters;
-using CarService.WebApplication.Models.Car;
 using CarService.WebApplication.Models.ServiceBooking;
 using CarService.WebApplication.Models.User;
 using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +16,7 @@ using System.Web.Mvc;
 namespace CarService.WebApplication.Areas.Admin.Controllers
 {
     [Authorize(Roles = SystemRoles.Admin + ", " + SystemRoles.Mechanic)]
-    public class BookController : Controller
+    public class BookController : BaseController
     {
         private readonly ICarMainteanceService _carMainteanceService;
         private readonly IBookingService _bookingService;
@@ -98,9 +98,9 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
                 var user = _carMainteanceService.GetUser(model.Id);
                 await _userManager.SendEmailAsync(user.Email, "Zmieniono datę usługi", string.Format(Resource.EmailToClientOfChangedDate, user.Name, model.DateCreated.Value.ToShortDateString()));
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-                //Logger.Error();
+                throw new Exception($"Error while sending email of changed service date to userId: {model.Id}", ex);
             }
             
             return RedirectToAction("Index");
