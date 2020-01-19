@@ -80,6 +80,9 @@ namespace CarService.WebApplication.App_Start
             kernel.BindFilter<BookingServiceStatusAfterVerifyActionFilter>(FilterScope.Action, 0)
                 .WhenActionMethodHas<BookingServiceStatusAfterVerifyFilter>()
                 .InRequestScope();
+            kernel.BindFilter<BookingServiceMechanicAssignedActionFilter>(FilterScope.Action, 0)
+                .WhenActionMethodHas<BookingServiceMechanicAssignedFilter>()
+                .InRequestScope();
         }
     }
 }

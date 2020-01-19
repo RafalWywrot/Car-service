@@ -70,7 +70,7 @@ namespace CarService.WebApplication.Controllers
         [HttpPost]
         public ActionResult AddServiceBooking(ServiceBookingFormViewModel model)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || !UserCommentCorrect(model))
             {
                 InitializeDropdown(model);
                 return View(model);
@@ -92,11 +92,12 @@ namespace CarService.WebApplication.Controllers
         [HttpPost]
         public ActionResult Edit(ServiceBookingFormViewModel model)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || !UserCommentCorrect(model))
             {
                 InitializeDropdown(model);
                 return View(model);
             }
+
 
             _carMainteanceService.UpdateServiceBooking(Mapper.Map<BookingServiceDTO>(model));
             return RedirectToAction("Show", new { bookingServiceId = model.Id });
@@ -142,6 +143,19 @@ namespace CarService.WebApplication.Controllers
             var userId = User.Identity.GetUserId();
             model.Cars = _carService.GetUserCars(userId).Where(x => x.Active).ToSelectListItems(x => x.Id, x => x.Model);
             model.Services = _carMainteanceService.GetActiveServices().ToSelectListItems(x => x.Id, x => x.Name);
+        }
+
+        private bool UserCommentCorrect(ServiceBookingFormViewModel model)
+        {
+            var service = _carMainteanceService.GetService(model.ServiceId);
+            if (service.RequiredComment == false)
+                return true;
+
+            if (!string.IsNullOrEmpty(model.Comment))
+                return true;
+
+            ModelState.AddModelError("Comment", $"Wymagany komentarz. {service.MessageUser}");
+            return false;
         }
     }
 }
