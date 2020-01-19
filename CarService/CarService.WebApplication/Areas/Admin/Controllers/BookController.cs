@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using CarService.Logic.Services.Abstract;
-using CarService.Repository.CustomTypes;
 using CarService.WebApplication.Areas.Admin.Models;
+using CarService.WebApplication.Controllers;
 using CarService.WebApplication.Helpers;
 using CarService.WebApplication.Helpers.ActionFilters;
-using CarService.WebApplication.Models.Car;
 using CarService.WebApplication.Models.ServiceBooking;
 using CarService.WebApplication.Models.User;
 using Microsoft.AspNet.Identity;
@@ -16,7 +15,7 @@ using System.Web.Mvc;
 namespace CarService.WebApplication.Areas.Admin.Controllers
 {
     [Authorize(Roles = SystemRoles.Admin + ", " + SystemRoles.Mechanic)]
-    public class BookController : Controller
+    public class BookController : BaseController
     {
         private readonly ICarMainteanceService _carMainteanceService;
         private readonly IBookingService _bookingService;

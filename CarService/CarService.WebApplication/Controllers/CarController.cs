@@ -14,7 +14,7 @@ using System.Web.Mvc;
 namespace CarService.WebApplication.Controllers
 {
     [Authorize(Roles = SystemRoles.User)]
-    public class CarController : Controller
+    public class CarController : BaseController
     {
         private readonly ICarService _carService;
         private readonly ICarMainteanceService _carMainteanceService;
