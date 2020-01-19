@@ -193,25 +193,17 @@ namespace CarService.WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var user = await _userManager.FindByNameAsync(model.Email);
-                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user.Id)))
-                {
-                    // Don't reveal that the user does not exist or is not confirmed
-                    return View("ForgotPasswordConfirmation");
-                }
+            if (!ModelState.IsValid)
+                return View(model);
 
-                // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
-            }
+            var user = await _userManager.FindByNameAsync(model.Email);
+            if (user == null)
+                return RedirectToAction("Index", "Home");
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            string code = await _userManager.GeneratePasswordResetTokenAsync(user.Id);
+            var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+            await _userManager.SendEmailAsync(model.Email, "Zresetowanie hasła", "Zresetuj swoje hasło klikając <a href=\"" + callbackUrl + "\">tutaj</a>");
+            return RedirectToAction("ForgotPasswordConfirmation", "Account");
         }
 
         //
@@ -227,7 +219,8 @@ namespace CarService.WebApplication.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            var message = "Niepoprawny token";
+            return code == null ? View("Error", message) : View("ResetPassword", new ResetPasswordViewModel { Code = code });
         }
 
         //
@@ -238,20 +231,19 @@ namespace CarService.WebApplication.Controllers
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
+
             var user = await _userManager.FindByNameAsync(model.Email);
             if (user == null)
-            {
-                // Don't reveal that the user does not exist
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
+                return RedirectToAction("Index", "Home");
+
             var result = await _userManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
+                await _userManager.SendEmailAsync(user.Email, "Zmiana hasła", "Twoje hasło zostało zmienione");
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
+
             AddErrors(result);
             return View();
         }
