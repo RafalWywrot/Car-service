@@ -446,4 +446,11 @@
   <data name="Message" xml:space="preserve">
     <value>Wiadomość</value>
   </data>
+  <data name="EmailPasswordChanged" xml:space="preserve">
+    <value>&lt;p style="text-align: center;"&gt;&lt;span style="font-size: 24px;"&gt;&lt;strong&gt;CarService&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;span style="font-size: 18px;"&gt;Nastąpiły zmiany w twoim koncie&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;Cześć {0},&lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;Twoje hasło zostało zmienione. &lt;/span&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;Zaloguj się do systemu z użyciem nowego hasła&lt;/span&gt;&lt;/p&gt;</value>
+  </data>
 </root>
