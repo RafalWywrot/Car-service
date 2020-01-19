@@ -112,7 +112,7 @@ namespace CarService.WebApplication.Models
         public string Password { get; set; }
 
         [MinLength(6, ErrorMessageResourceName = "PasswordLengthError", ErrorMessageResourceType = typeof(Resource))]
-        [Compare("Password", ErrorMessageResourceName = "CompareError", ErrorMessageResourceType = typeof(Resource))]
+        [Compare("Password", ErrorMessageResourceName = "ComparePasswordError", ErrorMessageResourceType = typeof(Resource))]
         [DataType(DataType.Password)]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         [Display(Name = "ConfirmPassword", ResourceType = typeof(Resource))]

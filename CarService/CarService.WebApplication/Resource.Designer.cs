@@ -620,6 +620,19 @@ namespace CarService.WebApplication {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;&lt;strong&gt;CarService&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Nastąpiły zmiany w twoim koncie&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Cześć {0},&lt;/span&gt;&lt;/p&gt;
+        ///&lt;p style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Twoje hasło zostało zmienione. &lt;/span&gt;&lt;/p&gt;
+        ///&lt;p style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Zaloguj się do systemu z użyciem nowego hasła&lt;/span&gt;&lt;/p&gt;.
+        /// </summary>
+        public static string EmailPasswordChanged {
+            get {
+                return ResourceManager.GetString("EmailPasswordChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;&lt;strong&gt;CarService&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
         ///&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Nastąpiły zmiany w twojej usłudze&lt;/span&gt;&lt;/p&gt;
         ///&lt;p style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Cześć {0},&lt;/span&gt;&lt;/p&gt;
         ///&lt;p style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Data twojej usługi została zmieniona. Proponowana przez nas data : &lt;strong&gt;{1}&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;

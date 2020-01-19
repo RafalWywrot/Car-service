@@ -230,16 +230,19 @@ namespace CarService.WebApplication.Controllers
         {
             if (!ModelState.IsValid)
                 return View(model);
-            
-            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+
+            var userId = User.Identity.GetUserId();
+            var user = await UserManager.FindByIdAsync(userId);
+            if (user == null)
+                throw new NullReferenceException($"User {userId} not found");
+
+            var result = await UserManager.ChangePasswordAsync(userId, model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {
-                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                if (user != null)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                await _userManager.SendEmailAsync(user.Email, "Zmiana hasła", string.Format(Resource.EmailPasswordChanged, user.Name));
+                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+                return RedirectToAction("Login", "Account");
             }
             AddErrors(result);
             return View(model);
