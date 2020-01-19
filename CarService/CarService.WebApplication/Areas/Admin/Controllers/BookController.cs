@@ -159,6 +159,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [BookingServiceMechanicAssignedFilter]
         [BookingServiceStatusAfterVerifyFilter]
         public JsonResult SetAsAccepted(int bookingServiceId)
         {
@@ -177,6 +178,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             }
         }
 
+        [BookingServiceMechanicAssignedFilter]
         [HttpPost]
         public JsonResult SetAsDecline(int bookingServiceId)
         {
@@ -191,6 +193,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             }
         }
 
+        [BookingServiceMechanicAssignedFilter]
         [HttpPost]
         public JsonResult SetAsInProgress(int bookingServiceId)
         {
@@ -205,6 +208,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             }
         }
 
+        [BookingServiceMechanicAssignedFilter]
         [HttpPost]
         public JsonResult SetAsFinished(int bookingServiceId)
         {
@@ -218,7 +222,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
                 return Json(new JsonObjectResponse("Not saved"));
             }
         }
-
+        
         [HttpPost]
         public JsonResult AssignUser(int bookingServiceId, string userId)
         {
