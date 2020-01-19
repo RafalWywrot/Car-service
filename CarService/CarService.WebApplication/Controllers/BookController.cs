@@ -4,9 +4,7 @@ using CarService.Logic.Services.Abstract;
 using CarService.WebApplication.Helpers;
 using CarService.WebApplication.Helpers.ActionFilters;
 using CarService.WebApplication.Helpers.Extensions;
-using CarService.WebApplication.Models.Car;
 using CarService.WebApplication.Models.ServiceBooking;
-using CarService.WebApplication.Models.User;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +13,12 @@ using System.Web.Mvc;
 namespace CarService.WebApplication.Controllers
 {
     [Authorize(Roles = SystemRoles.User)]
-    public class BookController : Controller
+    public class BookController : BaseController
     {
         private readonly ICarMainteanceService _carMainteanceService;
         private readonly ICarService _carService;
         private readonly ApplicationUserManager _userManager;
         private readonly IBookingService _bookingService;
-
         public BookController(
             ICarMainteanceService carMainteanceService,
             ICarService carService,
