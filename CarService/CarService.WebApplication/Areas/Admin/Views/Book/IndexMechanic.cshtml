@@ -7,43 +7,12 @@
     var message = !Model.IsArchived ? Resource.YourBookings : "Usługi przez Ciebie zrealizowane";
 }
 
-<div>
-    <h4>@message</h4>
-    <table id="MechanicAssignBookingsIndexTable" class="table table-condensed display" style="width:100%">
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().CarName)</th>
-                <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().ServiceName)</th>
-                <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().DateThatClientSelect)</th>
-                <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Status)</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.ServicesAlreadyAssigned)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.CarName)</td>
-                    <td>@Html.DisplayFor(modelItem => item.ServiceName)</td>
-                    <td>@Html.DisplayFor(modelItem => item.DateThatClientSelect)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
-                    <td>
-                        @Html.ActionLink(Resource.Details, "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
-                    </td>
-                </tr>
-            }
-        </tbody>
-
-    </table>
-
-</div>
-
-@if (!Model.IsArchived)
-{
-    <div style="margin-top: 3em;">
-        <h4>@Resource.BookingsUnassigned</h4>
-
-        <table id="MechanicFreeToGetBookingsIndexTable" class="table table-condensed display" style="width:100%">
+<div class="body-with-table row h-50">
+    <div class="col-md-12 background-container w-100">
+        <div class="header-text" style="margin-bottom:20px;">
+            @message
+        </div>
+        <table id="MechanicAssignBookingsIndexTable" class="table table-condensed display" style="width:100%">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().CarName)</th>
@@ -54,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.ServicesUnassignedToAnyMechanic.Where(x => x.DateThatClientSelect == "Jak najszybciej").Concat(Model.ServicesUnassignedToAnyMechanic.Where(x => x.DateThatClientSelect != "Jak najszybciej").OrderBy(x => x.DateThatClientSelect)))
+                @foreach (var item in Model.ServicesAlreadyAssigned)
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.CarName)</td>
@@ -62,7 +31,7 @@
                         <td>@Html.DisplayFor(modelItem => item.DateThatClientSelect)</td>
                         <td>@Html.DisplayFor(modelItem => item.Status)</td>
                         <td>
-                            @Html.ActionLink("Szczegóły", "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink(Resource.Details, "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
                         </td>
                     </tr>
                 }
@@ -70,7 +39,45 @@
 
         </table>
     </div>
+</div>
+
+
+@if (!Model.IsArchived)
+{
+    <div class="body-with-table row h-50" style="margin-top: 3em;">
+        <div class="col-md-12 background-container w-100">
+        <div class="header-text" style="margin-bottom:20px;">
+            @Resource.BookingsUnassigned
+        </div>
+            <table id="MechanicFreeToGetBookingsIndexTable" class="table table-condensed display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().CarName)</th>
+                        <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().ServiceName)</th>
+                        <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().DateThatClientSelect)</th>
+                        <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Status)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ServicesUnassignedToAnyMechanic.Where(x => x.DateThatClientSelect == "Jak najszybciej").Concat(Model.ServicesUnassignedToAnyMechanic.Where(x => x.DateThatClientSelect != "Jak najszybciej").OrderBy(x => x.DateThatClientSelect)))
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.CarName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ServiceName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DateThatClientSelect)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                            <td>
+                                @Html.ActionLink("Szczegóły", "Show", new { @area = "Admin", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 }
+
 @section Scripts
 {
     @Scripts.Render("~/bundles/dataTables")
