@@ -126,7 +126,7 @@ div.container {
 
 .custom-navbar .navbar-brand, .custom-navbar .nav.navbar-nav > li > a {
     padding: 20px 15px;
-    color: #575757;
+    color: #888787;
     font-weight: 600;
 }
 
@@ -193,7 +193,7 @@ textarea.form-block {
 
 .default-text {
     font-size: 16px;
-    color: white;
+    color: #888787;
 }
 
 .checkbox:hover {
@@ -201,9 +201,9 @@ textarea.form-block {
 }
 
 .btn.btn-default {
-    color: white;
+    color: #888787;
     background-color: transparent;
-    border-color: white;
+    border-color: #888787;
     width: 100%;
 }
 
@@ -213,6 +213,25 @@ textarea.form-block {
     border-color: #d9941c;
 }
 
+.btn.btn-primary:hover {
+    background-color: #e6a73c;
+    border-color: #e6a73c;
+}
+
+.btn.btn-primary {
+    background-color: #d9941c;
+    border-color: #d9941c;
+}
+
 p > a, p > a:hover {
     color: #d9941c;
+}
+
+.body-with-table.row {
+    height: 100%;
+}
+
+.body-with-table.row .background-container {
+    height: 100%;
+    overflow-y: auto;
 }
