@@ -124,10 +124,21 @@ div.container {
     opacity: 0.9;
 }
 
-.custom-navbar .navbar-brand, .custom-navbar .nav.navbar-nav > li > a {
+.custom-navbar .navbar-brand, 
+.custom-navbar .nav.navbar-nav > li > a {
     padding: 20px 15px;
     color: #575757;
     font-weight: 600;
+}
+
+.custom-navbar .navbar-brand {
+    padding: 0px;
+    width: 330px;
+    height: 60px;
+}
+
+.navbar-brand img {
+    height: 60px;
 }
 
 .custom-navbar .navbar-brand:hover, .custom-navbar .nav.navbar-nav li a:hover {
