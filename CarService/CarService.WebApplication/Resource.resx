@@ -453,4 +453,7 @@
 &lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;Twoje hasło zostało zmienione. &lt;/span&gt;&lt;/p&gt;
 &lt;p style="text-align: left;"&gt;&lt;span style="font-size: 18px;"&gt;Zaloguj się do systemu z użyciem nowego hasła&lt;/span&gt;&lt;/p&gt;</value>
   </data>
+  <data name="RegisterAskTitle" xml:space="preserve">
+    <value>Nie posiadasz konta?</value>
+  </data>
 </root>

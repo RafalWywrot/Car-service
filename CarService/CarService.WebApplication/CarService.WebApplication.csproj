@@ -289,6 +289,8 @@
     <Content Include="Content\DataTable\DataTables-1.10.20\images\sort_both.png" />
     <Content Include="Content\DataTable\DataTables-1.10.20\images\sort_desc.png" />
     <Content Include="Content\DataTable\DataTables-1.10.20\images\sort_desc_disabled.png" />
+    <Content Include="Content\Images\background.jpg" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -299,10 +301,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ConnectionString.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="MailSetting.config" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
@@ -325,6 +323,8 @@
     <Content Include="Areas\Admin\Views\Car\AddNewModel.cshtml" />
     <Content Include="Areas\Admin\Views\Car\UpdateModel.cshtml" />
     <Content Include="Areas\Admin\Views\Service\_Comment.cshtml" />
+    <Content Include="ConnectionString.config" />
+    <Content Include="MailSetting.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTable\datatables.js" />
     <Content Include="Scripts\DataTable\datatables.min.js" />

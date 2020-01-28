@@ -9,7 +9,7 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top custom-navbar">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,9 +17,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
+
                 @Html.ActionLink("Car service", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <span class="logo"></span>
             </div>
             <div class="navbar-collapse collapse">
+                
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink(Resource.Register, "Register", "Account", new { @area = "" }, htmlAttributes: new { id = "registerLink" })</li>
                     <li>@Html.ActionLink(Resource.LogIn, "Login", "Account", new { @area = "" }, htmlAttributes: new { id = "loginLink" })</li>
@@ -27,11 +31,14 @@
             </div>
         </div>
     </div>
+    <div class="image-background"></div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+    </div>
+
+    <div class="container container-footer">
         <footer>
-            <p>&copy; @DateTime.Now.Year - CarService</p>
+            <p>&copy; @DateTime.Now.Year - wywrot.rafal@gmail.com</p>
         </footer>
     </div>
 
