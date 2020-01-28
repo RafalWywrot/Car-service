@@ -54,7 +54,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.ServicesUnassignedToAnyMechanic)
+                @foreach (var item in Model.ServicesUnassignedToAnyMechanic.Where(x => x.DateThatClientSelect == "Jak najszybciej").Concat(Model.ServicesUnassignedToAnyMechanic.Where(x => x.DateThatClientSelect != "Jak najszybciej").OrderBy(x => x.DateThatClientSelect)))
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.CarName)</td>
