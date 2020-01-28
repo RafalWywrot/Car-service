@@ -13,7 +13,7 @@ namespace CarService.WebApplication.Controllers
             if (User.IsInRole(SystemRoles.User))
                 return View("IndexRoleUser");
 
-            return View();
+            return RedirectToAction("Index", "Book", new { @area = "Admin" });
         }
     }
 }

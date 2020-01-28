@@ -1,4 +1,4 @@
-﻿body {
+body {
     height: 100vh;
 }
 
@@ -215,4 +215,30 @@ textarea.form-block {
 
 p > a, p > a:hover {
     color: #d9941c;
+}
+
+@media (max-width: 600px) {
+    .grid-item:first-child {
+        margin: 20px 0;
+    }
+
+    .grid-item {
+        height: 200px;
+        margin: 20px 0;
+        display: block;
+        width: 100%;
+    }
+
+    .grids-panel {
+        margin-top: 20px;
+        display: block;
+    }
+
+    .grids-panel .grid-item .glyphicon {
+        font-size: 30px;
+        display: flex;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        color: #d9941c;
+    }
 }
