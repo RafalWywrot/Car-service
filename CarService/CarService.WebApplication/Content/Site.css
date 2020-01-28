@@ -43,6 +43,10 @@ div.container {
     float: right;
 }
 
+.h-50 {
+    height: 50% !important;
+}
+
 .grid-item {
     display: inline-block;
     background-color: white;
