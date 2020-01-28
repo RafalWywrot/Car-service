@@ -7,9 +7,9 @@
     bool isArchived = Model.All(x => x.Status == Resource.BookingStatusFinished || x.Status == Resource.BookingStatusDeclined);
 }
 
-<div class="row">
+<div class="body-with-table row">
     <div class="col-md-12 background-container w-100">
-        <div class="header-text">
+        <div class="header-text" style="margin-bottom:20px;">
             @Resource.Bookings
         </div>
 
