@@ -4,39 +4,46 @@
     ViewBag.Title = Resource.Services;
 }
 
-<h2>@Resource.Services</h2>
-<div class="row">
-    <div class="col-md-12">
-        @using (Html.BeginForm("Add", "Service", new { @area = "Admin" }, FormMethod.Get, null))
-        {
-            <button type="submit" class="btn btn-success btn-">
-                @Resource.ButtonAdd
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-        }
+<div class="row body-with-table">
+    <div class="col-md-12 background-container w-100">
+        <div class="header-text" style="width: 50%; display:inline-block;">
+            @Resource.Services
+        </div>
+
+        <div style="width: 20%; display:inline-block; float:right; padding-top: 5px;">
+            @using (Html.BeginForm("Add", "Service", new { @area = "Admin" }, FormMethod.Get, null))
+            {
+                <button type="submit" class="btn btn-success btn-">
+                    @Resource.ButtonAdd
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            }
+        </div>
+        <hr />
+
+        <table class="table" style="margin-top: 1vh">
+            <tr>
+                <th>@Html.DisplayName(Resource.Name)</th>
+                <th>Wymagany komentarz</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayName((item.RequiredComment ? "Tak" : "Nie"))</td>
+                    <td>@Html.DisplayName((item.Active ? "Aktywna" : "Nieaktywna"))</td>
+                    <td>
+                        @Html.ActionLink(Resource.ButtonEdit, "Edit", new { id = item.Id }, new { @class = "btn btn-default" }) |
+                        @using (Html.BeginForm((@item.Active ? "Delete" : "Activate"), "Service", new { @serviceId = item.Id, @area = "Admin" }, FormMethod.Post, new { }))
+                        {
+                            <input type="submit" class="btn btn-default" value="@(item.Active ? "Zablokuj" : "Odblokuj")" />
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
     </div>
 </div>
-<table class="table" style="margin-top: 1vh">
-    <tr>
-        <th>@Html.DisplayName(Resource.Name)</th>
-        <th>Wymagany komentarz</th>
-        <th>Status</th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-            <td>@Html.DisplayName((item.RequiredComment ? "Tak" : "Nie"))</td>
-            <td>@Html.DisplayName((item.Active ? "Aktywna" : "Nieaktywna"))</td>
-            <td>
-                @Html.ActionLink(Resource.ButtonEdit, "Edit", new { id = item.Id }, new { @class = "btn btn-default" } ) |
-                @using (Html.BeginForm((@item.Active ? "Delete" : "Activate") , "Service", new { @serviceId = item.Id, @area = "Admin" }, FormMethod.Post, new { }))
-                {
-                    <input type="submit" class="btn btn-default" value="@(item.Active ? "Zablokuj" : "Odblokuj")" />
-                }
-            </td>
-        </tr>
-    }
-</table>

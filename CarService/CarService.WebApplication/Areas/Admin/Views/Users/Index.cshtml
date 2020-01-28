@@ -6,72 +6,77 @@
     ViewBag.Title = Resource.Users;
 }
 
-<h2>@Resource.Users</h2>
+<div class="row body-with-table" style="margin-bottom: 20px;">
+    <div class="col-md-12 background-container w-100">
+        <div class="header-text" style="width: 50%; display:inline-block;">
+            @Resource.Users
+        </div>
 
-<div class="row" style="margin-bottom: 20px;">
-    <div class="col-md-12">
-        @using (Html.BeginForm("Add", "Users", new { @area = "Admin" }, FormMethod.Get, null))
-        {
-            <button type="submit" class="btn btn-success btn-">
-                @Resource.AddMechanic
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-        }
-    </div>
-</div>
+        <div style="width: 20%; display:inline-block; float:right; padding-top: 5px;">
+            @using (Html.BeginForm("Add", "Users", new { @area = "Admin" }, FormMethod.Get, null))
+            {
+                <button type="submit" class="btn btn-success btn-">
+                    @Resource.AddMechanic
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            }
+        </div>
+        <hr />
 
-<div class="row" >
-    <div class="col-md-12">
-        <table id="userstable" class="table table-condensed display" style="width:100%">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Surname)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Roles)
-                    </th>
-                    <th>@Html.DisplayNameFor(model => model.Active)</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Surname)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Roles)
-                        </td>
-                        <td>
-                            @Html.DisplayName((item.Active ? "Odblokowane" : "Zablokowane"))
-                        </td>
-                        <td>
-                            @Html.ActionLink(Resource.ButtonEdit, "Edit", new { userId = item.Id }, new { @class = "btn btn-default" }) |
-                            @using (Html.BeginForm((@item.Active ? "Delete" : "Activate") , "Users", new { @userId = item.Id, @area = "Admin" }, FormMethod.Post, new { }))
-                            {
-                                <input type="submit" class="btn btn-default" value="@(item.Active ? "Zablokuj" : "Odblokuj")" />
-                            }
-                        </td>
-                    </tr>
-                }
-            </tbody>
+        <div class="row">
+            <div class="col-md-12">
+                <table id="userstable" class="table table-condensed display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Surname)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Roles)
+                            </th>
+                            <th>@Html.DisplayNameFor(model => model.Active)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Surname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Roles)
+                                </td>
+                                <td>
+                                    @Html.DisplayName((item.Active ? "Odblokowane" : "Zablokowane"))
+                                </td>
+                                <td>
+                                    @Html.ActionLink(Resource.ButtonEdit, "Edit", new { userId = item.Id }, new { @class = "btn btn-default" }) |
+                                    @using (Html.BeginForm((@item.Active ? "Delete" : "Activate"), "Users", new { @userId = item.Id, @area = "Admin" }, FormMethod.Post, new { }))
+                                    {
+                                        <input type="submit" class="btn btn-default" value="@(item.Active ? "Zablokuj" : "Odblokuj")" />
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
 
-        </table>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 @section Scripts {
