@@ -7,10 +7,12 @@
     bool isArchived = Model.All(x => x.Status == Resource.BookingStatusFinished || x.Status == Resource.BookingStatusDeclined);
 }
 
-<h2>@Resource.Bookings</h2>
-
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 background-container w-100">
+        <div class="header-text">
+            @Resource.Bookings
+        </div>
+
         <table id="adminBookIndexTable" class="table table-condensed display" style="width:100%">
             <thead>
                 <tr>
