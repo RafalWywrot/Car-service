@@ -202,6 +202,11 @@ textarea.form-block {
     margin-bottom: 10px;
 }
 
+.form-group .form-control {
+    width: 100%;
+    max-width:none;
+}
+
 .default-text {
     font-size: 16px;
     color: #888787;
