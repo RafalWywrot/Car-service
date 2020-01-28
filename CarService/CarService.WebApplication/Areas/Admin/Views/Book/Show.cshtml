@@ -7,185 +7,202 @@
     bool canEdit = Model.ServiceDetails.Status != Resource.BookingStatusDeclined && Model.ServiceDetails.Status != Resource.BookingStatusInProgress && Model.ServiceDetails.Status != Resource.BookingStatusFinished;
 }
 
-<h2>@Resource.BookingDetails</h2>
-
-<div class="form-horizontal">
-    <hr />
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label class="control-label col-md-4">@Resource.CarModel</label>
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.CarDetails.Model, new { @class = "form-control  col-md-6", @readonly = "readonly" })
-                    @Html.ActionLink(Resource.HistoryCarButton, "History", "Car", new { @area = "Admin", carId = Model.CarDetails.Id }, new { @class = "btn btn-success col-md-4" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">@Resource.CarYear</label>
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.CarDetails.Year, new { @class = "form-control", @readonly = "readonly" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">@Resource.CarCapacity</label>
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.CarDetails.EngineCapacity, new { @class = "form-control", @readonly = "readonly" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">@Resource.CarPower</label>
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.CarDetails.EnginePower, new { @class = "form-control", @readonly = "readonly" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">@Resource.CarFuel</label>
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.CarDetails.Fuel, new { @class = "form-control", @readonly = "readonly" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">@Resource.CarTransmission</label>
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.CarDetails.Transmission, new { @class = "form-control", @readonly = "readonly" })
-                </div>
+<div class="body-with-table row">
+    <div class="col-md-12 background-container w-100">
+        <div class="form-horizontal">
+            <div class="header-text" style="width: 50%; display:inline-block;">
+                @Resource.BookingDetails
             </div>
 
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                @Html.LabelFor(model => model.ServiceDetails.ServiceName, htmlAttributes: new { @class = "control-label col-md-4" })
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.ServiceDetails.ServiceName, new { @class = "form-control", @readonly = "readonly" })
-                </div>
+            <div style="width: 20%; display:inline-block; float:right; padding-top: 5px;">
+                @Html.ActionLink(Resource.ButtonBack, "Index", "Book", new { @area = "Admin" }, new { @class = "btn btn-default" })
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.ServiceDetails.DateStarted, htmlAttributes: new { @class = "control-label col-md-4" })
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.ServiceDetails.DateStarted, new { @class = "form-control col-md-6", @readonly = "readonly" })
-                    @if (canEdit)
-                    {
-                        @Html.ActionLink(Resource.ChangeDate, "EditDate", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success col-md-4" })
-                    }
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ServiceDetails.Comment, htmlAttributes: new { @class = "control-label col-md-4" })
-                <div class="col-md-8">
-                    @Html.TextAreaFor(model => model.ServiceDetails.Comment, new { @class = "form-control", @readonly = "readonly" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ServiceDetails.Status, htmlAttributes: new { @class = "control-label col-md-4" })
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.ServiceDetails.Status, new { @class = "form-control", @readonly = "readonly" })
-                    <div class="">
-                        @if (service.Status == Resource.BookingStatusCreated)
-                        {
-                            <button class='btn btn-default changeToVerify' data-id="@service.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToVerify</button>
-                        }
-                        else if (service.Status == Resource.BookingStatusVerify)
-                        {
-                            <button class='btn btn-default changeToAccept' data-id="@service.Id" data-url='@Url.Action("SetAsAccepted", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToAccept</button>
-                            <button class='btn btn-default changeToDecline' data-id="@service.Id" data-url='@Url.Action("SetAsDecline", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToDecline</button>
-                        }
-                        else if (service.Status == Resource.BookingStatusAccepted)
-                        {
-                            <button class='btn btn-default changeToInProgress' data-id="@service.Id" data-url='@Url.Action("SetAsInProgress", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToDo</button>
-                        }
-                        else if (service.Status == Resource.BookingStatusInProgress)
-                        {
-                            <button class='btn btn-default changeToFinished' data-id="@service.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToPickUp</button>
-                        }
+            <hr />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">@Resource.CarModel</label>
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.CarDetails.Model, new { @class = "form-control  col-md-6", @readonly = "readonly" })
+                            @Html.ActionLink(Resource.HistoryCarButton, "History", "Car", new { @area = "Admin", carId = Model.CarDetails.Id }, new { @class = "btn btn-success col-md-4" })
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            @if (User.IsInRole(SystemRoles.Admin))
-            {
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ServiceDetails.Mechanic, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-8">
-                        @Html.TextBoxFor(model => model.ServiceDetails.Mechanic, new { @class = "form-control", @readonly = "readonly" })
-                        @Html.ActionLink(Resource.AssignMechanic, "EditMechanic", "Book", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success" })
+                    <div class="form-group">
+                        <label class="control-label col-md-4">@Resource.CarYear</label>
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.CarDetails.Year, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">@Resource.CarCapacity</label>
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.CarDetails.EngineCapacity, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">@Resource.CarPower</label>
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.CarDetails.EnginePower, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">@Resource.CarFuel</label>
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.CarDetails.Fuel, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">@Resource.CarTransmission</label>
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.CarDetails.Transmission, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+
                 </div>
-            }
-            @if (User.IsInRole(SystemRoles.Mechanic))
-            {
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ServiceDetails.Mechanic, htmlAttributes: new { @class = "control-label col-md-4" })
-                    @if (string.IsNullOrEmpty(Model.ServiceDetails.Mechanic))
-                    {
-                        if (!canEdit)
-                        {
-                            <div class="col-md-8">
-                                @Html.TextBox("ServiceDetails.Mechanic", string.Empty, new { @class = "form-control", @readonly = "readonly" })
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="col-md-8">
-                            @using (Html.BeginForm("AssignToMechanic", "Book", new { bookingServiceId = Model.ServiceDetails.Id }, FormMethod.Post, new { }))
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ServiceDetails.ServiceName, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.ServiceDetails.ServiceName, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ServiceDetails.DateStarted, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.ServiceDetails.DateStarted, new { @class = "form-control col-md-6", @readonly = "readonly" })
+                            @if (canEdit)
                             {
-                                <input type="submit" value="@Resource.AssignToMe" class="btn btn-success" />
+                                @Html.ActionLink(Resource.ChangeDate, "EditDate", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success col-md-4" })
                             }
                         </div>
-                        }
-                    }
-                    else
-                    {
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ServiceDetails.Comment, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.TextBox("ServiceDetails.Mechanic", Resource.ToYou, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.TextAreaFor(model => model.ServiceDetails.Comment, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ServiceDetails.Status, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.ServiceDetails.Status, new { @class = "form-control", @readonly = "readonly" })
+                            <div class="">
+                                @if (service.Status == Resource.BookingStatusCreated)
+                                {
+                                    <button class='btn btn-default changeToVerify' data-id="@service.Id" data-url='@Url.Action("SetAsVerified", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToVerify</button>
+                                }
+                                else if (service.Status == Resource.BookingStatusVerify)
+                                {
+                                    <button class='btn btn-default changeToAccept' data-id="@service.Id" data-url='@Url.Action("SetAsAccepted", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToAccept</button>
+                                    <button class='btn btn-default changeToDecline' data-id="@service.Id" data-url='@Url.Action("SetAsDecline", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToDecline</button>
+                                }
+                                else if (service.Status == Resource.BookingStatusAccepted)
+                                {
+                                    <button class='btn btn-default changeToInProgress' data-id="@service.Id" data-url='@Url.Action("SetAsInProgress", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToDo</button>
+                                }
+                                else if (service.Status == Resource.BookingStatusInProgress)
+                                {
+                                    <button class='btn btn-default changeToFinished' data-id="@service.Id" data-url='@Url.Action("SetAsFinished", "Book", new { @area = "Admin"})'>@Resource.BookingStatusChangeToPickUp</button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (User.IsInRole(SystemRoles.Admin))
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ServiceDetails.Mechanic, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ServiceDetails.Mechanic, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ActionLink(Resource.AssignMechanic, "EditMechanic", "Book", new { @area = "Admin", bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-success" })
+                            </div>
+                        </div>
+                    }
+                    @if (User.IsInRole(SystemRoles.Mechanic))
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ServiceDetails.Mechanic, htmlAttributes: new { @class = "control-label col-md-4" })
+                            @if (string.IsNullOrEmpty(Model.ServiceDetails.Mechanic))
+                            {
+                                if (!canEdit)
+                                {
+                                    <div class="col-md-8">
+                                        @Html.TextBox("ServiceDetails.Mechanic", string.Empty, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-8">
+                                        @using (Html.BeginForm("AssignToMechanic", "Book", new { bookingServiceId = Model.ServiceDetails.Id }, FormMethod.Post, new { }))
+                                        {
+                                            <input type="submit" value="@Resource.AssignToMe" class="btn btn-success" />
+                                        }
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="col-md-8">
+                                    @Html.TextBox("ServiceDetails.Mechanic", Resource.ToYou, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+                            }
                         </div>
                     }
                 </div>
-            }
+            </div>
+
+            <div class="header-text" style="width: 50%; display:inline-block; padding-top:20px;">
+                Dane właściciela
+            </div>
+            <hr />
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">@Resource.UserName</label>
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.User.Name, new { @class = "form-control  col-md-6", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">@Resource.Surname</label>
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.User.Surname, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">@Resource.PhoneNumber</label>
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.User.PhoneNumber, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">@Resource.Email</label>
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.User.Email, new { @class = "form-control  col-md-6", @readonly = "readonly" })
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <h2>Dane właściciela</h2>
-        <hr />
-        <div class="col-md-6">
-            <div class="form-group">
-                <label class="control-label col-md-4">@Resource.UserName</label>
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.User.Name, new { @class = "form-control  col-md-6", @readonly = "readonly" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">@Resource.Surname</label>
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.User.Surname, new { @class = "form-control", @readonly = "readonly" })
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label class="control-label col-md-4">@Resource.PhoneNumber</label>
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.User.PhoneNumber, new { @class = "form-control", @readonly = "readonly" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-4">@Resource.Email</label>
-                <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.User.Email, new { @class = "form-control  col-md-6", @readonly = "readonly" })
-                </div>
-            </div>
-        </div>
+
+        
     </div>
 </div>
 
-<div>
-    @Html.ActionLink(Resource.ButtonBack, "Index", "Book", new { @area = "Admin" }, new { @class = "btn btn-default" })
-</div>
+
+
+
+
 
 @section Scripts {
     <script src="~/Scripts/BookingServices.js">
 
-    </script>    
+    </script>
 }
