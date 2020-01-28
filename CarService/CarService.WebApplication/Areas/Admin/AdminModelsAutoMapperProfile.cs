@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CarService.Identity;
 using CarService.WebApplication.Areas.Admin.Models;
+using CarService.WebApplication.Helpers.Extensions;
 using System.Linq;
 using DTO = CarService.Logic.ModelsDTO;
 using Entity = CarService.Repository.Entities;
@@ -29,7 +30,7 @@ namespace CarService.WebApplication.Areas.Admin
                     opt => opt.MapFrom(src => src.Status)
                ).ForMember(
                     dest => dest.DateThatClientSelect,
-                    opt => opt.MapFrom(src => src.AsSoonAsPossible ? "Jak najszybciej" : src.DateStarted.Value.ToShortDateString())
+                    opt => opt.MapFrom(src => src.AsSoonAsPossible ? "Jak najszybciej" : src.DateStarted.Value.ToShortedDateByYear())
                ).ForMember(
                     dest => dest.Mechanic,
                     opt => opt.MapFrom(src => src.MechanicFullName)

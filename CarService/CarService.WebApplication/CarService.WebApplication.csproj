@@ -253,6 +253,7 @@
     <Compile Include="Helpers\ActionFilters\BookingServiceStatusAfterVerifyFilter.cs" />
     <Compile Include="Helpers\ActionFilters\ServiceBookingDateTimeFilter.cs" />
     <Compile Include="Helpers\AutoMapperProfile.cs" />
+    <Compile Include="Helpers\Extensions\DateTimeExtensions.cs" />
     <Compile Include="Helpers\Extensions\CollectionExtensions.cs" />
     <Compile Include="Helpers\Extensions\ModelState.cs" />
     <Compile Include="Helpers\Extensions\StringExtensions.cs" />
@@ -386,6 +387,7 @@
     <Content Include="Views\Book\Show.cshtml" />
     <Content Include="Views\Car\PreviousCars.cshtml" />
     <Content Include="Views\Book\ChangeDate.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

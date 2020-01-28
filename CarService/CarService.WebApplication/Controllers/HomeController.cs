@@ -15,5 +15,10 @@ namespace CarService.WebApplication.Controllers
 
             return RedirectToAction("Index", "Book", new { @area = "Admin" });
         }
+
+        public ViewResult Contact()
+        {
+            return View();
+        }
     }
 }

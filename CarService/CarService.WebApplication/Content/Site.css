@@ -87,14 +87,20 @@ div.container {
     padding: 5px 15px;
     width: 100%;
 }
-
-.grids-panel .grid-item .grid-button:hover {
-    color: #d9941c;
-}
+    .grids-panel .grid-item .grid-button {
+        text-decoration: none;
+        color: #5c5c5c;
+        display:block;
+        text-align: center;
+    }
+    .grids-panel .grid-item .grid-button:hover {
+        color: #d9941c;
+    }
 
 .grids-panel .grid-item .grid-info-text {
     font-size: 16px;
     color: #5c5c5c;
+    height: 60px;
 }
 
 .grids-panel .grid-item .glyphicon {
@@ -250,7 +256,17 @@ p > a, p > a:hover {
     overflow-y: auto;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 991px) {
+    .grids-panel .grid-item .grid-info-text {
+        height: 100px;
+    }
+}
+
+@media (max-width: 700px) {
+    .grids-panel .grid-item .grid-info-text {
+        height: 25px;
+    }
+
     .grid-item:first-child {
         margin: 20px 0;
     }
