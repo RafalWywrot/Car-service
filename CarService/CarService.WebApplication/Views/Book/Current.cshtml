@@ -1,0 +1,88 @@
+﻿@model IEnumerable<CarService.WebApplication.Models.ServiceBooking.ServiceBookingSummaryViewModel>
+@section Styles{
+    @Styles.Render("~/Content/dataTables")
+}
+@{
+    ViewBag.Title = Resource.Services;
+}
+
+<div class="body-with-table row">
+    <div class="col-md-12 background-container w-100">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-xs-7 header-text">
+                Usługi w realizacji
+            </div>
+            <div class="col-xs-5">
+                @Html.ActionLink(@Resource.ButtonAdd, "AddServiceBooking", "Book", new { @area = "" }, new { @class = "btn btn-default w-auto right" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table id="userBookOnlycurrent" class="table table-condensed display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CarName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ServiceName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DateStarted)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Status)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbead>
+                        @foreach (var item in Model.Where(x => x.Status != Resource.BookingStatusDeclined && x.Status != Resource.BookingStatusFinished))
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CarName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ServiceName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateStarted)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.ActionLink(Resource.Details, "Show", new { @area = "", bookingServiceId = item.Id }, new { @class = "btn btn-primary" })
+                                </td>
+                            </tr>
+                        }
+                    </tbead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/dataTables")
+    <script>
+        (function ($) {
+            $("#userBookOnlycurrent").DataTable({
+                "language": {
+                    "url": 'http://cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json'
+                },
+                'columnDefs': [
+                    {
+                        targets: -1,
+                        'className': 'dt-body-center'
+                    },
+                    {
+                        targets: [-1, -2],
+                        'orderable': false
+                    }
+                ]
+            });
+        })(jQuery);
+    </script>
+}

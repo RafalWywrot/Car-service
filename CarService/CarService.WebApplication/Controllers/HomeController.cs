@@ -11,7 +11,7 @@ namespace CarService.WebApplication.Controllers
                 return View("IndexUnathorize");
 
             if (User.IsInRole(SystemRoles.User))
-                return View("IndexRoleUser");
+                return RedirectToAction("Current", "Book", new { @area = "" });
 
             return RedirectToAction("Index", "Book", new { @area = "Admin" });
         }
