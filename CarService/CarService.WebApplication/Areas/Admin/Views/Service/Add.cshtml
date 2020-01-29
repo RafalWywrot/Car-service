@@ -6,17 +6,19 @@
 
 <div class="body-with-table row">
     <div class="col-md-12 background-container w-100">
-        <div class="header-text" style="width: 50%; display:inline-block;">
-            @Resource.AddServiceTitle
-        </div>
-        <div style="width: 20%; display:inline-block; float:right; padding-top: 5px;">
-            @Html.ActionLink(Resource.ButtonBack, "Index", new { @area = "Admin" }, new { @class = "btn btn-default" })
+
+        <div class="row">
+            <div class="col-xs-7 header-text">
+                @Resource.AddServiceTitle
+            </div>
+            <div class="col-xs-5">
+                @Html.ActionLink(Resource.ButtonBack, "Index", new { @area = "Admin" }, new { @class = "btn btn-default w-auto right" })
+            </div>
         </div>
 
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-
             <div class="form-horizontal">
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })

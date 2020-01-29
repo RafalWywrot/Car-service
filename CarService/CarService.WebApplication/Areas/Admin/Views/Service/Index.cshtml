@@ -13,16 +13,14 @@
 
 <div class="body-with-table row">
     <div class="col-md-12 background-container w-100">
-        <div style="margin-bottom: 20px;">
-            <div class="header-text" style="width: 50%; display:inline-block;">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-xs-7 header-text">
                 @Resource.Services
             </div>
-
-            <div style="width: 20%; display:inline-block; float:right; padding-top: 5px;">
-                @Html.ActionLink("Dodaj nową usługę", "Add", "Service", new { @area = "Admin" }, new { @class = "btn btn-default" })
+            <div class="col-xs-5">
+                @Html.ActionLink("Dodaj nową usługę", "Add", "Service", new { @area = "Admin" }, new { @class = "btn btn-default w-auto right" })
             </div>
         </div>
-
         <table id="servicesTable" class="table table-condensed display" style="width: 100%">
             <thead>
                 <tr>
