@@ -143,13 +143,13 @@
                             {
                                 if (!canEdit)
                                 {
-                                    <div class="col-md-10">
+                                    <div class="col-md-11">
                                         @Html.TextBox("ServiceDetails.Mechanic", string.Empty, new { @class = "form-control", @readonly = "readonly" })
                                     </div>
                                 }
                                 else
                                 {
-                                    <div class="col-md-10">
+                                    <div class="col-md-11">
                                         @using (Html.BeginForm("AssignToMechanic", "Book", new { bookingServiceId = Model.ServiceDetails.Id }, FormMethod.Post, new { }))
                                         {
                                             <input type="submit" value="@Resource.AssignToMe" class="btn btn-default" />
@@ -159,7 +159,7 @@
                             }
                             else
                             {
-                                <div class="col-md-10">
+                                <div class="col-md-11">
                                     @Html.TextBox("ServiceDetails.Mechanic", Resource.ToYou, new { @class = "form-control", @readonly = "readonly" })
                                 </div>
                             }

@@ -7,7 +7,8 @@
     var message = !Model.IsArchived ? Resource.YourBookings : "Usługi przez Ciebie zrealizowane";
 }
 
-<div class="body-with-table row h-50">
+<div class="body-with-table row @(!Model.IsArchived ?"h-50" : string.Empty) " 
+     style="@(!Model.IsArchived ?"padding-bottom: 10px;" : string.Empty)">
     <div class="col-md-12 background-container w-100">
         <div class="header-text" style="margin-bottom:20px;">
             @message
@@ -45,11 +46,12 @@
 
 @if (!Model.IsArchived)
 {
-    <div class="body-with-table row h-50" style="margin-top: 3em;">
+    <div class="body-with-table row h-50" style="padding-top: 10px;">
         <div class="col-md-12 background-container w-100">
-        <div class="header-text" style="margin-bottom:20px;">
-            @Resource.BookingsUnassigned
-        </div>
+            <div class="header-text" style="margin-bottom: 20px;">
+                @Resource.BookingsUnassigned
+            </div>
+            <hr />
             <table id="MechanicFreeToGetBookingsIndexTable" class="table table-condensed display" style="width:100%">
                 <thead>
                     <tr>
