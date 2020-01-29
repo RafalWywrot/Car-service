@@ -4,43 +4,45 @@
     Layout = "~/Views/Shared/_UnathorizeLayout.cshtml";
 }
 
-<div class="background-container">
-    <div class="header-text">
-        Drogi Kliencie!
-    </div>
-    <hr />
-    <div class="info-text">
-        Nasz warsztat samochody jest dostępny dla Ciebie tutaj.
-        Posiadamy szeroki wachlarz usług, od przeglądów, wymianę opon, naprawę elektroniki po konserwację podwozia oraz wiele innych.
-        Naprawy przeprowadzamy za pomocą części, które spełniają wymogi bezpieczeństwa.
-        Możesz umówić się na wizytę w dogodnym dla Ciebie terminie, śledzić postępy prac i wiele więcej.
-        Zapewniamy kontakt z mechanikiem poprzez stronę. Nigdy nie wykonujeme czynności bez zgody klienta.
-    </div>
-</div>
-
-<div class="grids-panel">
-    <div class="grid-item">
-        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-        <div class="grid-info-text">
-            <span>Umawiaj wizyty online swoich samochodów</span>
+<div style="overflow-y:auto; height: 100%; ">
+    <div class="background-container">
+        <div class="header-text">
+            Drogi Kliencie!
         </div>
-        <a href="@Url.Action("Index", "Book", new { @area = "" })" class="grid-button"><span>Umów wizytę</span></a>
+        <hr />
+        <div class="info-text">
+            Nasz warsztat samochody jest dostępny dla Ciebie tutaj.
+            Posiadamy szeroki wachlarz usług, od przeglądów, wymianę opon, naprawę elektroniki po konserwację podwozia oraz wiele innych.
+            Naprawy przeprowadzamy za pomocą części, które spełniają wymogi bezpieczeństwa.
+            Możesz umówić się na wizytę w dogodnym dla Ciebie terminie, śledzić postępy prac i wiele więcej.
+            Zapewniamy kontakt z mechanikiem poprzez stronę. Nigdy nie wykonujeme czynności bez zgody klienta.
+        </div>
     </div>
 
-    <div class="grid-item">
-        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-        <div class="grid-info-text">
-            <span>Do korzystania z systemu wymagana jest rejestracja</span>
+    <div class="grids-panel">
+        <div class="grid-item">
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+            <div class="grid-info-text">
+                <span>Umawiaj wizyty online swoich samochodów</span>
+            </div>
+            <a href="@Url.Action("Index", "Book", new { @area = "" })" class="grid-button"><span>Umów wizytę</span></a>
         </div>
-        <a href="@Url.Action("Register", "Account", new { @area = "" })" class="grid-button"><span>Zarejestruj</span></a>
-        
-    </div>
 
-    <div class="grid-item">
-        <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
-        <div class="grid-info-text">
-            <span>Poznaj wszystkie niezbędne informacje o nas</span>
+        <div class="grid-item">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <div class="grid-info-text">
+                <span>Do korzystania z systemu wymagana jest rejestracja</span>
+            </div>
+            <a href="@Url.Action("Register", "Account", new { @area = "" })" class="grid-button"><span>Zarejestruj</span></a>
+
         </div>
-        <a href="@Url.Action("Contact", "Home", new { @area = "" })" class="grid-button"><span>Kontakt</span></a>
+
+        <div class="grid-item">
+            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+            <div class="grid-info-text">
+                <span>Poznaj wszystkie niezbędne informacje</span>
+            </div>
+            <a href="@Url.Action("Contact", "Home", new { @area = "" })" class="grid-button"><span>Kontakt</span></a>
+        </div>
     </div>
 </div>
