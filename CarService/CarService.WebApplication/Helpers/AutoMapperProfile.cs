@@ -6,6 +6,7 @@ using CarService.WebApplication.Models.Car;
 using CarService.WebApplication.Models.ServiceBooking;
 using CarService.WebApplication.Models.User;
 using System.Linq;
+using CarService.WebApplication.Helpers.Extensions;
 using DTO = CarService.Logic.ModelsDTO;
 using Entity = CarService.Repository.Entities;
 namespace CarService.WebApplication.Helpers
@@ -171,7 +172,7 @@ namespace CarService.WebApplication.Helpers
                     opt => opt.MapFrom(src => src.Service.Name)
                ).ForMember(
                     dest => dest.DateStarted,
-                    opt => opt.MapFrom(src => (src.DateStarted != null ? src.DateStarted.Value.ToShortDateString() : "nieustawiona"))
+                    opt => opt.MapFrom(src => (src.DateStarted != null ? src.DateStarted.Value.ToShortedDateByYear() : "nieustawiona"))
                ).ForMember(
                     dest => dest.Mechanic,
                     opt => opt.MapFrom(src => src.MechanicFullName)

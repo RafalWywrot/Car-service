@@ -5,46 +5,56 @@
 @{
     ViewBag.Title = @Resource.PreviousCars;
 }
+<div class="body-with-table row">
+    <div class="col-md-12 background-container w-100">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-xs-7 header-text">
+                @Resource.PreviousCars
+            </div>
+            <div class="col-xs-5">
+                @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default w-auto right" })
+            </div>
+        </div>
 
-<h2>@Resource.PreviousCars</h2>
-
-<div class="row" style="margin-top:1vh">
-    <div class="col-md-12">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" }) @*for error when cannot delete car*@
-        <table id="userPreviousCarIndex" class="table table-condensed display" style="width:100%">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.Model)</th>
-                    <th>@Html.DisplayNameFor(model => model.Year)</th>
-                    <th>@Html.DisplayNameFor(model => model.EngineCapacity)</th>
-                    <th>@Html.DisplayNameFor(model => model.Transmission)</th>
-                    <th>@Html.DisplayNameFor(model => model.Odometer)</th>
-                    <th>@Html.DisplayNameFor(model => model.Fuel)</th>
-                    <th>@Html.DisplayNameFor(model => model.EnginePower)</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Model)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Year)</td>
-                        <td>@Html.DisplayFor(modelItem => item.EngineCapacity)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Transmission)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Odometer)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Fuel)</td>
-                        <td>@Html.DisplayFor(modelItem => item.EnginePower)</td>
-                        <td>
-                            @using (Html.BeginForm("ActivateCar", "Car", new { @carId = item.Id, @area = "" }, FormMethod.Post, new { @class = "form-horizontal" }))
-                            {
-                                <input type="submit" class="btn btn-default" value="Przywróć" /> <span></span>
-                            }
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div class="row" style="margin-top:1vh">
+            <div class="col-md-12">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" }) @*for error when cannot delete car*@
+                <table id="userPreviousCarIndex" class="table table-condensed display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Model)</th>
+                            <th>@Html.DisplayNameFor(model => model.Year)</th>
+                            <th>@Html.DisplayNameFor(model => model.EngineCapacity)</th>
+                            <th>@Html.DisplayNameFor(model => model.Transmission)</th>
+                            <th>@Html.DisplayNameFor(model => model.Odometer)</th>
+                            <th>@Html.DisplayNameFor(model => model.Fuel)</th>
+                            <th>@Html.DisplayNameFor(model => model.EnginePower)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Model)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Year)</td>
+                                <td>@Html.DisplayFor(modelItem => item.EngineCapacity)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Transmission)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Odometer)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Fuel)</td>
+                                <td>@Html.DisplayFor(modelItem => item.EnginePower)</td>
+                                <td>
+                                    @using (Html.BeginForm("ActivateCar", "Car", new { @carId = item.Id, @area = "" }, FormMethod.Post, new { @class = "form-horizontal" }))
+                                    {
+                                        <input type="submit" class="btn btn-default" value="Przywróć" /> <span></span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -55,7 +65,17 @@
             $("#userPreviousCarIndex").DataTable({
                 "language": {
                     "url": 'http://cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json'
-                }
+                },
+                'columnDefs': [
+                    {
+                        targets: -1,
+                        'className': 'dt-body-center',
+                    },
+                    {
+                        targets: [-1],
+                        'orderable': false
+                    }
+                ]
             });
         })(jQuery);
     </script>

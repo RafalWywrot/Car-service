@@ -7,68 +7,70 @@
     bool anyOldCar = Model.Any(x => x.Active == false);
 }
 
-<h2>@Resource.YourCars</h2>
-<div class="row">
-    <div class="col-md-12">
-        @using (Html.BeginForm("Add", "Car", FormMethod.Get))
+<div class="body-with-table row">
+    <div class="col-md-12 background-container w-100">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-xs-7 header-text">
+                @Resource.YourCars
+            </div>
+            <div class="col-xs-5">
+                @Html.ActionLink(@Resource.ButtonAdd, "Add", "Car", new { @area = "" }, new { @class = "btn btn-default w-auto right" })
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:1vh">
+            <div class="col-md-12">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" }) @*for error when cannot delete car*@
+                <table id="userCarIndex" class="table table-condensed display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Model)</th>
+                            <th>@Html.DisplayNameFor(model => model.Year)</th>
+                            <th>@Html.DisplayNameFor(model => model.EngineCapacity)</th>
+                            <th>@Html.DisplayNameFor(model => model.Transmission)</th>
+                            <th>@Html.DisplayNameFor(model => model.Odometer)</th>
+                            <th>@Html.DisplayNameFor(model => model.Fuel)</th>
+                            <th>@Html.DisplayNameFor(model => model.EnginePower)</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Where(x => x.Active))
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Model)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Year)</td>
+                                <td>@Html.DisplayFor(modelItem => item.EngineCapacity)<span> cm<sup>3</sup></span></td>
+                                <td>@Html.DisplayFor(modelItem => item.Transmission)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Odometer)<span> km</span></td>
+                                <td>@Html.DisplayFor(modelItem => item.Fuel)</td>
+                                <td>@Html.DisplayFor(modelItem => item.EnginePower)<span> KM</span></td>
+                                <td>@Html.ActionLink(Resource.History, "History", "Car", new { @area = "", carId = item.Id }, new { @class = "btn btn-default" })</td>
+                                <td>@Html.ActionLink(Resource.ButtonEdit, "Edit", new { carId = item.Id }, new { @class = "btn btn-default" })</td>
+                                <td>
+                                    @using (Html.BeginForm("Delete", "Car", new { @carId = item.Id, @area = "" }, FormMethod.Post, new { @class = "form-horizontal" }))
+                                    {
+                                        <input type="submit" class="btn btn-primary" value="@Resource.ButtonDelete" />
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @if (anyOldCar)
         {
-            <button type="submit" class="btn btn-success btn-">
-                @Resource.ButtonAdd
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-md-12">
+                    @Html.ActionLink("Zobacz stare samochody", "PreviousCars", "Car", new { @area = "" }, new { @class = "btn btn-default" })
+                </div>
+            </div>
         }
     </div>
 </div>
-
-<div class="row" style="margin-top:1vh">
-    <div class="col-md-12">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" }) @*for error when cannot delete car*@
-        <table id="userCarIndex" class="table table-condensed display" style="width:100%">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.Model)</th>
-                    <th>@Html.DisplayNameFor(model => model.Year)</th>
-                    <th>@Html.DisplayNameFor(model => model.EngineCapacity)</th>
-                    <th>@Html.DisplayNameFor(model => model.Transmission)</th>
-                    <th>@Html.DisplayNameFor(model => model.Odometer)</th>
-                    <th>@Html.DisplayNameFor(model => model.Fuel)</th>
-                    <th>@Html.DisplayNameFor(model => model.EnginePower)</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Where(x => x.Active))
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Model)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Year)</td>
-                        <td>@Html.DisplayFor(modelItem => item.EngineCapacity)<span> cm<sup>3</sup></span></td>
-                        <td>@Html.DisplayFor(modelItem => item.Transmission)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Odometer)<span> km</span></td>
-                        <td>@Html.DisplayFor(modelItem => item.Fuel)</td>
-                        <td>@Html.DisplayFor(modelItem => item.EnginePower)<span> KM</span></td>
-                        <td>
-                            @Html.ActionLink(Resource.ButtonEdit, "Edit", new { carId = item.Id }, new { @class = "btn btn-default" }) |
-                            @using (Html.BeginForm("Delete", "Car", new { @carId = item.Id, @area = "" }, FormMethod.Post, new { @class = "form-horizontal" }))
-                            {
-                                <input type="submit" class="btn btn-default" value="@Resource.ButtonDelete" /> <span>|</span>
-                            }
-                            @Html.ActionLink(Resource.History, "History", "Car", new { @area = "", carId = item.Id }, new { @class = "btn btn-default" })
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
-@if (anyOldCar)
-{
-    <div class="row">
-        <div class="col-md-12">
-            @Html.ActionLink("Zobacz stare samochody", "PreviousCars", "Car", new { @area = "" }, new { @class = "btn btn-default" })
-        </div>
-    </div>
-}
 @section Scripts {
     @Scripts.Render("~/bundles/dataTables")
     <script>
@@ -76,7 +78,17 @@
             $("#userCarIndex").DataTable({
                 "language": {
                     "url": 'http://cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json'
-                }
+                },
+                'columnDefs': [
+                    {
+                        targets: -1,
+                        'className': 'dt-body-center',
+                    },
+                    {
+                        targets: [-1, -2, -3],
+                        'orderable': false
+                    }
+                ]
             });
         })(jQuery);
     </script>

@@ -1,39 +1,70 @@
 ﻿@model IEnumerable<CarService.WebApplication.Models.ServiceBooking.ServiceBookingSummaryViewModel>
-
+@section Styles{
+    @Styles.Render("~/Content/dataTables")
+}
 @{
     ViewBag.Title = Resource.HistoryCarTitle;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (!Model.Any())
-{
-    <h2>Auto nie posiada jeszcze żadnej historii</h2>
-}
-else
-{
-    <h2>@Resource.HistoryCarTitle @Model.First().CarName</h2>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
-                <th>@Html.DisplayNameFor(model => model.DateStarted)</th>
-                <th>@Html.DisplayNameFor(model => model.Comment)</th>
-                <th>@Html.DisplayNameFor(model => model.Status)</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var bookedService in Model)
+<div class="body-with-table row">
+    <div class="col-md-12 background-container w-100">
+        <div class="row" style="margin-bottom: 20px;">
+            @if (!Model.Any())
             {
-                <tr>
-                    <td>@bookedService.ServiceName</td>
-                    <td>@bookedService.DateStarted</td>
-                    <td>@bookedService.Comment</td>
-                    <td>@bookedService.Status</td>
-                </tr>
+                <div class="col-xs-7 header-text">
+                    Auto nie posiada jeszcze żadnej historii
+                </div>
+                <div class="col-xs-5">
+                    @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default w-auto right" })
+                </div>
             }
-        </tbody>
-    </table>
-}
-<div>
-    @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default" })
+
+            else
+            {
+                <div class="col-xs-7 header-text">
+                    @Resource.HistoryCarTitle @Model.First().CarName
+                </div>
+                <div class="col-xs-5">
+                    @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default w-auto right" })
+                </div>
+
+                <table id="carHistoryTitle" class="table table-condensed display" style="width:100%">>
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
+                            <th>@Html.DisplayNameFor(model => model.DateStarted)</th>
+                            <th>@Html.DisplayNameFor(model => model.Comment)</th>
+                            <th>@Html.DisplayNameFor(model => model.Status)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bookedService in Model.OrderBy(x => x.DateStarted).ThenBy(x => x.ServiceName))
+                        {
+                            <tr>
+                                <td>@bookedService.ServiceName</td>
+                                <td>@bookedService.DateStarted</td>
+                                <td>@bookedService.Comment</td>
+                                <td>@bookedService.Status</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/dataTables")
+    <script>
+        (function ($) {
+            var nameColumn = 0;
+            var dateColumn = 1;
+            $("#carHistoryTitle").DataTable({
+                "language": {
+                    "url": 'http://cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json'
+                },
+                "order": [[dateColumn, 'asc'], [nameColumn, 'asc']]
+            });
+        })(jQuery);
+    </script>
+}
