@@ -15,13 +15,7 @@
                 @Resource.Users
             </div>
             <div class="col-xs-5">
-                @using (Html.BeginForm("Add", "Users", new { @area = "Admin" }, FormMethod.Get, null))
-                {
-                    <button type="submit" class="btn btn-success w-auto right">
-                        @Resource.AddMechanic
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                }
+                @Html.ActionLink(@Resource.AddMechanic, "Add", "Users", new { @area = "Admin" }, new { @class = "btn btn-default w-auto right" })
             </div>
         </div>
 
