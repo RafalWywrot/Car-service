@@ -1,15 +1,15 @@
 ﻿@model CarService.WebApplication.Areas.Admin.Models.BookAdminViewModel
 
 <div class="form-group">
-    @Html.LabelFor(x => x.RequiredComment, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-sm-10">
+    <div class="col-sm-1">
         <div class="checkbox adminServiceCheckboxComment">
             @Html.CheckBoxFor(model => model.RequiredComment)
         </div>
     </div>
+    @Html.LabelFor(x => x.RequiredComment, htmlAttributes: new { @class = "control-label col-md-11 default-text" })
 </div>
 <div class="form-group @(Model.RequiredComment ? "" : "hidden") adminServiceMessageComment">
-    @Html.LabelFor(model => model.MessageUser, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.LabelFor(model => model.MessageUser, htmlAttributes: new { @class = "control-label col-md-12 default-text" })
     <div class="col-md-10">
         @Html.TextAreaFor(model => model.MessageUser, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.MessageUser, "", new { @class = "text-danger" })

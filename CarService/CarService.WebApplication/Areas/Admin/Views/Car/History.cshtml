@@ -4,36 +4,45 @@
     ViewBag.Title = Resource.History;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (!Model.Any())
-{
-    <h2>@Resource.CarHistoryEmpty</h2>
-}
-<h2>@Resource.History @Model.First().CarName</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
-            <th>@Html.DisplayNameFor(model => model.DateCreated)</th>
-            <th>@Html.DisplayNameFor(model => model.Comment)</th>
-            <th>@Html.DisplayNameFor(model => model.Status)</th>
-            <th>@Html.DisplayNameFor(model => model.DateThatClientSelect)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var bookedService in Model)
-        {
-            <tr>
-                <td>@bookedService.ServiceName</td>
-                <td>@bookedService.DateCreated</td>
-                <td>@bookedService.Comment</td>
-                <td>@bookedService.Status</td>
-                <td>@bookedService.DateThatClientSelect</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="body-with-table row">
+    <div class="col-md-12 background-container w-100">
 
-<div>
-    @Html.ActionLink(Resource.ButtonBack, "Show", "Book", new { @area = "Admin", bookingServiceId = Model.First().Id }, new { @class = "btn btn-default" })
+        <div style="padding-bottom: 15px;">
+            @Html.ActionLink(Resource.ButtonBack, "Show", "Book", new { @area = "Admin", bookingServiceId = Model.First().Id }, new { @class = "btn btn-default w-auto" })
+        </div>
+        <div class="header-text">
+            @if (!Model.Any())
+            {
+                <h2>@Resource.CarHistoryEmpty</h2>
+            }
+            <h2>@Resource.History @Model.First().CarName</h2>
+        </div>
+        <hr />
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
+                    <th>@Html.DisplayNameFor(model => model.DateCreated)</th>
+                    <th>@Html.DisplayNameFor(model => model.Comment)</th>
+                    <th>@Html.DisplayNameFor(model => model.Status)</th>
+                    <th>@Html.DisplayNameFor(model => model.DateThatClientSelect)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var bookedService in Model)
+                {
+                    <tr>
+                        <td>@bookedService.ServiceName</td>
+                        <td>@bookedService.DateCreated</td>
+                        <td>@bookedService.Comment</td>
+                        <td>@bookedService.Status</td>
+                        <td>@bookedService.DateThatClientSelect</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
 </div>
