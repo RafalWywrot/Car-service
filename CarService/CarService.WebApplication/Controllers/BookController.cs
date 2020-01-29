@@ -39,6 +39,14 @@ namespace CarService.WebApplication.Controllers
             return View(model);
         }
 
+        public ActionResult Current()
+        {
+            var userId = User.Identity.GetUserId();
+            var bookingsOfAllCars = _carMainteanceService.GetBookings(userId);
+            var model = Mapper.Map<IEnumerable<ServiceBookingSummaryViewModel>>(bookingsOfAllCars);
+            return View(model);
+        }
+
         public ViewResult Show(int bookingServiceId)
         {
             var bookingService = _carMainteanceService.GetBooking(bookingServiceId);

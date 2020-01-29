@@ -381,13 +381,13 @@
     <Content Include="Views\Book\Edit.cshtml" />
     <Content Include="Views\Shared\_UnathorizeLayout.cshtml" />
     <Content Include="Views\Home\IndexUnathorize.cshtml" />
-    <Content Include="Views\Home\IndexRoleUser.cshtml" />
     <Content Include="Views\Book\_Date.cshtml" />
     <Content Include="Views\Car\History.cshtml" />
     <Content Include="Views\Book\Show.cshtml" />
     <Content Include="Views\Car\PreviousCars.cshtml" />
     <Content Include="Views\Book\ChangeDate.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Book\Current.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
