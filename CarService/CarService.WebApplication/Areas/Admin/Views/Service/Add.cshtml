@@ -4,39 +4,44 @@
     ViewBag.Title = Resource.AddServiceTitle;
 }
 
-<h2>@Resource.AddServiceTitle</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
+<div class="body-with-table row">
+    <div class="col-md-12 background-container w-100">
+        <div class="header-text" style="width: 50%; display:inline-block;">
+            @Resource.AddServiceTitle
+        </div>
+        <div style="width: 20%; display:inline-block; float:right; padding-top: 5px;">
+            @Html.ActionLink(Resource.ButtonBack, "Index", new { @area = "Admin" }, new { @class = "btn btn-default" })
         </div>
 
-        @Html.Partial("_Comment", Model)
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@Resource.ButtonSave" class="btn btn-default" />
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @Html.Partial("_Comment", Model)
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="@Resource.ButtonSave" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
-        </div>
+        }
     </div>
-}
-
-<div>
-    @Html.ActionLink(Resource.ButtonBack, "Index", new { @area = "Admin" }, new { @class = "btn btn-default" })
 </div>
 
 @section Scripts {
     <script src="~/Scripts/_serviceRequiredComment.js">
-        
+
     </script>
 }

@@ -15,7 +15,14 @@
             </div>
 
             <div style="width: 20%; display:inline-block; float:right; padding-top: 5px;">
-                @Html.ActionLink(Resource.ButtonBack, "Index", "Book", new { @area = "Admin" }, new { @class = "btn btn-default" })
+                @if (service.Status == Resource.BookingStatusDeclined || service.Status == Resource.BookingStatusFinished)
+                {
+                    @Html.ActionLink(Resource.ButtonBack, "Archived", "Book", new { @area = "Admin" }, new { @class = "btn btn-default" })
+                }
+                else
+                {
+                    @Html.ActionLink(Resource.ButtonBack, "Index", "Book", new { @area = "Admin" }, new { @class = "btn btn-default" })
+                }
             </div>
 
             <hr />

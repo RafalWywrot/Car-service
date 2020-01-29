@@ -1,49 +1,84 @@
 ﻿@model IEnumerable<CarService.Logic.ModelsDTO.ServiceDTO>
-
 @{
     ViewBag.Title = Resource.Services;
 }
+@section Styles{
+    @Styles.Render("~/Content/dataTables")
+}
+<style>
+    .dangerColor {
+        background-color: #d9edf7 !important;
+    }
+</style>
 
-<div class="row body-with-table">
+<div class="body-with-table row">
     <div class="col-md-12 background-container w-100">
-        <div class="header-text" style="width: 50%; display:inline-block;">
-            @Resource.Services
+        <div style="margin-bottom: 20px;">
+            <div class="header-text" style="width: 50%; display:inline-block;">
+                @Resource.Services
+            </div>
+
+            <div style="width: 20%; display:inline-block; float:right; padding-top: 5px;">
+                @Html.ActionLink("Dodaj nową usługę", "Add", "Service", new { @area = "Admin" }, new { @class = "btn btn-default" })
+            </div>
         </div>
 
-        <div style="width: 20%; display:inline-block; float:right; padding-top: 5px;">
-            @using (Html.BeginForm("Add", "Service", new { @area = "Admin" }, FormMethod.Get, null))
-            {
-                <button type="submit" class="btn btn-success btn-">
-                    @Resource.ButtonAdd
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            }
-        </div>
-        <hr />
-
-        <table class="table" style="margin-top: 1vh">
-            <tr>
-                <th>@Html.DisplayName(Resource.Name)</th>
-                <th>Wymagany komentarz</th>
-                <th>Status</th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
+        <table id="servicesTable" class="table table-condensed display" style="width: 100%">
+            <thead>
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                    <td>@Html.DisplayName((item.RequiredComment ? "Tak" : "Nie"))</td>
-                    <td>@Html.DisplayName((item.Active ? "Aktywna" : "Nieaktywna"))</td>
-                    <td>
-                        @Html.ActionLink(Resource.ButtonEdit, "Edit", new { id = item.Id }, new { @class = "btn btn-default" }) |
-                        @using (Html.BeginForm((@item.Active ? "Delete" : "Activate"), "Service", new { @serviceId = item.Id, @area = "Admin" }, FormMethod.Post, new { }))
-                        {
-                            <input type="submit" class="btn btn-default" value="@(item.Active ? "Zablokuj" : "Odblokuj")" />
-                        }
-                    </td>
+                    <th>@Html.DisplayName(Resource.Name)</th>
+                    <th>Wymagany komentarz</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            }
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayName((item.RequiredComment ? "Tak" : "Nie"))</td>
+                        <td>@Html.DisplayName((item.Active ? "Aktywna" : "Nieaktywna"))</td>
+                        <td>
+                            @using (Html.BeginForm((@item.Active ? "Delete" : "Activate"), "Service", new { @serviceId = item.Id, @area = "Admin" }, FormMethod.Post, new { }))
+                            {
+                                <input type="submit" class="btn btn-default" value="@(item.Active ? "Zablokuj" : "Odblokuj")" />
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink(Resource.ButtonEdit, "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
         </table>
     </div>
 </div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/dataTables")
+    <script>
+        (function ($) {
+            var nameColumn = 0;
+            var activeColumn = 2;
+            $("#servicesTable").DataTable({
+                "language": {
+                    "url": "/Scripts/DataTable/polishTranslation.json"
+                },
+                'columnDefs': [
+                    {
+                        targets: -1,
+                        'className': 'dt-body-center',
+                    },
+                    {
+                        targets: [-1, -2],
+                        'orderable': false
+                    }
+                ],
+                "order": [[activeColumn, 'asc'], [nameColumn, 'asc']]
+            });
+        })(jQuery);
+    </script>
+}
