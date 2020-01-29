@@ -8,19 +8,17 @@
 
 <div class="row body-with-table" style="margin-bottom: 20px;">
     <div class="col-md-12 background-container w-100">
-        <div class="header-text" style="width: 50%; display:inline-block;">
-            @Resource.Users
+
+
+        <div class="row">
+            <div class="col-xs-7 header-text">
+                @Resource.Users
+            </div>
+            <div class="col-xs-5">
+                @Html.ActionLink(@Resource.AddMechanic, "Add", "Users", new { @area = "Admin" }, new { @class = "btn btn-default w-auto right" })
+            </div>
         </div>
 
-        <div style="width: 20%; display:inline-block; float:right; padding-top: 5px;">
-            @using (Html.BeginForm("Add", "Users", new { @area = "Admin" }, FormMethod.Get, null))
-            {
-                <button type="submit" class="btn btn-success btn-">
-                    @Resource.AddMechanic
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            }
-        </div>
         <hr />
 
         <div class="row">
@@ -28,19 +26,12 @@
                 <table id="userstable" class="table table-condensed display" style="width:100%">
                     <thead>
                         <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Name)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Surname)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Email)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Roles)
-                            </th>
+                            <th>@Html.DisplayNameFor(model => model.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.Surname)</th>
+                            <th>@Html.DisplayNameFor(model => model.Email)</th>
+                            <th>@Html.DisplayNameFor(model => model.Roles)</th>
                             <th>@Html.DisplayNameFor(model => model.Active)</th>
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -64,11 +55,13 @@
                                     @Html.DisplayName((item.Active ? "Odblokowane" : "Zablokowane"))
                                 </td>
                                 <td>
-                                    @Html.ActionLink(Resource.ButtonEdit, "Edit", new { userId = item.Id }, new { @class = "btn btn-default" }) |
                                     @using (Html.BeginForm((@item.Active ? "Delete" : "Activate"), "Users", new { @userId = item.Id, @area = "Admin" }, FormMethod.Post, new { }))
                                     {
                                         <input type="submit" class="btn btn-default" value="@(item.Active ? "Zablokuj" : "Odblokuj")" />
                                     }
+                                </td>
+                                <td>
+                                    @Html.ActionLink(Resource.ButtonEdit, "Edit", new { userId = item.Id }, new { @class = "btn btn-primary" })
                                 </td>
                             </tr>
                         }
@@ -83,10 +76,24 @@
     @Scripts.Render("~/bundles/dataTables")
     <script>
         (function ($) {
+            var nameColumn = 0;
+            var surnamecolumn = 1;
+            var activeColumn = 4;
             $("#userstable").DataTable({
                 "language": {
                     "url": 'http://cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json'
-                }
+                },
+                'columnDefs': [
+                    {
+                        targets: -1,
+                        'className': 'dt-body-center',
+                    },
+                    {
+                        targets: [-1, -2],
+                        'orderable': false
+                    }
+                ],
+                "order": [[activeColumn, 'asc'], [nameColumn, 'asc'], [surnamecolumn, 'asc']]
             });
         })(jQuery);
     </script>

@@ -96,8 +96,9 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             user.Name = model.Name;
             user.Surname = model.Surname;
             user.Email = model.Email;
+            user.PhoneNumber = model.PhoneNumber;
             await _userManager.UpdateAsync(user);
-            return View(model);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
