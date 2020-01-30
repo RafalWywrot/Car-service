@@ -7,14 +7,14 @@
 }
 <div class="body-with-table row">
     <div class="col-md-12 background-container w-100">
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-xs-7 header-text">
-                @Resource.PreviousCars
-            </div>
-            <div class="col-xs-5">
-                @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default w-auto right" })
-            </div>
+
+        <div style="padding-bottom: 15px;">
+            @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default w-auto" })
         </div>
+        <div class="header-text">
+            @Resource.PreviousCars
+        </div>
+
 
         <div class="row" style="margin-top:1vh">
             <div class="col-md-12">

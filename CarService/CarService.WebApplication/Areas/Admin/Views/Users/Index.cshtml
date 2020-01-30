@@ -52,7 +52,7 @@
                                     @Html.DisplayFor(modelItem => item.Roles)
                                 </td>
                                 <td>
-                                    @Html.DisplayName((item.Active ? "Odblokowane" : "Zablokowane"))
+                                    @Html.DisplayName((item.Active ? "Odblokowany" : "Zablokowany"))
                                 </td>
                                 <td>
                                     @using (Html.BeginForm((@item.Active ? "Delete" : "Activate"), "Users", new { @userId = item.Id, @area = "Admin" }, FormMethod.Post, new { }))

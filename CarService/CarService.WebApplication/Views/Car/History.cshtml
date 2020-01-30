@@ -11,24 +11,24 @@
         <div class="row" style="margin-bottom: 20px;">
             @if (!Model.Any())
             {
-                <div class="col-xs-7 header-text">
-                    Auto nie posiada jeszcze żadnej historii
+                <div style="padding-bottom: 15px;">
+                    @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default w-auto" })
                 </div>
-                <div class="col-xs-5">
-                    @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default w-auto right" })
+                <div class="header-text">
+                    Auto nie posiada jeszcze żadnej historii
                 </div>
             }
 
             else
             {
-                <div class="col-xs-7 header-text">
+                <div style="padding-bottom: 15px;">
+                    @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default w-auto" })
+                </div>
+                <div class="header-text">
                     @Resource.HistoryCarTitle @Model.First().CarName
                 </div>
-                <div class="col-xs-5">
-                    @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default w-auto right" })
-                </div>
 
-                <table id="carHistoryTitle" class="table table-condensed display" style="width:100%">>
+                <table id="carHistoryTitle" class="table table-condensed display" style="width:100%">
                     <thead>
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.ServiceName)</th>

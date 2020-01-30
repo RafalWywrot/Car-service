@@ -248,6 +248,10 @@ textarea.form-block {
     border-color: #d9941c;
 }
 
+.primary-text-color {
+    color: #d9941c;
+}
+
 p > a, p > a:hover {
     color: #d9941c;
 }
