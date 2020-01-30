@@ -71,10 +71,13 @@ namespace CarService.Logic.Services.Concrete
         public void UpdateCarBrand(int id, string name)
         {
             var carBrands = _carMainteanceRepository.GetCarBrands();
+            var car = carBrands.Single(x => x.Id == id);
+            if (car.Name == name)
+                return;
+            
             if (carBrands.Any(x => x.Name.ToUpper() == name.ToUpper()))
                 throw new CarException();
 
-            var car = carBrands.Single(x => x.Id == id);
             car.Name = name;
             _carMainteanceRepository.UpdateCarBrand(car);
         }
@@ -108,6 +111,9 @@ namespace CarService.Logic.Services.Concrete
             var carModel = _carMainteanceRepository.GetCarModel(carModelId);
             if (carModel == null)
                 throw new Exception();
+
+            if (carModel.Name == name)
+                return;
 
             var brand = _carMainteanceRepository.GetCarBrand(carModel.Brand.Id);
             if (brand == null)
