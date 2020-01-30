@@ -2,11 +2,7 @@
 @section Styles{
     @Styles.Render("~/Content/dataTables")
 }
-<style>
-    .disactive {
-        background-color: #bbbbbb !important;
-    }
-</style>
+
 @{
     ViewBag.Title = Resource.Cars;
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -22,55 +18,55 @@
                 @Html.ActionLink("Dodaj nową markę", "Add", null, new { @class = "btn btn-default w-auto right" })
             </div>
         </div>
-
        
         <hr />
-        <div class="col-md-6">
-            <table id="car-management" class="row-border hover text-center " style="width:100%">
-                <thead>
+
+        <table id="car-management" class="table table-condensed display" style="width:100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Modele</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
                     <tr>
-                        <th></th>
-                        <th></th> @*active property*@
-                        <th>Modele</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CarBrandName)
+                            @Html.ActionLink("Edytuj nazwę", "Update", new { @carBrandId = item.CarBrandId }, new { @class = "btn btn-sm " })
+                            @Html.ActionLink("Dodaj model", "AddNewModel", new { carBrandId = item.CarBrandId }, new { @class = "btn btn-sm " })
+                        </td>
+                        @if (string.IsNullOrEmpty(item.CarModelName))
+                        {
+                            <td>@Html.DisplayName("Brak modeli")</td>
+                            <td></td>
+                            <td></td>
+                        }
+                        else
+                        {
+                            <td>@Html.DisplayFor(modelItem => item.CarModelName)</td>
+                            
                             <td>
-                                @Html.DisplayFor(modelItem => item.CarBrandName)
-                                @Html.ActionLink("Edytuj nazwę", "Update", new { @carBrandId = item.CarBrandId }, new { @class = "btn btn-sm btn-default" })
-                                @Html.ActionLink("Dodaj model", "AddNewModel", new { carBrandId = item.CarBrandId }, new { @class = "btn btn-sm btn-default" })
+                                @if (item.Active == 1)
+                                {
+                                    @Html.ActionLink("Dezaktywuj", "DeleteModel", new { carModelId = item.CarModelId }, new { @class = "btn  btn-default" })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Aktywuj", "ReactivateModel", new { carModelId = item.CarModelId }, new { @class = "btn btn-default" })
+                                }
                             </td>
-                            <td>@Html.DisplayFor(modelItem => item.Active)</td>
-                            @if (string.IsNullOrEmpty(item.CarModelName))
-                            {
-                                <td>@Html.DisplayName("Brak modeli")</td>
-                                <td>
-                                </td>
-                            }
-                            else
-                            {
-                                <td>@Html.DisplayFor(modelItem => item.CarModelName)</td>
-                                <td>
-                                    @Html.ActionLink("Edytuj", "UpdateModel", new { carModelId = item.CarModelId }, new { @class = "btn btn-sm btn-default" }) |
-                                    @if (item.Active == 1)
-                                    {
-                                        @Html.ActionLink("Dezaktywuj", "DeleteModel", new { carModelId = item.CarModelId }, new { @class = "btn btn-sm btn-default" })
-                                    }
-                                    else
-                                    {
-                                        @Html.ActionLink("Aktywuj", "ReactivateModel", new { carModelId = item.CarModelId }, new { @class = "btn btn-sm btn-default" })
-                                    }
-                                </td>
-                            }
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                            <td>
+                                @Html.ActionLink("Edytuj", "UpdateModel", new { carModelId = item.CarModelId }, new { @class = "btn btn-primary right" })
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
 @section Scripts
@@ -79,25 +75,24 @@
     <script>
         (function ($) {
             var brandName = 0;
-            var activeColumn = 1;
-            var modelName = 2;
+            var modelName = 1;
             $("#car-management").DataTable({
                 "language": {
                     "url": 'http://cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json'
                 },
                 "paging": false,
-                "searching": false,
+                "searching": true,
                 "columnDefs": [
                     {
-                        "targets": [brandName, activeColumn],
+                        "targets": [brandName],
                         "visible": false
                     },
                     {
-                        targets: -1,
+                        targets: [-1], //disable order edit column
                         'orderable': false
                     }
                 ],
-                "order": [[brandName, 'asc'], [modelName, 'asc']],
+                "order": [[brandName, 'asc']],
                 "orderFixed": [[brandName, 'asc']],
                 "drawCallback": function (settings) {
                     var api = this.api();
@@ -107,17 +102,11 @@
                     api.column(brandName, { page: 'current' }).data().each(function (group, i) {
                         if (last !== group) {
                             $(rows).eq(i).before(
-                                '<tr class="group text-left"><td colspan="7">' + group + '</td></tr>'
+                                '<tr class="group "><td style="font-weight: 900" colspan="7">' + group + '</td></tr>'
                             );
                             last = group;
                         }
                     });
-                },
-                'rowCallback': function (row, data, index) {
-                    var row = $('td', row);
-                    if (data[activeColumn] === '0') {
-                        row.addClass('disactive');
-                    }
                 }
             });
         })(jQuery);

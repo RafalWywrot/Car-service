@@ -5,13 +5,12 @@
 }
 <div class="body-with-table row">
     <div class="col-md-12 background-container w-100">
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-xs-7 header-text">
-                @Resource.EditCar
-            </div>
-            <div class="col-xs-5">
-                @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default w-auto right" })
-            </div>
+
+        <div style="padding-bottom: 15px;">
+            @Html.ActionLink(Resource.ButtonBack, "Index", "Car", new { @area = "" }, new { @class = "btn btn-default w-auto" })
+        </div>
+        <div class="header-text">
+            @Resource.EditCar
         </div>
 
         @using (Html.BeginForm())
@@ -96,7 +95,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="@Resource.ButtonSave" class="btn btn-default" />
+                        <input type="submit" value="@Resource.ButtonSave" class="btn btn-success" />
                     </div>
                 </div>
             </div>

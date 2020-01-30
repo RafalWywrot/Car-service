@@ -1,7 +1,7 @@
 ﻿@model CarService.WebApplication.Areas.Admin.Models.CarBrandAdminViewModel
 
 @{
-    ViewBag.Title = Resource.EditCar;
+    ViewBag.Title = "Edycja marki samochodu";
 }
 
 <div class="body-with-table row">
@@ -11,7 +11,7 @@
             @Html.ActionLink(Resource.ButtonBack, "Index", new { @area = "Admin" }, new { @class = "btn btn-default w-auto" })
         </div>
         <div class="header-text">
-            @Resource.EditCar
+            Edycja marki samochodu: @Model.Name
         </div>
         <hr />
 
