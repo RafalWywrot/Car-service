@@ -11,12 +11,14 @@ namespace CarService.WebApplication.Models.ServiceBooking
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         [Display(Name = "Car", ResourceType = typeof(Resource))]
+        [Range(1, int.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         public int CarId { get; set; }
 
         public IEnumerable<SelectListItem> Cars { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         [Display(Name = "Service", ResourceType = typeof(Resource))]
+        [Range(1, int.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "FieldRequired")]
         public int ServiceId { get; set; }
 
         public IEnumerable<SelectListItem> Services { get; set; }

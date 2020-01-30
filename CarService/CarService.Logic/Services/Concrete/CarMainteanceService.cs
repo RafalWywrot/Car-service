@@ -97,8 +97,10 @@ namespace CarService.Logic.Services.Concrete
             _carMainteanceRepository.AddCarModel(
                 new CarModel {
                     Brand = new CarBrand { Id = carBrandId },
-                    Name = name }
-                );
+                    Name = name,
+                    Active = true
+                }
+            );
         }
 
         public void UpdateCarModel(int carModelId, string name)

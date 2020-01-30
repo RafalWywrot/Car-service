@@ -31,5 +31,13 @@ namespace CarService.WebApplication.Models.User
 
         [Display(Name = "Status", ResourceType = typeof(Resource))]
         public bool Active { get; set; }
+
+
+        public string FullName
+        {
+            get {
+                return $"{Name} {Surname}";
+            }
+        }
     }
 }

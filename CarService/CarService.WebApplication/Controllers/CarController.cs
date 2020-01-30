@@ -73,7 +73,7 @@ namespace CarService.WebApplication.Controllers
         public JsonResult GetModels(int brandId)
         {
             var models = _carService.GetModels(brandId);
-            return Json(models.ToSelectListItems(x => x.Id, x => x.Name), JsonRequestBehavior.AllowGet);
+            return Json(models.OrderBy(x => x.Name).ToSelectListItems(x => x.Id, x => x.Name), JsonRequestBehavior.AllowGet);
         }
 
         public ViewResult History(int carId)
@@ -121,10 +121,10 @@ namespace CarService.WebApplication.Controllers
         private void InitializeCarDropdowns(CarFormViewModel model)
         {
             var carBrands = _carService.GetBrandsWithAtLeastOneModel();
-            model.CarBrands = carBrands.ToSelectListItems(x => x.Id, x => x.Name);
+            model.CarBrands = carBrands.OrderBy(x => x.Name).ToSelectListItems(x => x.Id, x => x.Name);
 
             int carBrandId = model.CarBrandId == 0 ? carBrands.FirstOrDefault()?.Id ?? model.CarBrandId : model.CarBrandId;
-            model.CarModels = _carService.GetModels(carBrandId).Where(x => x.Active).ToSelectListItems(x => x.Id, x => x.Name);
+            model.CarModels = _carService.GetModels(carBrandId).Where(x => x.Active).OrderBy(x => x.Name).ToSelectListItems(x => x.Id, x => x.Name);
 
             model.TransmissionOptions = _carService.GetTransmissionOptions().ToSelectListItems(x => x.Id, x => x.Name);
             model.FuelOptions = _carService.GetFuelTypes().ToSelectListItems(x => x.Id, x => x.Name);

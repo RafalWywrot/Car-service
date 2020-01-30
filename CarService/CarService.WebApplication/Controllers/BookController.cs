@@ -146,7 +146,8 @@ namespace CarService.WebApplication.Controllers
         private void InitializeDropdown(ServiceBookingFormViewModel model)
         {
             var userId = User.Identity.GetUserId();
-            model.Cars = _carService.GetUserCars(userId).Where(x => x.Active).ToSelectListItems(x => x.Id, x => x.Model);
+            var cars = _carService.GetUserCars(userId);
+            model.Cars = cars.Where(x => x.Active).ToSelectListItems(x => x.Id, x => x.Model);
             model.Services = _carMainteanceService.GetActiveServices().ToSelectListItems(x => x.Id, x => x.Name);
         }
 
