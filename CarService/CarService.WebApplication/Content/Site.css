@@ -317,3 +317,14 @@ p > a, p > a:hover {
         color: #d9941c;
     }
 }
+
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background-color: black;
+    }
+
+    div.container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
