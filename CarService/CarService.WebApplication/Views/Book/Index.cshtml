@@ -6,7 +6,7 @@
     ViewBag.Title = Resource.Services;
 }
 
-<div class="body-with-table row">
+<div class="body-with-table row h-50" style="padding-bottom: 10px;">
     <div class="col-md-12 background-container w-100">
         <div class="row" style="margin-bottom: 20px;">
             <div class="col-xs-7 header-text">
@@ -16,6 +16,7 @@
                 @Html.ActionLink(@Resource.ButtonAdd, "AddServiceBooking", "Book", new { @area = "" }, new { @class = "btn btn-default w-auto right" })
             </div>
         </div>
+        <hr />
 
         <div class="row">
             <div class="col-md-12">
@@ -62,9 +63,16 @@
                 </table>
             </div>
         </div>
+    </div>
+</div>
+<div class="body-with-table row h-50">
+    <div class="col-md-12 background-container w-100">
+        <div >
+            <div class="header-text">
+                Historyczne
 
-        <div style="margin-top:30px;">
-            <h4>Historyczne</h4>
+            </div>
+            <hr />
             <div class="row">
                 <div class="col-md-12">
                     <table id="userBookIndexTableHistory" class="table table-condensed display" style="width:100%">
