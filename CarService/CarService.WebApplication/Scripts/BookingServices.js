@@ -10,7 +10,6 @@
             },
             success: function (result) {
                 if (result.Success) {
-                    alert('ok');
                     setTimeout(function () {
                         location.reload();  //Refresh page
                     }, 100);
@@ -36,7 +35,6 @@
             },
             success: function (result) {
                 if (result.Success) {
-                    alert('ok');
                     setTimeout(function () {
                         location.reload();  //Refresh page
                     }, 100);
@@ -62,7 +60,6 @@
             },
             success: function (result) {
                 if (result.Success) {
-                    alert('ok');
                     setTimeout(function () {
                         location.reload();  //Refresh page
                     }, 100);
@@ -88,7 +85,6 @@
             },
             success: function (result) {
                 if (result.Success) {
-                    alert('ok');
                     setTimeout(function () {
                         location.reload();  //Refresh page
                     }, 100);
@@ -115,7 +111,6 @@
             },
             success: function (result) {
                 if (result.Success) {
-                    alert('ok');
                     setTimeout(function () {
                         location.reload();  //Refresh page
                     }, 100);

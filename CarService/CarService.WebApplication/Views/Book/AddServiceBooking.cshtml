@@ -18,31 +18,29 @@
         {
             @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CarId, htmlAttributes: new { @class = "control-label col-md-12 default-text" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.CarId, Model.Cars, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.CarId, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CarId, htmlAttributes: new { @class = "control-label col-md-12 default-text" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.CarId, Model.Cars, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CarId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ServiceId, htmlAttributes: new { @class = "control-label col-md-12 default-text" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.ServiceId, Model.Services, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ServiceId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ServiceId, htmlAttributes: new { @class = "control-label col-md-12 default-text" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.ServiceId, Model.Services, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ServiceId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12">
 
                 @Html.Partial("_Date")
 
@@ -60,8 +58,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
         }
 
 

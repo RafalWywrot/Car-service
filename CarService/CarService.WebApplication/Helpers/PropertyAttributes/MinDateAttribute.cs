@@ -7,6 +7,9 @@ namespace CarService.WebApplication.Helpers.PropertyAttributes
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+            if (value == null)
+                return new ValidationResult(string.Format("Wybierz datę"));
+            
             var date = (DateTime)value;
             var dateTimeMin = DateTime.Now;
 
