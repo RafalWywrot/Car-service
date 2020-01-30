@@ -28,6 +28,7 @@
                     <th>Modele</th>
                     <th>Status</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -36,19 +37,20 @@
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.CarBrandName)
-                            @Html.ActionLink("Edytuj nazwę", "Update", new { @carBrandId = item.CarBrandId }, new { @class = "btn btn-sm " })
-                            @Html.ActionLink("Dodaj model", "AddNewModel", new { carBrandId = item.CarBrandId }, new { @class = "btn btn-sm " })
+                            @Html.ActionLink("Edytuj nazwę", "Update", new { @carBrandId = item.CarBrandId }, new { @class = "btn btn-sm primary-text-color" })
+                            @Html.ActionLink("Dodaj model", "AddNewModel", new { carBrandId = item.CarBrandId }, new { @class = "btn btn-sm primary-text-color" })
                         </td>
                         @if (string.IsNullOrEmpty(item.CarModelName))
                         {
                             <td>@Html.DisplayName("Brak modeli")</td>
                             <td></td>
                             <td></td>
+                            <td></td>
                         }
                         else
                         {
                             <td>@Html.DisplayFor(modelItem => item.CarModelName)</td>
-                            
+                            <td>@Html.DisplayName((item.Active == 1 ? "Aktywny" : "Nieaktywny"))</td>
                             <td>
                                 @if (item.Active == 1)
                                 {
@@ -88,11 +90,11 @@
                         "visible": false
                     },
                     {
-                        targets: [-1], //disable order edit column
+                        targets: [-2, -1], //disable order edit column
                         'orderable': false
                     }
                 ],
-                "order": [[brandName, 'asc']],
+                "order": [[brandName, 'asc'], [modelName, 'asc']],
                 "orderFixed": [[brandName, 'asc']],
                 "drawCallback": function (settings) {
                     var api = this.api();
