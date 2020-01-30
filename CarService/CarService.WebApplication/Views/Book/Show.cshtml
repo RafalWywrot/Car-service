@@ -11,9 +11,10 @@
             </div>
             <div class="header-text">
                 @Resource.BookingDetails
+
                 @if (Model.ServiceDetails.Status == Resource.BookingStatusCreated)
                 {
-                    @Html.ActionLink(Resource.ButtonEdit, "Edit", new { bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink(Resource.ButtonEdit, "Edit", new { bookingServiceId = Model.ServiceDetails.Id }, new { @class = "btn btn-primary right" })
                 }
             </div>
             <hr />
