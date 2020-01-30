@@ -265,6 +265,19 @@ p > a, p > a:hover {
     overflow-y: auto;
 }
 
+@media (min-width: 992px) {
+    #loginPageLoginForm {
+        width: 40% !important;
+        display: inline-block;
+    }
+
+    #loginPageRedirectRegister {
+        width: 40% !important;
+        display: inline-block;
+        float: right;
+    }
+}
+
 @media (max-width: 991px) {
     .grids-panel .grid-item .grid-info-text {
         height: 100px;
