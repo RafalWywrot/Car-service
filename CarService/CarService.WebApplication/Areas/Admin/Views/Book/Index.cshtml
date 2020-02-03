@@ -7,7 +7,11 @@
     string tableHeader = isArchived ? "Historia zamówień" : Resource.Bookings;
     ViewBag.Title = tableHeader;
 }
-
+<style>
+    table.dataTable tfoot th {
+        border-top: 0;
+    }
+</style>
 <div class="body-with-table row">
     <div class="col-md-12 background-container w-100">
         <div class="header-text" style="margin-bottom:20px;">
@@ -50,7 +54,15 @@
                     </tr>
                 }
             </tbody>
-
+            <tfoot>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.CarName)</th>
+                    <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
+                    <th>@Html.DisplayNameFor(model => model.DateThatClientSelect)</th>
+                    <th>@Html.DisplayNameFor(model => model.Status)</th>
+                    <th>@Html.DisplayNameFor(model => model.Mechanic)</th>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>
@@ -61,6 +73,28 @@
     <script>
         (function ($) {
             $("#adminBookIndexTable").DataTable({
+                initComplete: function () {
+                    this.api().columns().every(function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            if (d != '') {
+                                select.append('<option value="' + d + '">' + d + '</option>')
+                            }
+                        });
+                    });
+                },
                 "language": {
                     "url": 'http://cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json'
                 },
