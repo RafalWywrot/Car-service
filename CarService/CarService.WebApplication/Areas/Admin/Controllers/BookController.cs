@@ -195,7 +195,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             var user = _carMainteanceService.GetUser(bookingServiceId);
             try
             {
-                await _userManager.SendEmailAsync(user.Email, "Usługa została odrzucona usługę", "Nie podejmiemy się zrealizowania usługi w Twoim aucie. Zapraszamy do systemu po szczegółowe informacje");
+                await _userManager.SendEmailAsync(user.Email, "Usługa została odrzucona", "Nie podejmiemy się zrealizowania usługi w Twoim aucie. Zapraszamy do systemu po szczegółowe informacje");
             }
             catch (Exception ex)
             {
