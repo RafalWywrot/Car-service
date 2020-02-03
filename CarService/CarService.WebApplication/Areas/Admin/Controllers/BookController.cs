@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CarService.Logic;
 using CarService.Logic.Services.Abstract;
 using CarService.WebApplication.Areas.Admin.Models;
 using CarService.WebApplication.Controllers;
@@ -154,7 +155,7 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             }
             catch (System.Exception)
             {
-                return Json(new JsonObjectResponse("Not saved"));
+                return Json(new JsonObjectResponse("Nie udało się zmienić statusu"));
             }
         }
 
@@ -174,23 +175,35 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             }
             catch (System.Exception)
             {
-                return Json(new JsonObjectResponse("Not saved"));
+                return Json(new JsonObjectResponse("Nie udało się zmienić statusu"));
             }
         }
 
         [BookingServiceMechanicAssignedFilter]
         [HttpPost]
-        public JsonResult SetAsDecline(int bookingServiceId)
+        public async Task<JsonResult> SetAsDecline(int bookingServiceId)
         {
             try
             {
                 _bookingService.SetStatusAsDeclined(bookingServiceId);
-                return Json(new JsonObjectResponse());
             }
             catch (System.Exception)
             {
-                return Json(new JsonObjectResponse("Not saved"));
+                return Json(new JsonObjectResponse("Nie udało się zmienić statusu"));
             }
+
+            var user = _carMainteanceService.GetUser(bookingServiceId);
+            try
+            {
+                await _userManager.SendEmailAsync(user.Email, "Usługa została odrzucona usługę", "Nie podejmiemy się zrealizowania usługi w Twoim aucie. Zapraszamy do systemu po szczegółowe informacje");
+            }
+            catch (Exception ex)
+            {
+                Logger.Log($"Error while sending email to user of finished service, user: {user.Id}", ex);
+                return Json(new JsonObjectResponse("Nie udało się wysłać wiadomości do użytkownika"));
+            }
+
+            return Json(new JsonObjectResponse());
         }
 
         [BookingServiceMechanicAssignedFilter]
@@ -204,23 +217,36 @@ namespace CarService.WebApplication.Areas.Admin.Controllers
             }
             catch (System.Exception)
             {
-                return Json(new JsonObjectResponse("Not saved"));
+                return Json(new JsonObjectResponse("Nie udało się zmienić statusu"));
             }
         }
 
         [BookingServiceMechanicAssignedFilter]
         [HttpPost]
-        public JsonResult SetAsFinished(int bookingServiceId)
+        public async Task<JsonResult> SetAsFinished(int bookingServiceId)
         {
             try
             {
                 _bookingService.SetStatusAsFinished(bookingServiceId);
-                return Json(new JsonObjectResponse());
+
             }
             catch (System.Exception)
             {
-                return Json(new JsonObjectResponse("Not saved"));
+                return Json(new JsonObjectResponse("Nie udało się zmienić statusu"));
             }
+
+            var user = _carMainteanceService.GetUser(bookingServiceId);
+            try
+            {
+                await _userManager.SendEmailAsync(user.Email, "Zakończono usługę", "Twoja usługa została zakończona. Zapraszamy po odbiór auta");
+            }
+            catch (Exception ex)
+            {
+                Logger.Log($"Error while sending email to user of finished service, user: {user.Id}", ex);
+                return Json(new JsonObjectResponse("Nie udało się wysłać wiadomości do użytkownika"));
+            }
+
+            return Json(new JsonObjectResponse());
         }
         
         [HttpPost]
