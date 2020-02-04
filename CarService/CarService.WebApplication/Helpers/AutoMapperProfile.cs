@@ -78,6 +78,9 @@ namespace CarService.WebApplication.Helpers
                 ).ForMember(
                     dest => dest.FuelTypeId,
                     opt => opt.MapFrom(src => src.Fuel.Id)
+                ).ForMember(
+                    dest => dest.CarOwnerFullName,
+                    opt => opt.ResolveUsing(src => $"{(string.IsNullOrEmpty(src.AssignedUser?.Name) ? string.Empty : src.AssignedUser?.Name)}{(string.IsNullOrEmpty(src.AssignedUser?.Surname) ? string.Empty : " " + src.AssignedUser?.Surname)}")
                 );
 
             CreateMap<CarFormViewModel, DTO.CarDTO>()

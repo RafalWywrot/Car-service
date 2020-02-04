@@ -31,5 +31,8 @@ namespace CarService.WebApplication.Areas.Admin.Models
 
         [Display(Name = "Mechanic", ResourceType = typeof(Resource))]
         public string Mechanic { get; set; }
+
+        [Display(Name = "Klient")]
+        public string UserCarOwner { get; set; }
     }
 }

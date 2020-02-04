@@ -10,5 +10,7 @@
         public int Odometer { get; set; }
         public int FuelTypeId { get; set; }
         public int EnginePower { get; set; }
+
+        public string CarOwnerFullName { get; set; }
     }
 }

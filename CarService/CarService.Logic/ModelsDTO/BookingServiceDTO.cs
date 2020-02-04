@@ -15,5 +15,7 @@ namespace CarService.Logic.ModelsDTO
         public bool AsSoonAsPossible { get; set; }
         public string MechanicId { get; set; }
         public string MechanicFullName { get; set; }
+
+        public string UserFullName { get { return Car?.CarOwnerFullName; }}
     }
 }

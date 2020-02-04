@@ -34,6 +34,9 @@ namespace CarService.WebApplication.Areas.Admin
                ).ForMember(
                     dest => dest.Mechanic,
                     opt => opt.MapFrom(src => src.MechanicFullName)
+               ).ForMember(
+                    dest => dest.UserCarOwner,
+                    opt => opt.MapFrom(src => src.UserFullName)
                );
 
             CreateMap<DTO.BookingServiceDTO, ServiceBookingDateAdminViewModel>()
