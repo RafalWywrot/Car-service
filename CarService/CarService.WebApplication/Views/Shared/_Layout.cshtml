@@ -9,7 +9,7 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top custom-navbar">
+    <div class="navbar navbar-inverse navbar-fixed-top custom-navbar" style="opacity: 1;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -30,15 +30,18 @@
         </div>
     </div>
     <div class="image-background"></div>
-    <div class="container body-content">
-        @RenderBody()
+    <div class="container body-content background-container">
+        <div>
+            @RenderBody()
+        </div>
+        <div class="container-footer">
+            <footer>
+                <p>&copy; @DateTime.Now.Year - wywrot.rafal@gmail.com</p>
+            </footer>
+        </div>
     </div>
 
-    <div class="container container-footer">
-        <footer>
-            <p>&copy; @DateTime.Now.Year - wywrot.rafal@gmail.com</p>
-        </footer>
-    </div>
+    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

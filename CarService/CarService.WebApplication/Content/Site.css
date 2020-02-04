@@ -22,7 +22,6 @@ div.container {
 
 .background-container {
     background-color: white;
-    opacity: 0.9;
     width: 100%;
     padding: 20px 30px;
     -webkit-box-shadow: 0px 30px 10px rgba(0, 0, 0, 0.55);
@@ -188,7 +187,6 @@ textarea.form-block {
 }
 
 .container.body-content {
-    height: 85vh;
     padding-top: 90px;
 }
 
@@ -203,7 +201,7 @@ textarea.form-block {
 }
 
 .container-footer p {
-    color: white;
+    color: black;
 }
 
 .form-group .control-label {

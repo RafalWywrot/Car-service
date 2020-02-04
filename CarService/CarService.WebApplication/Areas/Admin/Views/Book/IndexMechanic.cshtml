@@ -9,7 +9,7 @@
 
 <div class="body-with-table row @(!Model.IsArchived ?"h-50" : string.Empty) " 
      style="@(!Model.IsArchived ?"padding-bottom: 10px;" : string.Empty)">
-    <div class="col-md-12 background-container w-100">
+    <div class="col-md-12 w-100">
         <div class="header-text" style="margin-bottom:20px;">
             @message
         </div>
@@ -47,7 +47,7 @@
 @if (!Model.IsArchived)
 {
     <div class="body-with-table row h-50" style="padding-top: 10px;">
-        <div class="col-md-12 background-container w-100">
+        <div class="col-md-12 w-100">
             <div class="header-text" style="margin-bottom: 20px;">
                 @Resource.BookingsUnassigned
             </div>
