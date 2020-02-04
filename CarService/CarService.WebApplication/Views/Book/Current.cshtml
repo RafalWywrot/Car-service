@@ -60,6 +60,17 @@
                             </tr>
                         }
                     </tbead>
+                    @if(Model.Where(x => x.Status != Resource.BookingStatusDeclined && x.Status != Resource.BookingStatusFinished).Any())
+                    {
+                        <tfoot>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.CarName)</th>
+                                <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
+                                <th>@Html.DisplayNameFor(model => model.DateStarted)</th>
+                                <th>@Html.DisplayNameFor(model => model.Status)</th>
+                            </tr>
+                        </tfoot>
+                    }
                 </table>
             </div>
         </div>
@@ -70,6 +81,28 @@
     <script>
         (function ($) {
             $("#userBookOnlycurrent").DataTable({
+                initComplete: function () {
+                    this.api().columns().every(function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            if (d != '') {
+                                select.append('<option value="' + d + '">' + d + '</option>')
+                            }
+                        });
+                    });
+                },
                 "language": {
                     "url": 'http://cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json'
                 },

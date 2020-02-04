@@ -4,7 +4,7 @@
     Layout = (User.Identity.IsAuthenticated ? "~/Views/Shared/_Layout.cshtml" : "~/Views/Shared/_UnathorizeLayout.cshtml");
 }
     <div class="row">
-        <div class="col-md-12 w-100 background-container" style="opacity:0.9;">
+        <div class="col-md-12 w-100 @(User.Identity.IsAuthenticated ? "" : "background-container")" style="opacity:0.9;">
 
             <div class="header-text">
                 Kontakt
@@ -37,12 +37,12 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <label class="control-label col-md-12 default-text">Mapa</label>
                         <div class="col-md-10">
                             
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>

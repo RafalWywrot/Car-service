@@ -38,7 +38,17 @@
                     </tr>
                 }
             </tbody>
-
+            @if (Model.ServicesAlreadyAssigned.Any())
+            {
+                <tfoot>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().CarName)</th>
+                        <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().ServiceName)</th>
+                        <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().DateThatClientSelect)</th>
+                        <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Status)</th>
+                    </tr>
+                </tfoot>
+            }
         </table>
     </div>
 </div>
@@ -76,6 +86,17 @@
                         </tr>
                     }
                 </tbody>
+                @if (Model.ServicesUnassignedToAnyMechanic.Any())
+                {
+                   <tfoot>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().CarName)</th>
+                            <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().ServiceName)</th>
+                            <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().DateThatClientSelect)</th>
+                            <th>@Html.DisplayNameFor(model => model.ServicesAlreadyAssigned.FirstOrDefault().Status)</th>
+                        </tr>
+                    </tfoot>
+                }
             </table>
         </div>
     </div>
@@ -87,6 +108,28 @@
     <script>
         (function ($) {
             $("#MechanicAssignBookingsIndexTable").DataTable({
+                initComplete: function (tt) {
+                    this.api().columns().every(function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            if (d != '') {
+                                select.append('<option value="' + d + '">' + d + '</option>')
+                            }
+                        });
+                    });
+                },
                 "language": {
                     "url": 'http://cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json'
                 },
@@ -99,6 +142,28 @@
             });
 
             $("#MechanicFreeToGetBookingsIndexTable").DataTable({
+                initComplete: function () {
+                    this.api().columns().every(function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            if (d != '') {
+                                select.append('<option value="' + d + '">' + d + '</option>')
+                            }
+                        });
+                    });
+                },
                 "language": {
                     "url": 'http://cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json'
                 },

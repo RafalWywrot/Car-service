@@ -7,11 +7,6 @@
     string tableHeader = isArchived ? "Historia zamówień" : Resource.Bookings;
     ViewBag.Title = tableHeader;
 }
-<style>
-    table.dataTable tfoot th {
-        border-top: 0;
-    }
-</style>
 <div class="body-with-table row">
     <div class="col-md-12 w-100">
         <div class="header-text" style="margin-bottom:20px;">
@@ -54,15 +49,18 @@
                     </tr>
                 }
             </tbody>
-            <tfoot>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.CarName)</th>
-                    <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
-                    <th>@Html.DisplayNameFor(model => model.DateThatClientSelect)</th>
-                    <th>@Html.DisplayNameFor(model => model.Status)</th>
-                    <th>@Html.DisplayNameFor(model => model.Mechanic)</th>
-                </tr>
-            </tfoot>
+            @if (Model.Any())
+            {
+                <tfoot>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.CarName)</th>
+                        <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
+                        <th>@Html.DisplayNameFor(model => model.DateThatClientSelect)</th>
+                        <th>@Html.DisplayNameFor(model => model.Status)</th>
+                        <th>@Html.DisplayNameFor(model => model.Mechanic)</th>
+                    </tr>
+                </tfoot>
+            }
         </table>
     </div>
 </div>

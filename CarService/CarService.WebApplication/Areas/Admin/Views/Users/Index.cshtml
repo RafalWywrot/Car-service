@@ -39,21 +39,11 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Surname)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Email)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Roles)
-                                </td>
-                                <td>
-                                    @Html.DisplayName((item.Active ? "Odblokowany" : "Zablokowany"))
-                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Surname)</td>
+                                <td>@item.Email</td>
+                                <td>@Html.DisplayFor(modelItem => item.Roles)</td>
+                                <td>@Html.DisplayName((item.Active ? "Odblokowany" : "Zablokowany"))</td>
                                 <td>
                                     @using (Html.BeginForm((@item.Active ? "Delete" : "Activate"), "Users", new { @userId = item.Id, @area = "Admin" }, FormMethod.Post, new { }))
                                     {
@@ -66,7 +56,18 @@
                             </tr>
                         }
                     </tbody>
-
+                    @if (Model.Any())
+                    {
+                        <tfoot>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                                <th>@Html.DisplayNameFor(model => model.Surname)</th>
+                                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                                <th>@Html.DisplayNameFor(model => model.Roles)</th>
+                                <th>@Html.DisplayNameFor(model => model.Active)</th>
+                            </tr>
+                        </tfoot>
+                    }
                 </table>
             </div>
         </div>
@@ -80,6 +81,28 @@
             var surnamecolumn = 1;
             var activeColumn = 4;
             $("#userstable").DataTable({
+                initComplete: function () {
+                    this.api().columns().every(function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            if (d != '') {
+                                select.append('<option value="' + d + '">' + d + '</option>')
+                            }
+                        });
+                    });
+                },
                 "language": {
                     "url": 'http://cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json'
                 },
