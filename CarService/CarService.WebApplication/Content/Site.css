@@ -22,7 +22,6 @@ div.container {
 
 .background-container {
     background-color: white;
-    width: 100%;
     padding: 20px 30px;
     -webkit-box-shadow: 0px 30px 10px rgba(0, 0, 0, 0.55);
     -moz-box-shadow: 0px 30px 10px rgba(0, 0, 0, 0.55);
@@ -258,7 +257,7 @@ p > a, p > a:hover {
     height: 100%;
 }
 
-.body-with-table.row .background-container {
+.body-with-table.row > div{
     height: 100%;
     overflow-y: auto;
 }
